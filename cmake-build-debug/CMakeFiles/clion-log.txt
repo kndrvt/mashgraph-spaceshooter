@@ -1,4 +1,18 @@
 /home/kondrat/CLion/clion-2019.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /media/kondrat/DATA/Programs/Graphics/task2/Sample
+-- The C compiler identification is GNU 7.3.0
+-- The CXX compiler identification is GNU 7.3.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 CMake Warning (dev) at /home/kondrat/CLion/clion-2019.1/bin/cmake/linux/share/cmake-3.13/Modules/FindOpenGL.cmake:270 (message):
   Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
   available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
@@ -19,6 +33,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:34 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug
