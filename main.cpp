@@ -9,6 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <random>
+#include <vector>
 
 static const GLsizei WIDTH = 640, HEIGHT = 480; //размеры окна
 
@@ -109,37 +110,37 @@ void move() {
     if (keys[GLFW_KEY_C]) cameraPos -= cameraSpeed * cameraUp;
 }
 
-//unsigned int loadCubemap(vector<std::string> faces)
-//{
-//    unsigned int textureID;
-//    glGenTextures(1, &textureID);
-//    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-//
-//    int width, height, nrChannels;
-//    for (unsigned int i = 0; i < faces.size(); i++)
-//    {
-//        unsigned char *data = SOIL_load_image(faces[i].c_str(), &width, &height, &nrChannels, 0);
-//        if (data)
-//        {
-//            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-//                         0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data
-//            );
-//            SOIL_free_image_data(data);
-//        }
-//        else
-//        {
-//            std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
-//            SOIL_free_image_data(data);
-//        }
-//    }
-//    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-//    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-//    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-//
-//    return textureID;
-//}
+unsigned int loadCubemap(std::vector<std::string> faces)
+{
+    unsigned int textureID;
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+    int width, height, nrChannels;
+    for (unsigned int i = 0; i < faces.size(); i++)
+    {
+        unsigned char *data = SOIL_load_image(faces[i].c_str(), &width, &height, &nrChannels, 0);
+        if (data)
+        {
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+                         0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data
+            );
+            SOIL_free_image_data(data);
+        }
+        else
+        {
+            std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
+            SOIL_free_image_data(data);
+        }
+    }
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+    return textureID;
+}
 
 int main(int argc, char **argv) {
 
@@ -179,9 +180,16 @@ int main(int argc, char **argv) {
     //создание шейдерной программы из двух файлов с исходниками шейдеров
     //используется класс-обертка ShaderProgram
     std::unordered_map<GLenum, std::string> shaders;
-    shaders[GL_VERTEX_SHADER] = "../shaders/vertex.glsl";
-    shaders[GL_FRAGMENT_SHADER] = "../shaders/fragment.glsl";
+    shaders[GL_VERTEX_SHADER] = "../shaders/cube/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/cube/fragment.glsl";
     ShaderProgram program(shaders);
+
+    //создание шейдерной программы из двух файлов с исходниками шейдеров
+    //используется класс-обертка ShaderProgram
+    std::unordered_map<GLenum, std::string> skybox_shaders;
+    skybox_shaders[GL_VERTEX_SHADER] = "../shaders/skybox/vertex.glsl";
+    skybox_shaders[GL_FRAGMENT_SHADER] = "../shaders/skybox/fragment.glsl";
+    ShaderProgram skybox_program(skybox_shaders);
 
     glfwSwapInterval(1); // force 60 frames per second
 
@@ -213,8 +221,8 @@ int main(int argc, char **argv) {
                 2, 3, 7,
                 6, 5, 1, //Верхняя грань
                 1, 2, 6,
-                7, 4, 0,
-                0, 3, 7  //Нижняя грань
+                7, 4, 0, //Нижняя грань
+                0, 3, 7
         };
 
         glGenBuffers(1, &VBO);
@@ -224,27 +232,33 @@ int main(int argc, char **argv) {
 
         glBindTexture(GL_TEXTURE_2D, texture);
         int width, height;
-        unsigned char *image = SOIL_load_image("/media/kondrat/DATA/Programs/Graphics/task2/Sample/textures/space1.jpg",
+        unsigned char *image = SOIL_load_image("../textures/space.jpg",
                                                &width, &height, 0, SOIL_LOAD_RGB);
+        GL_CHECK_ERRORS;
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+        GL_CHECK_ERRORS;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+        GL_CHECK_ERRORS;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+        GL_CHECK_ERRORS;
         glGenerateMipmap(GL_TEXTURE_2D);
+        GL_CHECK_ERRORS;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        GL_CHECK_ERRORS;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        GL_CHECK_ERRORS;
         SOIL_free_image_data(image);
+        GL_CHECK_ERRORS;
         glBindTexture(GL_TEXTURE_2D, 0);
-
-
-
+        GL_CHECK_ERRORS;
 
         glBindVertexArray(VAO);
 
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid *) 0);
         glEnableVertexAttribArray(0);
@@ -256,6 +270,68 @@ int main(int argc, char **argv) {
 
         glBindVertexArray(0);
     }
+
+    // Skybox
+    //
+    GLuint skyboxVAO;
+    GLuint skyboxVBO;
+    GLuint skyboxEBO;
+
+    glGenVertexArrays(1, &skyboxVAO);
+    glGenBuffers(1, &skyboxVBO);
+    glGenBuffers(1, &skyboxEBO);
+
+    std::string dir = "../textures/skybox/lightblue/";
+    std::vector<std::string> faces = {
+            dir + "right.png",
+            dir + "left.png",
+            dir + "top.png",
+            dir + "bot.png",
+            dir + "front.png",
+            dir + "back.png"
+    };
+
+    unsigned int cubemapTexture = loadCubemap(faces);
+
+    GLfloat vertices[] = {
+            5.0f,  5.0f, 5.0f,   // Верхний правый
+            5.0f, -5.0f, 5.0f,   // Нижний правый
+            -5.0f, -5.0f, 5.0f,   // Нижний левый
+            -5.0f,  5.0f, 5.0f,   // Верхний левый
+            5.0f,  5.0f, -5.0f,  // Верхний правый
+            5.0f, -5.0f, -5.0f,   // Нижний правый
+            -5.0f, -5.0f, -5.0f,  // Нижний левый
+            -5.0f,  5.0f, -5.0f,    // Верхний левый
+    };
+    GLuint indices[] = {
+            0, 1, 2, // Передняя грань
+            2, 3, 0,
+            4, 5, 6, // Задняя грань
+            6, 7, 4,
+            4, 5, 1, // Правая боковая грань
+            1, 0, 4,
+            7, 6, 2, // Левая боковая грань
+            2, 3, 7,
+            6, 5, 1, // Верхняя грань
+            1, 2, 6,
+            7, 4, 0, // Нижняя грань
+            0, 3, 7
+    };
+    GL_CHECK_ERRORS;
+    glBindVertexArray(skyboxVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, skyboxEBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid *) 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid *) 0);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid *) 0);
+    glEnableVertexAttribArray(0);
+
+    glBindVertexArray(0);
 
     glEnable(GL_DEPTH_TEST);
 
@@ -271,7 +347,7 @@ int main(int argc, char **argv) {
             glm::vec3( 1.5f,  0.2f, -1.5f),
             glm::vec3(-1.3f,  1.0f, -1.5f)
     };
-
+    GL_CHECK_ERRORS;
 
     //цикл обработки сообщений и отрисовки сцены каждый кадр
     while (!glfwWindowShouldClose(window)) {
@@ -281,18 +357,12 @@ int main(int argc, char **argv) {
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        program.StartUseShader();
-
         // очистка и заполнение экрана цветом
         //
         glViewport(0, 0, WIDTH, HEIGHT);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-        // draw call
-        //
-        glBindTexture(GL_TEXTURE_2D, texture);
-        glBindVertexArray(VAO);
+        GL_CHECK_ERRORS;
 
         GLfloat currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
@@ -304,11 +374,30 @@ int main(int argc, char **argv) {
         glm::mat4 proj(1.0);
 
         view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
         proj = glm::perspective(glm::radians(fov), (GLfloat)WIDTH/HEIGHT, 0.1f, 100.0f);
 
+        skybox_program.StartUseShader();
+        skybox_program.SetUniform("view", view);
+        skybox_program.SetUniform("proj", proj);
+
+        // skybox draw
+        //
+        glDepthMask(GL_FALSE); GL_CHECK_ERRORS;
+        glBindVertexArray(skyboxVAO); GL_CHECK_ERRORS;
+        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture); GL_CHECK_ERRORS;
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0); GL_CHECK_ERRORS;
+        glDepthMask(GL_TRUE); GL_CHECK_ERRORS;
+        glBindVertexArray(0); GL_CHECK_ERRORS;
+        skybox_program.StopUseShader();
+
+        program.StartUseShader();
         program.SetUniform("view", view);
         program.SetUniform("proj", proj);
+
+        // draw call
+        //
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glBindVertexArray(VAO);
 
         for(GLuint i = 0; i < 10; i++) {
             model = glm::translate(model, cubePositions[i]);
@@ -317,9 +406,7 @@ int main(int argc, char **argv) {
             program.SetUniform("model", model);
             glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
         }
-
         glBindVertexArray(0);
-
         program.StopUseShader();
 
         glfwSwapBuffers(window);
