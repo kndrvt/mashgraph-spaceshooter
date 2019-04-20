@@ -45,6 +45,6 @@ if(WIN32)
   target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw3dll)
 else()
   target_compile_options(main PRIVATE -Wnarrowing)
-  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw rt dl)
+  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw rt dl SOIL)
 endif()
 

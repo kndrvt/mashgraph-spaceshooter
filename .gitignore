@@ -1,3 +1,5 @@
 .gitignore
 cmake-build-debug
 soil
+glm
+textures

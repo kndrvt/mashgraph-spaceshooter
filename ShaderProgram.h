@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 #include "common.h"
-
+#include <glm/glm.hpp>
 
 class ShaderProgram
 {
@@ -26,13 +26,21 @@ public:
 
   bool reLink();
 
+  void SetUniform(const std::string &location, int value) const;
+
+  void SetUniform(const std::string &location, unsigned int value) const;
+
   void SetUniform(const std::string &location, float value) const;
 
   void SetUniform(const std::string &location, double value) const;
 
-  void SetUniform(const std::string &location, int value) const;
+  void SetUniform(const std::string &location, glm::vec3 value) const;
 
-  void SetUniform(const std::string &location, unsigned int value) const;
+  void SetUniform(const std::string &location, glm::mat3 value) const;
+
+  void SetUniform(const std::string &location, glm::vec4 value) const;
+
+  void SetUniform(const std::string &location, glm::mat4 value) const;
 
 private:
   static GLuint LoadShaderObject(GLenum type, const std::string &filename);
