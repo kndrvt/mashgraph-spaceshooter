@@ -8,7 +8,9 @@ set(SOURCE_FILES
     glad.c
     main.cpp
     ShaderProgram.h
-    ShaderProgram.cpp)
+    ShaderProgram.cpp
+    Mesh.h
+    Model.h)
 
 set(ADDITIONAL_INCLUDE_DIRS
         dependencies/include/GLAD)
@@ -42,9 +44,9 @@ if(WIN32)
   add_custom_command(TARGET main POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory "${PROJECT_SOURCE_DIR}/dependencies/bin" $<TARGET_FILE_DIR:main>)
   #set(CMAKE_MSVCIDE_RUN_PATH ${ADDITIONAL_RUNTIME_LIBRARY_DIRS})
   target_compile_options(main PRIVATE)
-  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw3dll)
+  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw3dll SOIL)
 else()
   target_compile_options(main PRIVATE -Wnarrowing)
-  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw rt dl SOIL)
+  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw rt dl SOIL assimp)
 endif()
 
