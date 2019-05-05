@@ -127,6 +127,7 @@ int main(int argc, char **argv) {
     glm::vec3 enemy_pos(0.0f, 0.0f, -100.0f);
     glm::vec3 bullet_pos = cameraPos;
     glm::vec3 bullet_target = cameraFront;
+    bool dead = false;
     vector<glm::vec3> Positions;
     for (int i = 0; i < 10; ++i) {
         Positions.push_back(glm::vec3(random_range(8, 5), 0.0, -5.0));
@@ -166,12 +167,14 @@ int main(int argc, char **argv) {
 
         // enemy draw
         //
-        if (enemy_pos.z > 0.0f) {
-            enemy_pos.x = random_range(5, 0);
-            enemy_pos.y = random_range(5, 0);
-            enemy_pos.z = -100.0f;
+        if (glm::length(enemy_pos - bullet_pos) < 5.0) {
+            dead = true;
         }
-        GLfloat enemySpeed = 30.0f * deltaTime;
+        if (enemy_pos.z > 5.0f) {
+            enemy_pos = glm::vec3(random_range(5, 0), random_range(5, 0), -100.0f);
+            dead = false;
+        }
+        GLfloat enemySpeed = 20.0f * deltaTime;
         enemy_pos.z += enemySpeed;
 
         shader_enemy.StartUseShader();
@@ -180,6 +183,7 @@ int main(int argc, char **argv) {
         model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0, 1.0, 0.0));
         model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
 
+        shader_enemy.SetUniform("dead", dead);
         shader_enemy.SetUniform("model", model);
         shader_enemy.SetUniform("view", view);
         shader_enemy.SetUniform("proj", proj);
@@ -204,17 +208,17 @@ int main(int argc, char **argv) {
         // bullet draw
         //
         if (shoot) {
-            bullet_target = cameraFront;
             bullet_pos = cameraPos;
+            bullet_target = cameraFront;
             shoot = false;
         }
-        GLfloat bulletSpeed = 10.0f * deltaTime;
+        GLfloat bulletSpeed = 20.0f * deltaTime;
         bullet_pos += bulletSpeed * bullet_target;
 
         shader_bullet.StartUseShader();
         model = glm::mat4(1.0);
         model = glm::translate(model, bullet_pos);
-        model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));
+        model = glm::scale(model, glm::vec3(0.001f, 0.001f, 0.001f));
         shader_bullet.SetUniform("model", model);
         shader_bullet.SetUniform("view", view);
         shader_bullet.SetUniform("proj", proj);
