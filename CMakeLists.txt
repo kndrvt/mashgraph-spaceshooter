@@ -10,7 +10,7 @@ set(SOURCE_FILES
     ShaderProgram.h
     ShaderProgram.cpp
     Mesh.h
-    Model.h)
+    Model.h Skybox.h)
 
 set(ADDITIONAL_INCLUDE_DIRS
         dependencies/include/GLAD)

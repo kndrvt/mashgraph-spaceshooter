@@ -100,6 +100,9 @@
 		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.h">
 			<Option target="main"/>
 		</Unit>
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Skybox.h">
+			<Option target="main"/>
+		</Unit>
 		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/common.h">
 			<Option target="main"/>
 		</Unit>

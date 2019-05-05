@@ -17,6 +17,7 @@ CMakeFiles/main.dir/main.cpp.o: ../Mesh.h
 CMakeFiles/main.dir/main.cpp.o: ../Model.h
 CMakeFiles/main.dir/main.cpp.o: ../SOIL.h
 CMakeFiles/main.dir/main.cpp.o: ../ShaderProgram.h
+CMakeFiles/main.dir/main.cpp.o: ../Skybox.h
 CMakeFiles/main.dir/main.cpp.o: ../common.h
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
 CMakeFiles/main.dir/main.cpp.o: ../stb_image.h
