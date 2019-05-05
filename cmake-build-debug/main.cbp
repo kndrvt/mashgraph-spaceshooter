@@ -88,7 +88,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Asteriod.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Asteroid.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Bullet.h">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Enemy.h">

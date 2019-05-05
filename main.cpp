@@ -2,15 +2,18 @@
 #include "common.h"
 #include "ShaderProgram.h"
 #include "Skybox.h"
-#include "Asteroid.h"
 #include "Enemy.h"
+#include "Asteroid.h"
+#include "Bullet.h"
+
 
 //External dependencies
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <random>
+#include <cstdlib>
+#include <ctime>
 
 static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
 
@@ -27,6 +30,7 @@ GLfloat deltaTime = 0.0f;    // Время, прошедшее между пос
 GLfloat lastFrame = 0.0f;    // Время вывода последнего кадра
 
 int initGL();
+GLfloat random_range(int end, int begin);
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
 void mouseCallback(GLFWwindow *window, double xpos, double ypos);
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
@@ -44,7 +48,7 @@ int main(int argc, char **argv) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "OpenGL basic sample", nullptr, nullptr);
+    GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Space shooter", nullptr, nullptr);
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -69,17 +73,25 @@ int main(int argc, char **argv) {
 
     std::unordered_map<GLenum, std::string> shaders;
 
+    shaders[GL_VERTEX_SHADER] = "../shaders/skybox/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/skybox/fragment.glsl";
+    ShaderProgram shader_skybox(shaders);
+    GL_CHECK_ERRORS
+
     shaders[GL_VERTEX_SHADER] = "../shaders/enemy/vertex.glsl";
     shaders[GL_FRAGMENT_SHADER] = "../shaders/enemy/fragment.glsl";
     ShaderProgram shader_enemy(shaders);
+    GL_CHECK_ERRORS
 
     shaders[GL_VERTEX_SHADER] = "../shaders/asteroid/vertex.glsl";
     shaders[GL_FRAGMENT_SHADER] = "../shaders/asteroid/fragment.glsl";
     ShaderProgram shader_asteroid(shaders);
+    GL_CHECK_ERRORS
 
-    shaders[GL_VERTEX_SHADER] = "../shaders/skybox/vertex.glsl";
-    shaders[GL_FRAGMENT_SHADER] = "../shaders/skybox/fragment.glsl";
-    ShaderProgram shader_skybox(shaders);
+    shaders[GL_VERTEX_SHADER] = "../shaders/bullet/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/bullet/fragment.glsl";
+    ShaderProgram shader_bullet(shaders);
+    GL_CHECK_ERRORS
 
     glfwSwapInterval(1); // force 60 frames per second
 
@@ -88,29 +100,30 @@ int main(int argc, char **argv) {
     // Skybox
     //
     Skybox skybox(std::string("../textures/skybox/lightblue/"));
+    GL_CHECK_ERRORS
 
     // Enemy
     //
     Enemy enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"));
+    GL_CHECK_ERRORS
 
     // Asteroid
     //
     Asteroid asteroid(std::string("../objects/planet/planet.obj"));
+    GL_CHECK_ERRORS
+
+    // Bullet
+    //
+    Bullet bullet(std::string("../objects/planet/planet.obj"));
+    GL_CHECK_ERRORS
 
     glEnable(GL_DEPTH_TEST);
 
-    glm::vec3 Positions[] = {
-            glm::vec3( 10.0f,  10.0f,  0.0f),
-            glm::vec3( 20.0f,  50.0f, -15.0f),
-            glm::vec3(-10.5f, -20.2f, -20.5f),
-            glm::vec3(-30.8f, -20.0f, -12.3f),
-            glm::vec3( 20.4f, -00.4f, -30.5f),
-            glm::vec3(-10.7f,  30.0f, -7.5f),
-            glm::vec3( 10.3f, -20.0f, -20.5f),
-            glm::vec3( 10.5f,  20.0f, -20.5f),
-            glm::vec3( 10.5f,  0.2f, -10.5f),
-            glm::vec3(-10.3f,  10.0f, -10.5f)
-    };
+    glm::vec3 enemy_pos(0.0f, 0.0f, -100.0f);
+    vector<glm::vec3> Positions;
+    for (int i = 0; i < 10; ++i) {
+        Positions.push_back(glm::vec3(random_range(8, 5), 0.0, -5.0));
+    }
     GL_CHECK_ERRORS
 
     //цикл обработки сообщений и отрисовки сцены каждый кадр
@@ -144,6 +157,28 @@ int main(int argc, char **argv) {
         skybox.Draw();
         shader_skybox.StopUseShader();
 
+        // enemy draw
+        //
+        if (enemy_pos.z > 0.0f) {
+            enemy_pos.x = random_range(5, 0);
+            enemy_pos.y = random_range(5, 0);
+            enemy_pos.z = -100.0f;
+        }
+        GLfloat enemySpeed = 20.0f * deltaTime;
+        enemy_pos.z += enemySpeed;
+
+        shader_enemy.StartUseShader();
+        model = glm::mat4(1.0);
+        model = glm::translate(model, enemy_pos);
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0, 1.0, 0.0));
+        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
+
+        shader_enemy.SetUniform("model", model);
+        shader_enemy.SetUniform("view", view);
+        shader_enemy.SetUniform("proj", proj);
+        enemy.Draw(shader_enemy);
+        shader_enemy.StopUseShader();
+
         // asteroid draw
         //
         shader_asteroid.StartUseShader();
@@ -153,24 +188,22 @@ int main(int argc, char **argv) {
             model = glm::mat4(1.0);
             model = glm::translate(model, Positions[i]);
             model = glm::rotate(model, -180.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-            model = glm::scale(model, glm::vec3(0.4, 0.4, 0.4));
+            model = glm::scale(model, glm::vec3(0.1, 0.1, 0.1));
             shader_asteroid.SetUniform("model", model);
             asteroid.Draw(shader_asteroid);
         }
         shader_asteroid.StopUseShader();
 
-        // enemy draw
-        //
-        shader_enemy.StartUseShader();
-        shader_enemy.SetUniform("view", view);
-        shader_enemy.SetUniform("proj", proj);
-        model = glm::mat4(1.0);
-        model - glm::translate(model, glm::vec3(0.0, 0.0, 10.0));
-        model = glm::rotate(model, -135.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-        shader_enemy.SetUniform("model", model);
-        enemy.Draw(shader_enemy);
-        shader_enemy.StopUseShader();
-
+//        // bullet draw
+//        //
+//        shader_bullet.StartUseShader();
+//        model = glm::mat4(1.0);
+//        model = glm::scale(model, glm::vec3(0.005, 0.005, 0.005));
+//        shader_bullet.SetUniform("model", model);
+//        shader_bullet.SetUniform("view", view);
+//        shader_bullet.SetUniform("proj", proj);
+//        bullet.Draw(shader_bullet);
+//        shader_asteroid.StopUseShader();
 
         glfwSwapBuffers(window);
     }
@@ -195,6 +228,12 @@ int initGL() {
     return 0;
 }
 
+GLfloat random_range(int end, int begin) {
+    srand(time(NULL));
+    if ((int)rand() % 2) return (int)rand() % end + begin;
+    else return -((int)rand() % end + begin);
+}
+
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
@@ -203,6 +242,11 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
         cameraFront = glm::vec3(0.0, 0.0, -1.0);
         cameraUp = glm::vec3(0.0, 1.0, 0.0);
         firstMouse = true;
+        lastX = WIDTH / 2;
+        lastY = HEIGHT / 2;
+        yaw = -90.0f;
+        pitch = 0.0f;
+        fov = 45.0f;
     }
     if (action == GLFW_PRESS)
         keys[key] = true;
