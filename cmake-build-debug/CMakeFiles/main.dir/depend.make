@@ -13,6 +13,8 @@ CMakeFiles/main.dir/ShaderProgram.cpp.o: ../common.h
 
 CMakeFiles/main.dir/main.cpp.o: ../dependencies/include/GLAD/KHR/khrplatform.h
 CMakeFiles/main.dir/main.cpp.o: ../dependencies/include/GLAD/glad/glad.h
+CMakeFiles/main.dir/main.cpp.o: ../Asteroid.h
+CMakeFiles/main.dir/main.cpp.o: ../Enemy.h
 CMakeFiles/main.dir/main.cpp.o: ../Mesh.h
 CMakeFiles/main.dir/main.cpp.o: ../Model.h
 CMakeFiles/main.dir/main.cpp.o: ../SOIL.h

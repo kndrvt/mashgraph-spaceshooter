@@ -4,19 +4,16 @@
 #include "ShaderProgram.h"
 #include "SOIL.h"
 
-#include <iostream>
 #include <GLFW/glfw3.h>
-#include <vector>
 
 class Skybox {
 
 public:
-    Skybox() {
+    Skybox(std::string dir) {
         glGenVertexArrays(1, &skyboxVAO);
         glGenBuffers(1, &skyboxVBO);
         glGenBuffers(1, &skyboxEBO);
 
-        std::string dir = "../textures/skybox/lightblue/";
         std::vector<std::string> faces = {
                 dir + "right.png",
                 dir + "left.png",

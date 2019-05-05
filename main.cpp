@@ -1,8 +1,9 @@
 //internal includes
 #include "common.h"
 #include "ShaderProgram.h"
-#include "Model.h"
 #include "Skybox.h"
+#include "Asteroid.h"
+#include "Enemy.h"
 
 //External dependencies
 #include <GLFW/glfw3.h>
@@ -10,7 +11,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <random>
-#include <vector>
 
 static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
 
@@ -73,117 +73,45 @@ int main(int argc, char **argv) {
     shaders[GL_FRAGMENT_SHADER] = "../shaders/enemy/fragment.glsl";
     ShaderProgram shader_enemy(shaders);
 
+    shaders[GL_VERTEX_SHADER] = "../shaders/asteroid/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/asteroid/fragment.glsl";
+    ShaderProgram shader_asteroid(shaders);
+
     shaders[GL_VERTEX_SHADER] = "../shaders/skybox/vertex.glsl";
     shaders[GL_FRAGMENT_SHADER] = "../shaders/skybox/fragment.glsl";
     ShaderProgram shader_skybox(shaders);
 
     glfwSwapInterval(1); // force 60 frames per second
 
-//    //Создаем и загружаем геометрию поверхности
-//    //
-//    GLuint VBO;
-//    GLuint EBO;
-//    GLuint VAO;
-//    GLuint texture;
-//    {
-//        GLfloat vertices[] = {
-//                0.5f, 0.5f, 0.5f, 1.0f, 1.0f,   // Верхний правый
-//                0.5f, -0.5f, 0.5f, 1.0f, 0.0f,   // Нижний правый
-//                -0.5f, -0.5f, 0.5f, 0.0f, 0.0f,   // Нижний левый
-//                -0.5f, 0.5f, 0.5f, 0.0f, 1.0f,    // Верхний левый
-//                0.5f, 0.5f, -0.5f, 1.0f, 1.0f,   // Верхний правый
-//                0.5f, -0.5f, -0.5f, 1.0f, 0.0f,   // Нижний правый
-//                -0.5f, -0.5f, -0.5f, 0.0f, 0.0f,   // Нижний левый
-//                -0.5f, 0.5f, -0.5f, 0.0f, 1.0f    // Верхний левый
-//        };
-//        GLuint indices[] = {
-//                0, 1, 2, // Передняя грань
-//                2, 3, 0,
-//                4, 5, 6, //Задняя грань
-//                6, 7, 4,
-//                4, 5, 1, // Правая боковая грань
-//                1, 0, 4,
-//                7, 6, 2, // Левая боковая грань
-//                2, 3, 7,
-//                6, 5, 1, //Верхняя грань
-//                1, 2, 6,
-//                7, 4, 0, //Нижняя грань
-//                0, 3, 7
-//        };
-//
-//        glGenBuffers(1, &VBO);
-//        glGenBuffers(1, &EBO);
-//        glGenVertexArrays(1, &VAO);
-//        glGenTextures(1, &texture);
-//
-//        glBindTexture(GL_TEXTURE_2D, texture);
-//        int width, height;
-//        unsigned char *image = SOIL_load_image("../textures/space.jpg",
-//                                               &width, &height, 0, SOIL_LOAD_RGB);
-//        GL_CHECK_ERRORS;
-//        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-//        GL_CHECK_ERRORS;
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-//        GL_CHECK_ERRORS;
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-//        GL_CHECK_ERRORS;
-//        glGenerateMipmap(GL_TEXTURE_2D);
-//        GL_CHECK_ERRORS;
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-//        GL_CHECK_ERRORS;
-//        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//        GL_CHECK_ERRORS;
-//        SOIL_free_image_data(image);
-//        GL_CHECK_ERRORS;
-//        glBindTexture(GL_TEXTURE_2D, 0);
-//        GL_CHECK_ERRORS;
-//
-//        glBindVertexArray(VAO);
-//
-//        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-//
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-//        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-//
-//        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid *) 0);
-//        glEnableVertexAttribArray(0);
-//
-//        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid *) (3 * sizeof(GLfloat)));
-//        glEnableVertexAttribArray(1);
-//
-////        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-//
-//        glBindVertexArray(0);
-//    }
 //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    Model ourModel(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"));
-    GL_CHECK_ERRORS;
 
-//    // Skybox
-//    //
-//    GLuint skyboxVAO;
-//    GLuint skyboxVBO;
-//    GLuint skyboxEBO;
-//
-//
-    Skybox skybox;
+    // Skybox
+    //
+    Skybox skybox(std::string("../textures/skybox/lightblue/"));
+
+    // Enemy
+    //
+    Enemy enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"));
+
+    // Asteroid
+    //
+    Asteroid asteroid(std::string("../objects/planet/planet.obj"));
 
     glEnable(GL_DEPTH_TEST);
 
-    glm::vec3 cubePositions[] = {
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(2.0f, 2.0f, -5.0f),
-            glm::vec3(-1.5f, -2.2f, -2.5f),
-            glm::vec3(-3.8f, -2.0f, -2.3f),
-            glm::vec3(2.4f, -0.4f, -3.5f),
-            glm::vec3(-1.7f, 3.0f, -3.5f),
-            glm::vec3(1.3f, -2.0f, -2.5f),
-            glm::vec3(1.5f, 2.0f, -2.5f),
-            glm::vec3(1.5f, 0.2f, -1.5f),
-            glm::vec3(-1.3f, 1.0f, -1.5f)
+    glm::vec3 Positions[] = {
+            glm::vec3( 10.0f,  10.0f,  0.0f),
+            glm::vec3( 20.0f,  50.0f, -15.0f),
+            glm::vec3(-10.5f, -20.2f, -20.5f),
+            glm::vec3(-30.8f, -20.0f, -12.3f),
+            glm::vec3( 20.4f, -00.4f, -30.5f),
+            glm::vec3(-10.7f,  30.0f, -7.5f),
+            glm::vec3( 10.3f, -20.0f, -20.5f),
+            glm::vec3( 10.5f,  20.0f, -20.5f),
+            glm::vec3( 10.5f,  0.2f, -10.5f),
+            glm::vec3(-10.3f,  10.0f, -10.5f)
     };
-    GL_CHECK_ERRORS;
+    GL_CHECK_ERRORS
 
     //цикл обработки сообщений и отрисовки сцены каждый кадр
     while (!glfwWindowShouldClose(window)) {
@@ -208,62 +136,44 @@ int main(int argc, char **argv) {
         view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         proj = glm::perspective(glm::radians(fov), (GLfloat) WIDTH / HEIGHT, 0.1f, 100.0f);
 
+        // skybox draw
+        //
         shader_skybox.StartUseShader();
         shader_skybox.SetUniform("view", view);
         shader_skybox.SetUniform("proj", proj);
-
-        // skybox draw
-        //
-//        glDepthMask(GL_FALSE);
-//        GL_CHECK_ERRORS;
-//        glBindVertexArray(skyboxVAO);
-//        GL_CHECK_ERRORS;
-//        glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
-//        GL_CHECK_ERRORS;
-//        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-//        GL_CHECK_ERRORS;
-//        glDepthMask(GL_TRUE);
-//        GL_CHECK_ERRORS;
-//        glBindVertexArray(0);
-//        GL_CHECK_ERRORS;
         skybox.Draw();
         shader_skybox.StopUseShader();
 
+        // asteroid draw
+        //
+        shader_asteroid.StartUseShader();
+        shader_asteroid.SetUniform("view", view);
+        shader_asteroid.SetUniform("proj", proj);
+        for (int i = 0; i < 10; ++i) {
+            model = glm::mat4(1.0);
+            model = glm::translate(model, Positions[i]);
+            model = glm::rotate(model, -180.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::scale(model, glm::vec3(0.4, 0.4, 0.4));
+            shader_asteroid.SetUniform("model", model);
+            asteroid.Draw(shader_asteroid);
+        }
+        shader_asteroid.StopUseShader();
+
+        // enemy draw
+        //
         shader_enemy.StartUseShader();
-        model = glm::translate(model, glm::vec3(1.0, 1.0, -10.0));
-        shader_enemy.SetUniform("model", model);
         shader_enemy.SetUniform("view", view);
         shader_enemy.SetUniform("proj", proj);
-
-        ourModel.Draw(shader_enemy);
-
+        model = glm::mat4(1.0);
+        model - glm::translate(model, glm::vec3(0.0, 0.0, 10.0));
+        model = glm::rotate(model, -135.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        shader_enemy.SetUniform("model", model);
+        enemy.Draw(shader_enemy);
         shader_enemy.StopUseShader();
 
-//
-//        // draw call
-//        //
-//        glBindTexture(GL_TEXTURE_2D, texture);
-//        glBindVertexArray(VAO);
-//
-//        for (GLuint i = 0; i < 10; i++) {
-//            model = glm::translate(model, cubePositions[i] +
-//                                          glm::vec3(sin(glm::radians(currentFrame)), cos(glm::radians(currentFrame)),
-//                                                    0.0f));
-//            GLfloat angle = glm::radians(10.0f) * i;
-//            model = glm::rotate(model, angle, glm::vec3(1.0f, 0.3f, 0.5f));
-//            program.SetUniform("model", model);
-//            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
-//        }
-//        glBindVertexArray(0);
 
         glfwSwapBuffers(window);
     }
-
-//    //очищаем vbo и vao перед закрытием программы
-//    //
-//    glDeleteVertexArrays(1, &VAO);
-//    glDeleteBuffers(1, &EBO);
-//    glDeleteBuffers(1, &VBO);
 
     glfwTerminate();
     return 0;
