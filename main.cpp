@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
         return -1;
     }
     glfwMakeContextCurrent(window);
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     glfwSetKeyCallback(window, keyCallback);
     glfwSetCursorPosCallback(window, mouseCallback);
@@ -69,14 +69,14 @@ int main(int argc, char **argv) {
     }
 
     std::unordered_map<GLenum, std::string> shaders;
-    shaders[GL_VERTEX_SHADER] = "../shaders/cube/vertex.glsl";
-    shaders[GL_FRAGMENT_SHADER] = "../shaders/cube/fragment.glsl";
-    ShaderProgram program(shaders);
 
-    std::unordered_map<GLenum, std::string> skybox_shaders;
-    skybox_shaders[GL_VERTEX_SHADER] = "../shaders/skybox/vertex.glsl";
-    skybox_shaders[GL_FRAGMENT_SHADER] = "../shaders/skybox/fragment.glsl";
-    ShaderProgram skybox_program(skybox_shaders);
+    shaders[GL_VERTEX_SHADER] = "../shaders/enemy/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/enemy/fragment.glsl";
+    ShaderProgram shader_enemy(shaders);
+
+    shaders[GL_VERTEX_SHADER] = "../shaders/skybox/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/skybox/fragment.glsl";
+    ShaderProgram shader_skybox(shaders);
 
     glfwSwapInterval(1); // force 60 frames per second
 
@@ -157,7 +157,8 @@ int main(int argc, char **argv) {
 //
 //        glBindVertexArray(0);
 //    }
-    Model ourModel(std::string("../objects/nanosuit/nanosuit.obj"));
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    Model ourModel(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"));
     GL_CHECK_ERRORS;
 
     // Skybox
@@ -249,13 +250,6 @@ int main(int argc, char **argv) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         GL_CHECK_ERRORS
 
-        // очистка и заполнение экрана цветом
-        //
-        glViewport(0, 0, WIDTH, HEIGHT);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-        GL_CHECK_ERRORS;
-
         GLfloat currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -268,9 +262,9 @@ int main(int argc, char **argv) {
         view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         proj = glm::perspective(glm::radians(fov), (GLfloat) WIDTH / HEIGHT, 0.1f, 100.0f);
 
-        skybox_program.StartUseShader();
-        skybox_program.SetUniform("view", view);
-        skybox_program.SetUniform("proj", proj);
+        shader_skybox.StartUseShader();
+        shader_skybox.SetUniform("view", view);
+        shader_skybox.SetUniform("proj", proj);
 
         // skybox draw
         //
@@ -286,11 +280,18 @@ int main(int argc, char **argv) {
         GL_CHECK_ERRORS;
         glBindVertexArray(0);
         GL_CHECK_ERRORS;
-        skybox_program.StopUseShader();
+        shader_skybox.StopUseShader();
 
-        program.StartUseShader();
-        program.SetUniform("view", view);
-        program.SetUniform("proj", proj);
+        shader_enemy.StartUseShader();
+        model = glm::translate(model, glm::vec3(1.0, 1.0, -10.0));
+        shader_enemy.SetUniform("model", model);
+        shader_enemy.SetUniform("view", view);
+        shader_enemy.SetUniform("proj", proj);
+
+        ourModel.Draw(shader_enemy);
+
+        shader_enemy.StopUseShader();
+
 //
 //        // draw call
 //        //
@@ -307,11 +308,6 @@ int main(int argc, char **argv) {
 //            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 //        }
 //        glBindVertexArray(0);
-        GL_CHECK_ERRORS
-        ourModel.Draw(program);
-        GL_CHECK_ERRORS
-        program.StopUseShader();
-        GL_CHECK_ERRORS
 
         glfwSwapBuffers(window);
     }

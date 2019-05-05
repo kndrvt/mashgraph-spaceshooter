@@ -12,17 +12,267 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e0740ec-349d-4f08-bd6f-5ac34a6a8438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/main.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_features.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_fixes.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_literals.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_noise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_swizzle.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_swizzle_func.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/_vectorize.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/dummy.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_exponential.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_geometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_geometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_integer.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_matrix.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_matrix.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_noise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_noise.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_packing.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_packing.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_trigonometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_trigonometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_vector_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/func_vector_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/glm.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/hint.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_common.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_common.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_exponential.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_geometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_geometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_integer.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_matrix.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_matrix.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_trigonometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_trigonometric.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_vector_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/intrinsic_vector_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/precision.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/setup.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_float.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_gentype.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_gentype.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_half.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_half.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_int.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat2x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat2x2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat2x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat2x3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat2x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat2x4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat3x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat3x2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat3x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat3x3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat3x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat3x4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat4x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat4x2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat4x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat4x3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat4x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_mat4x4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec1.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec3.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/detail/type_vec4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/ext.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/fwd.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/geometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/glm.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/constants.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/constants.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/epsilon.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/epsilon.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_access.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_access.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_inverse.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_inverse.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_transform.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/matrix_transform.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/noise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/noise.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/packing.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/packing.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/quaternion.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/quaternion.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/random.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/random.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/reciprocal.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/reciprocal.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/type_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/type_precision.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/type_ptr.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/type_ptr.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/ulp.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtc/ulp.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/associated_min_max.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/associated_min_max.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/bit.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/bit.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/closest_point.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/closest_point.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/color_space.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/color_space.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/color_space_YCoCg.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/color_space_YCoCg.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/compatibility.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/compatibility.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/component_wise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/component_wise.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/constants.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/dual_quaternion.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/dual_quaternion.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/epsilon.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/euler_angles.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/euler_angles.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/extend.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/extend.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/extented_min_max.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/extented_min_max.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/fast_exponential.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/fast_exponential.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/fast_square_root.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/fast_square_root.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/fast_trigonometry.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/fast_trigonometry.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/gradient_paint.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/gradient_paint.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/handed_coordinate_space.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/handed_coordinate_space.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/inertia.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/inertia.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/int_10_10_10_2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/int_10_10_10_2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/integer.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/intersect.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/intersect.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/io.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/io.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/log_base.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/log_base.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_cross_product.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_cross_product.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_interpolation.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_interpolation.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_major_storage.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_major_storage.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_operation.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_operation.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_query.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_query.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_transform_2d.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/matrix_transform_2d.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/mixed_product.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/mixed_product.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/multiple.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/multiple.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/noise.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/norm.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/norm.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/normal.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/normal.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/normalize_dot.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/normalize_dot.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/number_precision.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/number_precision.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/optimum_pow.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/optimum_pow.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/orthonormalize.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/orthonormalize.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/perpendicular.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/perpendicular.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/polar_coordinates.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/polar_coordinates.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/projection.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/projection.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/quaternion.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/quaternion.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/random.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/raw_data.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/raw_data.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/reciprocal.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/rotate_normalized_axis.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/rotate_normalized_axis.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/rotate_vector.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/rotate_vector.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/scalar_relational.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/scalar_relational.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/simd_mat4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/simd_mat4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/simd_quat.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/simd_quat.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/simd_vec4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/simd_vec4.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/spline.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/spline.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/std_based_type.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/std_based_type.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/string_cast.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/string_cast.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/transform.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/transform.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/transform2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/transform2.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/ulp.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/unsigned_int.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/unsigned_int.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/vec1.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/vec1.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/vector_angle.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/vector_angle.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/vector_query.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/vector_query.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/wrap.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/gtx/wrap.inl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/integer.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat2x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat2x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat2x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat3x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat3x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat3x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat4x2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat4x3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/mat4x4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/matrix.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/packing.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/trigonometric.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/vec2.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/vec3.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/vec4.hpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/glm/vector_relational.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/cube/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/cube/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/cube/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/cube/vertex.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shaders/cube/fragment.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shaders/cube/vertex.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shaders/fragment.glsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shaders/vertex.glsl" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,9 +290,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="1740">
+              <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="52" />
               <folding>
+                <element signature="e#20#39#0" expanded="true" />
                 <element signature="e#111#134#0" expanded="true" />
               </folding>
             </state>
@@ -50,10 +301,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/shaders/enemy/fragment.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+            <state relative-caret-position="304">
+              <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -61,8 +312,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Model.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+            <state>
+              <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -70,26 +321,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Mesh.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shaders/cube/vertex.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shaders/cube/fragment.glsl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="-183">
+              <caret line="83" column="11" selection-start-line="58" selection-start-column="9" selection-end-line="83" selection-end-column="11" />
+              <folding>
+                <element signature="e#14#40#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,20 +345,23 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/common.h" />
-        <option value="$PROJECT_DIR$/ShaderProgram.h" />
         <option value="$PROJECT_DIR$/ShaderProgram.cpp" />
         <option value="$PROJECT_DIR$/shaders/skybox/fragment.glsl" />
-        <option value="$PROJECT_DIR$/shaders/skybox/vertex.glsl" />
-        <option value="$PROJECT_DIR$/shaders/vertex.glsl" />
-        <option value="$PROJECT_DIR$/shaders/fragment.glsl" />
         <option value="$PROJECT_DIR$/Сamera.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/shaders/cube/vertex.glsl" />
-        <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/Mesh.h" />
         <option value="$PROJECT_DIR$/Model.h" />
-        <option value="$PROJECT_DIR$/shaders/cube/fragment.glsl" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/shaders/fragment.glsl" />
+        <option value="$PROJECT_DIR$/shaders/vertex.glsl" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/ShaderProgram.h" />
+        <option value="$PROJECT_DIR$/shaders/cube/fragment.glsl" />
+        <option value="$PROJECT_DIR$/Mesh.h" />
+        <option value="$PROJECT_DIR$/shaders/enemy/vertex.glsl" />
+        <option value="$PROJECT_DIR$/shaders/skybox/vertex.glsl" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/objects/aircraft/E 45 Aircraft_obj.mtl" />
+        <option value="$PROJECT_DIR$/shaders/enemy/fragment.glsl" />
       </list>
     </option>
   </component>
@@ -149,13 +388,24 @@
             <path>
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sample" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sample" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+              <item name="aircraft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sample" type="462c0819:PsiDirectoryNode" />
               <item name="shaders" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sample" type="462c0819:PsiDirectoryNode" />
               <item name="shaders" type="462c0819:PsiDirectoryNode" />
-              <item name="cube" type="462c0819:PsiDirectoryNode" />
+              <item name="enemy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
@@ -232,12 +482,13 @@
       <workItem from="1555776801417" duration="62000" />
       <workItem from="1556298740769" duration="348000" />
       <workItem from="1556913165891" duration="9977000" />
-      <workItem from="1556948915125" duration="16030000" />
+      <workItem from="1556948915125" duration="20554000" />
+      <workItem from="1557040007222" duration="4730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87808000" />
+    <option name="totallyTimeSpent" value="97062000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -251,12 +502,12 @@
     <frame x="0" y="-1" width="1366" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16616315" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.168429" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32921174" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32921174" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32921174" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3771252" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -272,6 +523,28 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.168429" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32921174" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32921174" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3771252" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32921174" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32612056" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32921174" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32921174" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32766616" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -320,11 +593,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>6</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Model.h</url>
           <line>37</line>
           <option name="timeStamp" value="2" />
@@ -338,21 +606,6 @@
           <url>file://$PROJECT_DIR$/Model.h</url>
           <line>36</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>311</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>310</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>309</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Mesh.h</url>
@@ -416,22 +669,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Mesh.h</url>
-          <line>83</line>
+          <line>82</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Mesh.h</url>
-          <line>91</line>
+          <line>90</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Mesh.h</url>
-          <line>89</line>
+          <line>88</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Mesh.h</url>
-          <line>87</line>
+          <line>86</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
@@ -447,65 +700,22 @@
     <entry file="file://$PROJECT_DIR$/soil/README.md" />
     <entry file="file://$PROJECT_DIR$/soil/CMakeLists.txt" />
     <entry file="file://$PROJECT_DIR$/textures/wall.jpeg" />
-    <entry file="file://$PROJECT_DIR$/SOIL.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/glad.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-945" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LiteMath.h" />
-    <entry file="file://$PROJECT_DIR$/glm/vec4.hpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glm/vec3.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-239" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glm/detail/type_vec3.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1350" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glm/mat4x4.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-358" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glm/gtc/type_ptr.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1575" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glm/gtc/type_ptr.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-959" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/glm/vec4.hpp" />
+    <entry file="file://$PROJECT_DIR$/glm/vec3.hpp" />
+    <entry file="file://$PROJECT_DIR$/glm/detail/type_vec3.hpp" />
+    <entry file="file://$PROJECT_DIR$/glm/mat4x4.hpp" />
+    <entry file="file://$PROJECT_DIR$/glm/gtc/type_ptr.inl" />
+    <entry file="file://$PROJECT_DIR$/glm/gtc/type_ptr.hpp" />
     <entry file="file:///usr/local/include/glm/gtc/type_ptr.hpp" />
     <entry file="file:///usr/local/include/glm/gtc/type_ptr.inl" />
-    <entry file="file://$PROJECT_DIR$/glm/glm.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1035">
-          <folding>
-            <element signature="e#3684#3700#0" expanded="true" />
-            <element signature="e#3871#3962#0" expanded="true" />
-            <element signature="e#3984#4003#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/glm/detail/func_common.inl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/glm/glm.hpp" />
+    <entry file="file://$PROJECT_DIR$/glm/detail/func_common.inl" />
     <entry file="file:///usr/local/include/glm/ext/matrix_clip_space.inl" />
     <entry file="file://$PROJECT_DIR$/dependencies/include/GLAD/glad/glad.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -514,24 +724,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/skybox/fragment.glsl" />
-    <entry file="file://$PROJECT_DIR$/shaders/skybox/vertex.glsl" />
-    <entry file="file://$PROJECT_DIR$/shaders/vertex.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/textures/black_bkg.jpg" />
     <entry file="file://$PROJECT_DIR$/textures/space.jpg" />
-    <entry file="file://$PROJECT_DIR$/shaders/fragment.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/textures/blackbkg.jpg" />
     <entry file="file://$PROJECT_DIR$/common.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -544,28 +738,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Сamera.h" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="49" column="84" selection-start-line="49" selection-start-column="84" selection-end-line="49" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/objects/Sword.obj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8325" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ShaderProgram.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-          <folding>
-            <element signature="e#49#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/Sword.obj" />
     <entry file="file://$PROJECT_DIR$/ShaderProgram.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -576,48 +749,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Model.h">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        <state relative-caret-position="15">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/cube/fragment.glsl">
+    <entry file="file://$PROJECT_DIR$/shaders/fragment.glsl" />
+    <entry file="file://$PROJECT_DIR$/shaders/vertex.glsl" />
+    <entry file="file:///usr/local/include/glm/glm.hpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="600">
+          <caret line="49" column="66" selection-start-line="49" selection-start-column="66" selection-end-line="49" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Mesh.h">
+    <entry file="file://$PROJECT_DIR$/SOIL.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
+        <state relative-caret-position="-6210" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/shaders/cube/vertex.glsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/shaders/cube/fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ShaderProgram.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/enemy/vertex.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/aircraft/E 45 Aircraft_obj.obj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Mesh.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-183">
+          <caret line="83" column="11" selection-start-line="58" selection-start-column="9" selection-end-line="83" selection-end-column="11" />
           <folding>
+            <element signature="e#14#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/aircraft/E 45 Aircraft_obj.mtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/skybox/vertex.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/skybox/fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="52" />
+          <folding>
+            <element signature="e#20#39#0" expanded="true" />
             <element signature="e#111#134#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/shaders/enemy/fragment.glsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        <state relative-caret-position="304">
+          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
         </state>
       </provider>
     </entry>
