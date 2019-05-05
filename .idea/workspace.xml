@@ -12,8 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e0740ec-349d-4f08-bd6f-5ac34a6a8438" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/main.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/enemy/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/enemy/fragment.glsl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,19 +30,28 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="214" column="32" selection-start-line="214" selection-start-column="32" selection-end-line="214" selection-end-column="32" />
+            <state relative-caret-position="-1098">
+              <caret line="159" column="38" selection-start-line="159" selection-start-column="38" selection-end-line="159" selection-end-column="38" />
               <folding>
                 <element signature="e#20#39#0" expanded="true" />
                 <element signature="e#154#177#0" expanded="true" />
                 <element signature="e#11390#11934#0" />
                 <element signature="e#6226#6269#0" />
-                <element signature="e#11936#12478#0" />
-                <element signature="e#12480#13216#0" />
-                <element signature="e#13218#13441#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Camera.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+              <folding>
+                <element signature="e#15#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,6 +73,8 @@
       <find>Shader</find>
       <find>Set</find>
       <find>deltaTime</find>
+      <find>fov</find>
+      <find>camera</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,6 +108,7 @@
         <option value="$PROJECT_DIR$/shaders/bullet/fragment.glsl" />
         <option value="$PROJECT_DIR$/shaders/enemy/fragment.glsl" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Camera.h" />
       </list>
     </option>
   </component>
@@ -222,12 +236,12 @@
       <workItem from="1556298740769" duration="348000" />
       <workItem from="1556913165891" duration="9977000" />
       <workItem from="1556948915125" duration="20554000" />
-      <workItem from="1557040007222" duration="34160000" />
+      <workItem from="1557040007222" duration="38171000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126492000" />
+    <option name="totallyTimeSpent" value="130503000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -336,7 +350,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LiteMath.h" />
     <entry file="file://$PROJECT_DIR$/glm/vec4.hpp" />
     <entry file="file://$PROJECT_DIR$/glm/vec3.hpp" />
     <entry file="file://$PROJECT_DIR$/glm/detail/type_vec3.hpp" />
@@ -563,16 +576,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="214" column="32" selection-start-line="214" selection-start-column="32" selection-end-line="214" selection-end-column="32" />
+        <state relative-caret-position="-1098">
+          <caret line="159" column="38" selection-start-line="159" selection-start-column="38" selection-end-line="159" selection-end-column="38" />
           <folding>
             <element signature="e#20#39#0" expanded="true" />
             <element signature="e#154#177#0" expanded="true" />
             <element signature="e#11390#11934#0" />
             <element signature="e#6226#6269#0" />
-            <element signature="e#11936#12478#0" />
-            <element signature="e#12480#13216#0" />
-            <element signature="e#13218#13441#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Camera.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding>
+            <element signature="e#15#34#0" expanded="true" />
           </folding>
         </state>
       </provider>

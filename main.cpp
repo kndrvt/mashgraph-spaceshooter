@@ -1,6 +1,7 @@
 //internal includes
 #include "common.h"
 #include "ShaderProgram.h"
+#include "Camera.h"
 #include "Skybox.h"
 #include "Enemy.h"
 #include "Asteroid.h"
@@ -17,25 +18,27 @@
 
 static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
 
+Camera camera(WIDTH, HEIGHT);
 bool keys[1024];
 bool firstMouse = true;
 bool shoot = false;
-GLfloat lastX = WIDTH / 2, lastY = HEIGHT / 2;
-GLfloat yaw = -90.0f;
-GLfloat pitch = 0.0f;
-GLfloat fov = 45.0f;
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+GLfloat lastX = WIDTH / 2;
+GLfloat lastY = HEIGHT / 2;
 GLfloat deltaTime = 0.0f;    // Время, прошедшее между последним и текущим кадром
 GLfloat lastFrame = 0.0f;    // Время вывода последнего кадра
 
 int initGL();
+
 GLfloat random_range(int end, int begin);
+
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-void mousebuttonCallback(GLFWwindow* window, int button, int action, int mods);
+
+void mousebuttonCallback(GLFWwindow *window, int button, int action, int mods);
+
 void mouseCallback(GLFWwindow *window, double xpos, double ypos);
+
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
+
 void move();
 
 int main(int argc, char **argv) {
@@ -125,8 +128,8 @@ int main(int argc, char **argv) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glm::vec3 enemy_pos(0.0f, 0.0f, -100.0f);
-    glm::vec3 bullet_pos = cameraPos;
-    glm::vec3 bullet_target = cameraFront;
+    glm::vec3 bullet_pos = camera.Pos;
+    glm::vec3 bullet_target = camera.Front;
     bool dead = false;
     vector<glm::vec3> Positions;
     for (int i = 0; i < 10; ++i) {
@@ -154,8 +157,8 @@ int main(int argc, char **argv) {
         glm::mat4 view(1.0);
         glm::mat4 proj(1.0);
 
-        view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-        proj = glm::perspective(glm::radians(fov), (GLfloat) WIDTH / HEIGHT, 0.1f, 100.0f);
+        view = camera.GetViewMatrix();
+        proj = camera.GetPerspectiveMatrix();
 
         // skybox draw
         //
@@ -208,8 +211,8 @@ int main(int argc, char **argv) {
         // bullet draw
         //
         if (shoot) {
-            bullet_pos = cameraPos;
-            bullet_target = cameraFront;
+            bullet_pos = camera.Pos;
+            bullet_target = camera.Front;
             shoot = false;
         }
         GLfloat bulletSpeed = 20.0f * deltaTime;
@@ -250,23 +253,16 @@ int initGL() {
 
 GLfloat random_range(int end, int begin) {
     srand(time(NULL));
-    if ((int)rand() % 2) return (int)rand() % end + begin;
-    else return -((int)rand() % end + begin);
+    if ((int) rand() % 2) return (int) rand() % end + begin;
+    else return -((int) rand() % end + begin);
 }
 
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode) {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
     if ((key == GLFW_KEY_0) && (action == GLFW_PRESS)) {
-        cameraPos = glm::vec3(0.0, 0.0, 3.0);
-        cameraFront = glm::vec3(0.0, 0.0, -1.0);
-        cameraUp = glm::vec3(0.0, 1.0, 0.0);
+        camera.begin();
         firstMouse = true;
-        lastX = WIDTH / 2;
-        lastY = HEIGHT / 2;
-        yaw = -90.0f;
-        pitch = 0.0f;
-        fov = 45.0f;
     }
     if (action == GLFW_PRESS)
         keys[key] = true;
@@ -274,7 +270,7 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
         keys[key] = false;
 }
 
-void mousebuttonCallback(GLFWwindow* window, int button, int action, int mods) {
+void mousebuttonCallback(GLFWwindow *window, int button, int action, int mods) {
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) shoot = true;
 }
 
@@ -290,42 +286,24 @@ void mouseCallback(GLFWwindow *window, double xpos, double ypos) {
     lastX = xpos;
     lastY = ypos;
 
-    GLfloat sensitivity = 0.1;
-    xoffset *= sensitivity;
-    yoffset *= sensitivity;
-
-    yaw += xoffset;
-    pitch += yoffset;
-
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
-
-    glm::vec3 front;
-    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front.y = sin(glm::radians(pitch));
-    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(front);
+    camera.ProcessMouseMovement(xoffset, yoffset);
 }
 
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
-    if (fov >= 30.0f && fov <= 45.0f)
-        fov -= yoffset;
-    if (fov <= 30.0f)
-        fov = 30.0f;
-    if (fov >= 45.0f)
-        fov = 45.0f;
+    camera.ProcessMouseScroll(yoffset);
 }
 
 void move() {
-    GLfloat cameraSpeed = 5.0f * deltaTime;
-    if (keys[GLFW_KEY_W]) cameraPos += cameraSpeed * cameraFront;
-    if (keys[GLFW_KEY_S]) cameraPos -= cameraSpeed * cameraFront;
+    if (keys[GLFW_KEY_W])
+        camera.ProcessKeyboard(FORWARD, deltaTime);
+    if (keys[GLFW_KEY_S])
+        camera.ProcessKeyboard(BACKWARD, deltaTime);
     if (keys[GLFW_KEY_A])
-        cameraPos -= normalize(cross(cameraFront, cameraUp)) * cameraSpeed;
+        camera.ProcessKeyboard(LEFT, deltaTime);
     if (keys[GLFW_KEY_D])
-        cameraPos += normalize(cross(cameraFront, cameraUp)) * cameraSpeed;
-    if (keys[GLFW_KEY_SPACE]) cameraPos += cameraSpeed * cameraUp;
-    if (keys[GLFW_KEY_C]) cameraPos -= cameraSpeed * cameraUp;
+        camera.ProcessKeyboard(RIGHT, deltaTime);
+    if (keys[GLFW_KEY_SPACE])
+        camera.ProcessKeyboard(UP, deltaTime);
+    if (keys[GLFW_KEY_C])
+        camera.ProcessKeyboard(DOWN, deltaTime);
 }
