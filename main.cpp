@@ -28,17 +28,11 @@ GLfloat deltaTime = 0.0f;    // Время, прошедшее между пос
 GLfloat lastFrame = 0.0f;    // Время вывода последнего кадра
 
 int initGL();
-
 GLfloat random_range(int end, int begin);
-
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-
 void mousebuttonCallback(GLFWwindow *window, int button, int action, int mods);
-
 void mouseCallback(GLFWwindow *window, double xpos, double ypos);
-
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
-
 void move();
 
 int main(int argc, char **argv) {
@@ -120,17 +114,14 @@ int main(int argc, char **argv) {
 
     // Bullet
     //
-    Bullet bullet(std::string("../objects/planet/planet.obj"));
+    Bullet bullet(camera.Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f)));
+    bullet.Color = glm::vec3(0.8, 0.0, 1.0);
     GL_CHECK_ERRORS
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glm::vec3 enemy_pos(0.0f, 0.0f, -100.0f);
-    glm::vec3 bullet_pos = camera.Pos;
-    glm::vec3 bullet_target = camera.Front;
-    bool dead = false;
     vector<glm::vec3> Positions;
     for (int i = 0; i < 10; ++i) {
         Positions.push_back(glm::vec3(random_range(8, 5), 0.0, -5.0));
@@ -170,23 +161,23 @@ int main(int argc, char **argv) {
 
         // enemy draw
         //
-        if (glm::length(enemy_pos - bullet_pos) < 5.0) {
-            dead = true;
+        if (glm::length(enemy.Pos - bullet.Pos) < 3.0f) {
+            enemy.dead = true;
         }
-        if (enemy_pos.z > 5.0f) {
-            enemy_pos = glm::vec3(random_range(5, 0), random_range(5, 0), -100.0f);
-            dead = false;
+        if (enemy.Pos.z > 0.0f) {
+            enemy.Pos = glm::vec3(random_range(5, 0), random_range(5, 0), -100.0f);
+            enemy.dead = false;
         }
-        GLfloat enemySpeed = 20.0f * deltaTime;
-        enemy_pos.z += enemySpeed;
+        enemy.movement(deltaTime);
+        if (((int) rand() % 10) == 0 && !enemy.dead) enemy.shoot();
 
         shader_enemy.StartUseShader();
         model = glm::mat4(1.0);
-        model = glm::translate(model, enemy_pos);
+        model = glm::translate(model, enemy.Pos);
         model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0, 1.0, 0.0));
         model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
 
-        shader_enemy.SetUniform("dead", dead);
+        shader_enemy.SetUniform("dead", enemy.dead);
         shader_enemy.SetUniform("model", model);
         shader_enemy.SetUniform("view", view);
         shader_enemy.SetUniform("proj", proj);
@@ -211,22 +202,16 @@ int main(int argc, char **argv) {
         // bullet draw
         //
         if (shoot) {
-            bullet_pos = camera.Pos;
-            bullet_target = camera.Front;
+            bullet.update(camera.Pos, camera.Front);
             shoot = false;
         }
-        GLfloat bulletSpeed = 20.0f * deltaTime;
-        bullet_pos += bulletSpeed * bullet_target;
+        bullet.movement(deltaTime);
+        enemy.bullet.movement(deltaTime);
 
         shader_bullet.StartUseShader();
-        model = glm::mat4(1.0);
-        model = glm::translate(model, bullet_pos);
-        model = glm::scale(model, glm::vec3(0.001f, 0.001f, 0.001f));
-        shader_bullet.SetUniform("model", model);
-        shader_bullet.SetUniform("view", view);
-        shader_bullet.SetUniform("proj", proj);
-        bullet.Draw(shader_bullet);
-        shader_asteroid.StopUseShader();
+        bullet.draw(shader_bullet, camera);
+        enemy.bullet.draw(shader_bullet, camera);
+        shader_bullet.StopUseShader();
 
         glfwSwapBuffers(window);
     }

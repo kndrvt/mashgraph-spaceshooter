@@ -15,26 +15,6 @@ enum Camera_Movement {
 };
 
 class Camera {
-    GLfloat FOV;
-    glm::vec3 Up;
-    glm::vec3 WorldUp;
-    glm::vec3 Right;
-    GLfloat MovementSpeed;
-    GLfloat MouseSensitivity;
-    GLsizei WIDTH;
-    GLsizei HEIGHT;
-
-    void update() {
-        glm::vec3 front;
-        front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-        front.y = sin(glm::radians(Pitch));
-        front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
-        Front = glm::normalize(front);
-
-        this->Right = glm::normalize(glm::cross(this->Front, this->WorldUp));
-        this->Up = glm::normalize(glm::cross(this->Right, this->Front));
-    }
-
 public:
     glm::vec3 Pos = glm::vec3(0.0f, 0.0f, 3.0f);
     glm::vec3 Front = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -67,7 +47,7 @@ public:
     }
 
     glm::mat4 GetPerspectiveMatrix() {
-        return glm::perspective(glm::radians(FOV), (GLfloat) WIDTH / HEIGHT, 0.1f, 100.0f);
+        return glm::perspective(glm::radians(FOV), (GLfloat) WIDTH / HEIGHT, 0.1f, 200.0f);
     }
 
     void ProcessKeyboard(Camera_Movement direction, GLfloat deltaTime) {
@@ -108,5 +88,26 @@ public:
             FOV = 30.0f;
         if (FOV >= 45.0f)
             FOV = 45.0f;
+    }
+
+private:
+    GLfloat FOV;
+    glm::vec3 Up;
+    glm::vec3 WorldUp;
+    glm::vec3 Right;
+    GLfloat MovementSpeed;
+    GLfloat MouseSensitivity;
+    GLsizei WIDTH;
+    GLsizei HEIGHT;
+
+    void update() {
+        glm::vec3 front;
+        front.x = cos(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+        front.y = sin(glm::radians(Pitch));
+        front.z = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+        Front = glm::normalize(front);
+
+        this->Right = glm::normalize(glm::cross(this->Front, this->WorldUp));
+        this->Up = glm::normalize(glm::cross(this->Right, this->Front));
     }
 };
