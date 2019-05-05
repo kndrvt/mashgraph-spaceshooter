@@ -19,6 +19,7 @@ static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
 
 bool keys[1024];
 bool firstMouse = true;
+bool shoot = false;
 GLfloat lastX = WIDTH / 2, lastY = HEIGHT / 2;
 GLfloat yaw = -90.0f;
 GLfloat pitch = 0.0f;
@@ -32,6 +33,7 @@ GLfloat lastFrame = 0.0f;    // Время вывода последнего к�
 int initGL();
 GLfloat random_range(int end, int begin);
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
+void mousebuttonCallback(GLFWwindow* window, int button, int action, int mods);
 void mouseCallback(GLFWwindow *window, double xpos, double ypos);
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
 void move();
@@ -58,6 +60,7 @@ int main(int argc, char **argv) {
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     glfwSetKeyCallback(window, keyCallback);
+    glfwSetMouseButtonCallback(window, mousebuttonCallback);
     glfwSetCursorPosCallback(window, mouseCallback);
     glfwSetScrollCallback(window, scrollCallback);
 
@@ -118,8 +121,12 @@ int main(int argc, char **argv) {
     GL_CHECK_ERRORS
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     glm::vec3 enemy_pos(0.0f, 0.0f, -100.0f);
+    glm::vec3 bullet_pos = cameraPos;
+    glm::vec3 bullet_target = cameraFront;
     vector<glm::vec3> Positions;
     for (int i = 0; i < 10; ++i) {
         Positions.push_back(glm::vec3(random_range(8, 5), 0.0, -5.0));
@@ -164,7 +171,7 @@ int main(int argc, char **argv) {
             enemy_pos.y = random_range(5, 0);
             enemy_pos.z = -100.0f;
         }
-        GLfloat enemySpeed = 20.0f * deltaTime;
+        GLfloat enemySpeed = 30.0f * deltaTime;
         enemy_pos.z += enemySpeed;
 
         shader_enemy.StartUseShader();
@@ -194,16 +201,25 @@ int main(int argc, char **argv) {
         }
         shader_asteroid.StopUseShader();
 
-//        // bullet draw
-//        //
-//        shader_bullet.StartUseShader();
-//        model = glm::mat4(1.0);
-//        model = glm::scale(model, glm::vec3(0.005, 0.005, 0.005));
-//        shader_bullet.SetUniform("model", model);
-//        shader_bullet.SetUniform("view", view);
-//        shader_bullet.SetUniform("proj", proj);
-//        bullet.Draw(shader_bullet);
-//        shader_asteroid.StopUseShader();
+        // bullet draw
+        //
+        if (shoot) {
+            bullet_target = cameraFront;
+            bullet_pos = cameraPos;
+            shoot = false;
+        }
+        GLfloat bulletSpeed = 10.0f * deltaTime;
+        bullet_pos += bulletSpeed * bullet_target;
+
+        shader_bullet.StartUseShader();
+        model = glm::mat4(1.0);
+        model = glm::translate(model, bullet_pos);
+        model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));
+        shader_bullet.SetUniform("model", model);
+        shader_bullet.SetUniform("view", view);
+        shader_bullet.SetUniform("proj", proj);
+        bullet.Draw(shader_bullet);
+        shader_asteroid.StopUseShader();
 
         glfwSwapBuffers(window);
     }
@@ -252,6 +268,10 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
         keys[key] = true;
     else if (action == GLFW_RELEASE)
         keys[key] = false;
+}
+
+void mousebuttonCallback(GLFWwindow* window, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) shoot = true;
 }
 
 void mouseCallback(GLFWwindow *window, double xpos, double ypos) {

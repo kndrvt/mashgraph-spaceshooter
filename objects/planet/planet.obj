@@ -1,6 +1,6 @@
 # Blender v2.71 (sub 0) 
 # www.blender.org
-# mtllib planet.mtl
+mtllib planet.mtl
 o Plane
 v -0.000000 1.048728 -2.606873
 v -0.000000 1.048728 -2.606873

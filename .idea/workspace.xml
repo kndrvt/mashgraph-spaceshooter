@@ -12,12 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e0740ec-349d-4f08-bd6f-5ac34a6a8438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/main.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/objects/planet/planet.obj" beforeDir="false" afterPath="$PROJECT_DIR$/objects/planet/planet.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shaders/bullet/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/bullet/fragment.glsl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,16 +32,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="166" column="31" selection-start-line="166" selection-start-column="31" selection-end-line="166" selection-end-column="31" />
+            <state relative-caret-position="369">
+              <caret line="216" column="64" lean-forward="true" selection-start-line="216" selection-start-column="64" selection-end-line="216" selection-end-column="64" />
               <folding>
                 <element signature="e#20#39#0" expanded="true" />
                 <element signature="e#154#177#0" expanded="true" />
                 <element signature="e#11390#11934#0" />
+                <element signature="e#6226#6269#0" />
                 <element signature="e#11936#12478#0" />
                 <element signature="e#12480#13216#0" />
                 <element signature="e#13218#13441#0" />
-                <element signature="e#13443#13968#0" />
               </folding>
             </state>
           </provider>
@@ -54,16 +51,7 @@
         <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/objects/planet/planet.obj">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+              <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -111,7 +99,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -229,12 +217,12 @@
       <workItem from="1556298740769" duration="348000" />
       <workItem from="1556913165891" duration="9977000" />
       <workItem from="1556948915125" duration="20554000" />
-      <workItem from="1557040007222" duration="27876000" />
+      <workItem from="1557040007222" duration="31612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120208000" />
+    <option name="totallyTimeSpent" value="123944000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -551,35 +539,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/bullet/vertex.glsl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/objects/planet/planet.obj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/bullet/vertex.glsl">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <caret line="5" column="40" lean-forward="true" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="166" column="31" selection-start-line="166" selection-start-column="31" selection-end-line="166" selection-end-column="31" />
+        <state relative-caret-position="369">
+          <caret line="216" column="64" lean-forward="true" selection-start-line="216" selection-start-column="64" selection-end-line="216" selection-end-column="64" />
           <folding>
             <element signature="e#20#39#0" expanded="true" />
             <element signature="e#154#177#0" expanded="true" />
             <element signature="e#11390#11934#0" />
+            <element signature="e#6226#6269#0" />
             <element signature="e#11936#12478#0" />
             <element signature="e#12480#13216#0" />
             <element signature="e#13218#13441#0" />
-            <element signature="e#13443#13968#0" />
           </folding>
         </state>
       </provider>
