@@ -27,6 +27,7 @@ GLfloat lastX = WIDTH / 2;
 GLfloat lastY = HEIGHT / 2;
 GLfloat deltaTime = 0.0f;    // Время, прошедшее между последним и текущим кадром
 GLfloat lastFrame = 0.0f;    // Время вывода последнего кадра
+GLint Health = 100;
 
 int initGL();
 GLfloat random_range(int end, int begin);
@@ -95,120 +96,125 @@ int main(int argc, char **argv) {
     GL_CHECK_ERRORS
 
     glfwSwapInterval(1); // force 60 frames per second
+    {
 
-//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    // Skybox
-    //
-    Skybox skybox(std::string("../textures/skybox/lightblue/"));
-    GL_CHECK_ERRORS
-
-    // Enemy
-    //
-    Enemy enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"));
-    GL_CHECK_ERRORS
-
-    // Asteroid
-    //
-    Asteroid asteroid(std::string("../objects/planet/planet.obj"));
-    GL_CHECK_ERRORS
-
-    // Bullet
-    //
-    Bullet bullet(camera.Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f)));
-    bullet.Color = glm::vec3(0.8, 0.0, 1.0);
-    GL_CHECK_ERRORS
-
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    vector<glm::vec3> Positions;
-    for (int i = 0; i < 10; ++i) {
-        Positions.push_back(glm::vec3(random_range(8, 5), 0.0, 5.0));
-    }
-    GL_CHECK_ERRORS
-
-    //цикл обработки сообщений и отрисовки сцены каждый кадр
-    while (!glfwWindowShouldClose(window)) {
-        GL_CHECK_ERRORS
-        glfwPollEvents();
+        // Skybox
+        //
+        Skybox skybox(std::string("../textures/skybox/lightblue/"));
         GL_CHECK_ERRORS
 
-        //очищаем экран каждый кадр
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        // Enemy
+        //
+        Enemy enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"));
         GL_CHECK_ERRORS
 
-        GLfloat currentFrame = glfwGetTime();
-        deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
-        move();
-
-        glm::mat4 model(1.0);
-        glm::mat4 view(1.0);
-        glm::mat4 proj(1.0);
-
-        view = camera.GetViewMatrix();
-        proj = camera.GetPerspectiveMatrix();
-
-        // skybox draw
+        // Asteroid
         //
-        shader_skybox.StartUseShader();
-        shader_skybox.SetUniform("view", view);
-        shader_skybox.SetUniform("proj", proj);
-        skybox.Draw();
-        shader_skybox.StopUseShader();
+        Asteroid asteroid(std::string("../objects/planet/planet.obj"));
+        GL_CHECK_ERRORS
 
-        // enemy draw
+        // Bullet
         //
-        if (glm::length(enemy.Pos - bullet.Pos) < 3.0f) {
-            enemy.dead = true;
-        }
-        if (enemy.dead) {
-            glm::vec2 tmp(0.0f, 0.0f);
-            enemy.Pos = glm::vec3(tmp, 100.0f);
-            enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
-            enemy.dead = false;
-        }
-        if (enemy.Pos.z < 10.0f) {
-            enemy.Front = glm::vec3(0.0);
-        }
-        enemy.movement(deltaTime);
-        if (((int) rand() % 10) == 0 && !enemy.dead) enemy.shoot();
+        Bullet bullet(camera.Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f)));
+        bullet.Color = glm::vec3(0.8, 0.0, 1.0);
+        GL_CHECK_ERRORS
 
-        enemy.draw(shader_enemy, camera);
+        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        // asteroid draw
-        //
-        shader_asteroid.StartUseShader();
-        shader_asteroid.SetUniform("view", view);
-        shader_asteroid.SetUniform("proj", proj);
+        vector<glm::vec3> Positions;
         for (int i = 0; i < 10; ++i) {
-            model = glm::mat4(1.0);
-            model = glm::translate(model, Positions[i]);
-            model = glm::rotate(model, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-            model = glm::scale(model, glm::vec3(0.1, 0.1, 0.1));
-            shader_asteroid.SetUniform("model", model);
-            asteroid.Draw(shader_asteroid);
+            Positions.push_back(glm::vec3(random_range(8, 5), 0.0, 5.0));
         }
-        shader_asteroid.StopUseShader();
+        GL_CHECK_ERRORS
 
-        // bullet draw
-        //
-        if (shoot) {
-            bullet.update(camera.Pos, camera.Front);
-            shoot = false;
+        //цикл обработки сообщений и отрисовки сцены каждый кадр
+        while (!glfwWindowShouldClose(window)) {
+            GL_CHECK_ERRORS
+            glfwPollEvents();
+            GL_CHECK_ERRORS
+
+            //очищаем экран каждый кадр
+            glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL_CHECK_ERRORS
+
+            GLfloat currentFrame = glfwGetTime();
+            deltaTime = currentFrame - lastFrame;
+            lastFrame = currentFrame;
+            move();
+
+            glm::mat4 model(1.0);
+            glm::mat4 view(1.0);
+            glm::mat4 proj(1.0);
+
+            view = camera.GetViewMatrix();
+            proj = camera.GetPerspectiveMatrix();
+
+            // skybox draw
+            //
+            shader_skybox.StartUseShader();
+            shader_skybox.SetUniform("view", view);
+            shader_skybox.SetUniform("proj", proj);
+            skybox.Draw();
+            shader_skybox.StopUseShader();
+
+            // enemy draw
+            //
+            if (glm::length(enemy.Pos - bullet.Pos) < 1.0f) {
+                enemy.dead = true;
+            }
+            if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
+                Health -= 20;
+            }
+            if (enemy.dead) {
+                glm::vec2 tmp(0.0f, 0.0f);
+                enemy.Pos = glm::vec3(tmp, 100.0f);
+                enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
+                enemy.dead = false;
+            }
+            if (enemy.Pos.z < 10.0f) {
+                enemy.Front = glm::vec3(0.0);
+            }
+            enemy.movement(deltaTime);
+            if (((int) rand() % 10) == 0 && !enemy.dead) enemy.shoot();
+
+            enemy.draw(shader_enemy, camera);
+
+            // asteroid draw
+            //
+            shader_asteroid.StartUseShader();
+            shader_asteroid.SetUniform("view", view);
+            shader_asteroid.SetUniform("proj", proj);
+            for (int i = 0; i < 10; ++i) {
+                model = glm::mat4(1.0);
+                model = glm::translate(model, Positions[i]);
+                model = glm::rotate(model, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+                model = glm::scale(model, glm::vec3(0.1, 0.1, 0.1));
+                shader_asteroid.SetUniform("model", model);
+                asteroid.Draw(shader_asteroid);
+            }
+            shader_asteroid.StopUseShader();
+
+            // bullet draw
+            //
+            if (shoot) {
+                bullet.update(camera.Pos, camera.Front);
+                shoot = false;
+            }
+            bullet.movement(deltaTime);
+            enemy.bullet.movement(deltaTime);
+
+            bullet.draw(shader_bullet, camera);
+            enemy.bullet.draw(shader_bullet, camera);
+
+            glfwSwapBuffers(window);
+            if (Health < 0) break;
         }
-        bullet.movement(deltaTime);
-        enemy.bullet.movement(deltaTime);
-
-        bullet.draw(shader_bullet, camera);
-        enemy.bullet.draw(shader_bullet, camera);
-
-        glfwSwapBuffers(window);
     }
-
     glfwTerminate();
     return 0;
 }
