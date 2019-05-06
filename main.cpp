@@ -38,7 +38,7 @@ void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
 void move();
 
 int main(int argc, char **argv) {
-
+    srand(time(NULL));
     if (!glfwInit()) {
         return -1;
     }
@@ -117,7 +117,7 @@ int main(int argc, char **argv) {
 
         // Bullet
         //
-        Bullet bullet(camera.Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f)));
+        Bullet bullet(camera.Pos, glm::normalize(glm::vec3(0.0f)));
         bullet.Color = glm::vec3(0.8, 0.0, 1.0);
         GL_CHECK_ERRORS
 
@@ -125,10 +125,6 @@ int main(int argc, char **argv) {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-        vector<glm::vec3> Positions;
-        for (int i = 0; i < 10; ++i) {
-            Positions.push_back(glm::vec3(random_range(8, 5), 0.0, 5.0));
-        }
         GL_CHECK_ERRORS
 
         //цикл обработки сообщений и отрисовки сцены каждый кадр
@@ -147,31 +143,22 @@ int main(int argc, char **argv) {
             lastFrame = currentFrame;
             move();
 
-            glm::mat4 model(1.0);
-            glm::mat4 view(1.0);
-            glm::mat4 proj(1.0);
-
-            view = camera.GetViewMatrix();
-            proj = camera.GetPerspectiveMatrix();
-
             // skybox draw
             //
-            shader_skybox.StartUseShader();
-            shader_skybox.SetUniform("view", view);
-            shader_skybox.SetUniform("proj", proj);
-            skybox.Draw();
-            shader_skybox.StopUseShader();
+            skybox.draw(shader_skybox, camera);
 
             // enemy draw
             //
             if (glm::length(enemy.Pos - bullet.Pos) < 1.0f) {
                 enemy.dead = true;
+                bullet.update(camera.Pos, glm::normalize(glm::vec3(0.0f)));
             }
             if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
                 Health -= 20;
             }
             if (enemy.dead) {
-                glm::vec2 tmp(0.0f, 0.0f);
+                glm::vec2 tmp(random_range(10, 0), random_range(10, 0));
+                tmp *= 0.01f;
                 enemy.Pos = glm::vec3(tmp, 100.0f);
                 enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
                 enemy.dead = false;
@@ -186,18 +173,7 @@ int main(int argc, char **argv) {
 
             // asteroid draw
             //
-            shader_asteroid.StartUseShader();
-            shader_asteroid.SetUniform("view", view);
-            shader_asteroid.SetUniform("proj", proj);
-            for (int i = 0; i < 10; ++i) {
-                model = glm::mat4(1.0);
-                model = glm::translate(model, Positions[i]);
-                model = glm::rotate(model, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-                model = glm::scale(model, glm::vec3(0.1, 0.1, 0.1));
-                shader_asteroid.SetUniform("model", model);
-                asteroid.Draw(shader_asteroid);
-            }
-            shader_asteroid.StopUseShader();
+            asteroid.draw(shader_asteroid, camera);
 
             // bullet draw
             //
@@ -236,7 +212,6 @@ int initGL() {
 }
 
 GLfloat random_range(int end, int begin) {
-    srand(time(NULL));
     if ((int) rand() % 2) return (int) rand() % end + begin;
     else return -((int) rand() % end + begin);
 }

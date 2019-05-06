@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "ShaderProgram.h"
+#include "Camera.h"
 #include "SOIL.h"
 
 #include <GLFW/glfw3.h>
@@ -85,6 +86,20 @@ public:
         GL_CHECK_ERRORS;
         glBindVertexArray(0);
         GL_CHECK_ERRORS;
+    }
+    void draw(ShaderProgram shader, Camera camera) {
+        shader.StartUseShader();
+
+        glm::mat4 view(1.0);
+        view = camera.GetViewMatrix();
+        shader.SetUniform("view", view);
+
+        glm::mat4 proj(1.0);
+        proj = camera.GetPerspectiveMatrix();
+        shader.SetUniform("proj", proj);
+
+        this->Draw();
+        shader.StopUseShader();
     }
 
 private:
