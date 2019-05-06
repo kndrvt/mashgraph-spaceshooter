@@ -12,12 +12,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e0740ec-349d-4f08-bd6f-5ac34a6a8438" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bullet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Camera.h" beforeDir="false" afterPath="$PROJECT_DIR$/Camera.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Enemy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/main.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/bullet/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/bullet/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/enemy/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/enemy/fragment.glsl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,19 +45,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="171" column="30" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="30" />
+            <state relative-caret-position="237">
+              <caret line="127" column="64" selection-start-line="127" selection-start-column="64" selection-end-line="127" selection-end-column="64" />
               <folding>
                 <element signature="e#20#39#0" expanded="true" />
-                <element signature="e#154#177#0" expanded="true" />
-                <element signature="e#11390#11934#0" />
-                <element signature="e#7882#8544#0" />
-                <element signature="e#12480#13216#0" />
-                <element signature="e#13218#13441#0" />
-                <element signature="e#13443#13968#0" />
+                <element signature="e#6843#7387#0" />
+                <element signature="e#7389#7564#0" />
+                <element signature="e#7994#8156#0" />
+                <element signature="e#8158#8487#0" />
+                <element signature="e#8489#8604#0" />
               </folding>
             </state>
           </provider>
@@ -53,20 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Enemy.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-              <folding>
-                <element signature="e#14#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Bullet.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="26" column="58" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+            <state relative-caret-position="-138">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
               <folding>
                 <element signature="e#14#32#0" expanded="true" />
               </folding>
@@ -75,10 +75,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
+        <entry file="file://$PROJECT_DIR$/Bullet.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+            <state relative-caret-position="162">
+              <caret line="15" column="71" selection-start-line="15" selection-start-column="71" selection-end-line="15" selection-end-column="71" />
+              <folding>
+                <element signature="e#14#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Camera.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="49" column="84" selection-start-line="49" selection-start-column="84" selection-end-line="49" selection-end-column="84" />
+            <state relative-caret-position="279">
+              <caret line="79" column="17" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
               <folding>
                 <element signature="e#15#34#0" expanded="true" />
               </folding>
@@ -104,6 +107,7 @@
       <find>deltaTime</find>
       <find>fov</find>
       <find>camera</find>
+      <find>Target</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,11 +137,11 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/objects/planet/planet.obj" />
         <option value="$PROJECT_DIR$/shaders/enemy/fragment.glsl" />
-        <option value="$PROJECT_DIR$/Camera.h" />
         <option value="$PROJECT_DIR$/shaders/bullet/fragment.glsl" />
-        <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/Enemy.h" />
         <option value="$PROJECT_DIR$/Bullet.h" />
+        <option value="$PROJECT_DIR$/Enemy.h" />
+        <option value="$PROJECT_DIR$/Camera.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
@@ -159,23 +163,7 @@
           <expand>
             <path>
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sample" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sample" type="462c0819:PsiDirectoryNode" />
-              <item name="shaders" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sample" type="462c0819:PsiDirectoryNode" />
-              <item name="shaders" type="462c0819:PsiDirectoryNode" />
-              <item name="bullet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sample" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
+              <item name="Space shooter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -188,7 +176,7 @@
     <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="CMake" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/shaders/cube" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -248,12 +236,13 @@
       <workItem from="1556298740769" duration="348000" />
       <workItem from="1556913165891" duration="9977000" />
       <workItem from="1556948915125" duration="20554000" />
-      <workItem from="1557040007222" duration="44768000" />
+      <workItem from="1557040007222" duration="44849000" />
+      <workItem from="1557119187233" duration="2659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137100000" />
+    <option name="totallyTimeSpent" value="139840000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -267,7 +256,7 @@
     <frame x="0" y="-1" width="1366" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.168429" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16993958" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -402,20 +391,8 @@
         <state relative-caret-position="-6210" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/cube/vertex.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/cube/fragment.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/cube/vertex.glsl" />
+    <entry file="file://$PROJECT_DIR$/shaders/cube/fragment.glsl" />
     <entry file="file://$PROJECT_DIR$/objects/aircraft/E 45 Aircraft_obj.obj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -433,16 +410,7 @@
     <entry file="file://$PROJECT_DIR$/shaders/skybox/fragment.glsl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Asteriod.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding>
-            <element signature="e#14#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Asteriod.h" />
     <entry file="file://$PROJECT_DIR$/common.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -481,9 +449,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/objects/rock2/Download (1).jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/rock2/Download (1).jpg" />
     <entry file="file://$PROJECT_DIR$/shaders/asteroid/fragment.glsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -498,13 +464,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/objects/asteroid/10464_Asteroid_v1_Iterations-2.mtl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/objects/asteroid/10464_Asteroid_v1_Iterations-2.mtl" />
     <entry file="file://$PROJECT_DIR$/ShaderProgram.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
@@ -528,20 +488,6 @@
     <entry file="file://$PROJECT_DIR$/objects/planet/planet.mtl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/bin/cmake/linux/share/cmake-3.13/Modules/FindOpenGL.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="917">
-          <caret line="282" column="9" lean-forward="true" selection-start-line="282" selection-start-column="9" selection-end-line="282" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shaders/bullet/vertex.glsl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -559,55 +505,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/bin/cmake/linux/share/cmake-3.13/Modules/FindOpenGL.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Camera.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="49" column="84" selection-start-line="49" selection-start-column="84" selection-end-line="49" selection-end-column="84" />
+        <state relative-caret-position="279">
+          <caret line="79" column="17" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
           <folding>
             <element signature="e#15#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/Bullet.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="171" column="30" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="30" />
+        <state relative-caret-position="162">
+          <caret line="15" column="71" selection-start-line="15" selection-start-column="71" selection-end-line="15" selection-end-column="71" />
           <folding>
-            <element signature="e#20#39#0" expanded="true" />
-            <element signature="e#154#177#0" expanded="true" />
-            <element signature="e#11390#11934#0" />
-            <element signature="e#7882#8544#0" />
-            <element signature="e#12480#13216#0" />
-            <element signature="e#13218#13441#0" />
-            <element signature="e#13443#13968#0" />
+            <element signature="e#14#32#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Enemy.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        <state relative-caret-position="-138">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding>
             <element signature="e#14#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bullet.h">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="26" column="58" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+        <state relative-caret-position="237">
+          <caret line="127" column="64" selection-start-line="127" selection-start-column="64" selection-end-line="127" selection-end-column="64" />
           <folding>
-            <element signature="e#14#32#0" expanded="true" />
+            <element signature="e#20#39#0" expanded="true" />
+            <element signature="e#6843#7387#0" />
+            <element signature="e#7389#7564#0" />
+            <element signature="e#7994#8156#0" />
+            <element signature="e#8158#8487#0" />
+            <element signature="e#8489#8604#0" />
           </folding>
         </state>
       </provider>

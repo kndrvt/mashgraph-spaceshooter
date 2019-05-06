@@ -7,11 +7,11 @@ C_FLAGS = -g   -Wnarrowing
 
 C_DEFINES = -DGLFW_DLL
 
-C_INCLUDES = -I/media/kondrat/DATA/Programs/Graphics/task2/Sample/dependencies/include/GLAD 
+C_INCLUDES = -I"/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/GLAD" 
 
 CXX_FLAGS = -g   -Wnarrowing -std=gnu++11
 
 CXX_DEFINES = -DGLFW_DLL
 
-CXX_INCLUDES = -I/media/kondrat/DATA/Programs/Graphics/task2/Sample/dependencies/include/GLAD 
+CXX_INCLUDES = -I"/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/GLAD" 
 

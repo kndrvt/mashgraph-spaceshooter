@@ -43,10 +43,10 @@ RM = /home/kondrat/CLion/clion-2019.1/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/kondrat/DATA/Programs/Graphics/task2/Sample
+CMAKE_SOURCE_DIR = "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug
+CMAKE_BINARY_DIR = "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -59,42 +59,42 @@ include CMakeFiles/main.dir/flags.make
 
 CMakeFiles/main.dir/glad.c.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/glad.c.o: ../glad.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/glad.c.o   -c /media/kondrat/DATA/Programs/Graphics/task2/Sample/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/main.dir/glad.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/main.dir/glad.c.o   -c "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/glad.c"
 
 CMakeFiles/main.dir/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/kondrat/DATA/Programs/Graphics/task2/Sample/glad.c > CMakeFiles/main.dir/glad.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/glad.c" > CMakeFiles/main.dir/glad.c.i
 
 CMakeFiles/main.dir/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/kondrat/DATA/Programs/Graphics/task2/Sample/glad.c -o CMakeFiles/main.dir/glad.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/glad.c" -o CMakeFiles/main.dir/glad.c.s
 
 CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.cpp.o -c /media/kondrat/DATA/Programs/Graphics/task2/Sample/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.cpp.o -c "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/main.cpp"
 
 CMakeFiles/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/kondrat/DATA/Programs/Graphics/task2/Sample/main.cpp > CMakeFiles/main.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/main.cpp" > CMakeFiles/main.dir/main.cpp.i
 
 CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/kondrat/DATA/Programs/Graphics/task2/Sample/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/main.cpp" -o CMakeFiles/main.dir/main.cpp.s
 
 CMakeFiles/main.dir/ShaderProgram.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/ShaderProgram.cpp.o: ../ShaderProgram.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/ShaderProgram.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/ShaderProgram.cpp.o -c /media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/ShaderProgram.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/ShaderProgram.cpp.o -c "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.cpp"
 
 CMakeFiles/main.dir/ShaderProgram.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/ShaderProgram.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.cpp > CMakeFiles/main.dir/ShaderProgram.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.cpp" > CMakeFiles/main.dir/ShaderProgram.cpp.i
 
 CMakeFiles/main.dir/ShaderProgram.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/ShaderProgram.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.cpp -o CMakeFiles/main.dir/ShaderProgram.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.cpp" -o CMakeFiles/main.dir/ShaderProgram.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -112,9 +112,9 @@ main: CMakeFiles/main.dir/build.make
 main: /usr/lib/x86_64-linux-gnu/libGL.so
 main: /usr/lib/x86_64-linux-gnu/libglfw.so.3.2
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
-	/home/kondrat/CLion/clion-2019.1/bin/cmake/linux/bin/cmake -E copy_directory /media/kondrat/DATA/Programs/Graphics/task2/Sample/shaders /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug
+	/home/kondrat/CLion/clion-2019.1/bin/cmake/linux/bin/cmake -E copy_directory /media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/shaders /media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug
 
 # Rule to build all files generated by this target.
 CMakeFiles/main.dir/build: main
@@ -126,6 +126,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/kondrat/DATA/Programs/Graphics/task2/Sample /media/kondrat/DATA/Programs/Graphics/task2/Sample /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug /media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/main.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/main.dir/depend
 

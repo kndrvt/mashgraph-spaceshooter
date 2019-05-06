@@ -22,6 +22,7 @@ Camera camera(WIDTH, HEIGHT);
 bool keys[1024];
 bool firstMouse = true;
 bool shoot = false;
+bool GodMode = false;
 GLfloat lastX = WIDTH / 2;
 GLfloat lastY = HEIGHT / 2;
 GLfloat deltaTime = 0.0f;    // Время, прошедшее между последним и текущим кадром
@@ -164,25 +165,19 @@ int main(int argc, char **argv) {
         if (glm::length(enemy.Pos - bullet.Pos) < 3.0f) {
             enemy.dead = true;
         }
-        if (enemy.Pos.z > 0.0f) {
-            enemy.Pos = glm::vec3(random_range(5, 0), random_range(5, 0), -100.0f);
+        if (enemy.Pos.z > 0.0f || enemy.dead) {
+            glm::vec2 tmp(random_range(5, 0), random_range(5, 0));
+            enemy.Pos = glm::vec3(tmp, -100.0f);
+            enemy.Front = glm::normalize(glm::vec3(tmp, 1.0f));
             enemy.dead = false;
+        }
+        if (enemy.Pos.z > -5.0f) {
+            enemy.Front = glm::vec3(0.0);
         }
         enemy.movement(deltaTime);
         if (((int) rand() % 10) == 0 && !enemy.dead) enemy.shoot();
 
-        shader_enemy.StartUseShader();
-        model = glm::mat4(1.0);
-        model = glm::translate(model, enemy.Pos);
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0, 1.0, 0.0));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
-
-        shader_enemy.SetUniform("dead", enemy.dead);
-        shader_enemy.SetUniform("model", model);
-        shader_enemy.SetUniform("view", view);
-        shader_enemy.SetUniform("proj", proj);
-        enemy.Draw(shader_enemy);
-        shader_enemy.StopUseShader();
+        enemy.draw(shader_enemy, camera);
 
         // asteroid draw
         //
@@ -208,10 +203,8 @@ int main(int argc, char **argv) {
         bullet.movement(deltaTime);
         enemy.bullet.movement(deltaTime);
 
-        shader_bullet.StartUseShader();
         bullet.draw(shader_bullet, camera);
         enemy.bullet.draw(shader_bullet, camera);
-        shader_bullet.StopUseShader();
 
         glfwSwapBuffers(window);
     }
@@ -247,6 +240,7 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
         glfwSetWindowShouldClose(window, GL_TRUE);
     if ((key == GLFW_KEY_0) && (action == GLFW_PRESS)) {
         camera.begin();
+        GodMode = false;
         firstMouse = true;
     }
     if (action == GLFW_PRESS)
@@ -271,7 +265,7 @@ void mouseCallback(GLFWwindow *window, double xpos, double ypos) {
     lastX = xpos;
     lastY = ypos;
 
-    camera.ProcessMouseMovement(xoffset, yoffset);
+    camera.ProcessMouseMovement(xoffset, yoffset, GodMode);
 }
 
 void scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
@@ -279,16 +273,20 @@ void scrollCallback(GLFWwindow *window, double xoffset, double yoffset) {
 }
 
 void move() {
-    if (keys[GLFW_KEY_W])
-        camera.ProcessKeyboard(FORWARD, deltaTime);
-    if (keys[GLFW_KEY_S])
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
-    if (keys[GLFW_KEY_A])
-        camera.ProcessKeyboard(LEFT, deltaTime);
-    if (keys[GLFW_KEY_D])
-        camera.ProcessKeyboard(RIGHT, deltaTime);
-    if (keys[GLFW_KEY_SPACE])
-        camera.ProcessKeyboard(UP, deltaTime);
-    if (keys[GLFW_KEY_C])
-        camera.ProcessKeyboard(DOWN, deltaTime);
+    if (GodMode) {
+        if (keys[GLFW_KEY_W])
+            camera.ProcessKeyboard(FORWARD, deltaTime);
+        if (keys[GLFW_KEY_S])
+            camera.ProcessKeyboard(BACKWARD, deltaTime);
+        if (keys[GLFW_KEY_A])
+            camera.ProcessKeyboard(LEFT, deltaTime);
+        if (keys[GLFW_KEY_D])
+            camera.ProcessKeyboard(RIGHT, deltaTime);
+        if (keys[GLFW_KEY_SPACE])
+            camera.ProcessKeyboard(UP, deltaTime);
+        if (keys[GLFW_KEY_C])
+            camera.ProcessKeyboard(DOWN, deltaTime);
+    }
+    if (keys[GLFW_KEY_9])
+        GodMode = true;
 }

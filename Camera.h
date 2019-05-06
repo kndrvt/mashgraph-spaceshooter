@@ -66,7 +66,7 @@ public:
             this->Pos -= this->Up * velocity;
     }
 
-    void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset) {
+    void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, bool GodMode) {
         xoffset *= this->MouseSensitivity;
         yoffset *= this->MouseSensitivity;
 
@@ -77,6 +77,12 @@ public:
             this->Pitch = 89.0f;
         if (this->Pitch < -89.0f)
             this->Pitch = -89.0f;
+        if (!GodMode) {
+            if (this->Yaw > 179.0f)
+                this->Yaw = 179.0f;
+            if (this->Yaw < 1.0f)
+                this->Yaw = 1.0f;
+        }
 
         this->update();
     }

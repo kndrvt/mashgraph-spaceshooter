@@ -1,4 +1,4 @@
-# Install script for directory: /media/kondrat/DATA/Programs/Graphics/task2/Sample
+# Install script for directory: /media/kondrat/DATA/Programs/Graphics/task2/Space shooter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

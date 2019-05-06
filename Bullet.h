@@ -8,20 +8,22 @@
 class Bullet : public Model {
 public:
     glm::vec3 Pos;
-    glm::vec3 Target;
+    glm::vec3 Front;
     glm::vec3 Color;
     GLfloat Speed = 15.0f;
 
     Bullet(glm::vec3 p = glm::vec3(0.0, 0.0, 0.0), glm::vec3 t = glm::vec3(0.0, 0.0, 0.0)) : Model(
-            std::string("../objects/planet/planet.obj")), Pos(p), Target(t) {}
+            std::string("../objects/planet/planet.obj")), Pos(p), Front(t) {}
 
     Bullet(Bullet &b) : Model(std::string("../objects/planet/planet.obj")) {
         this->Pos = b.Pos;
-        this->Target = b.Target;
+        this->Front = b.Front;
         this->Speed = b.Speed;
     }
 
     void draw(ShaderProgram shader, Camera camera) {
+        shader.StartUseShader();
+
         glm::mat4 model(1.0);
         model = glm::translate(model, Pos);
         model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
@@ -37,15 +39,17 @@ public:
 
         shader.SetUniform("Color", Color);
         this->Draw(shader);
+
+        shader.StopUseShader();
     }
 
     void update(glm::vec3 p, glm::vec3 t) {
         Pos = p;
-        Target = t;
+        Front = t;
     }
 
     void movement(GLfloat deltaTime) {
-        Pos += Speed * deltaTime * Target;
+        Pos += Speed * deltaTime * Front;
     }
 
 };

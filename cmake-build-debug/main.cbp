@@ -8,34 +8,34 @@
 		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug"/>
+				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug"/>
+				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main">
-				<Option output="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug"/>
+				<Option output="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DGLFW_DLL"/>
-					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Sample/dependencies/include/GLAD"/>
+					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/GLAD"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -46,21 +46,21 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main/fast">
-				<Option output="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug"/>
+				<Option output="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DGLFW_DLL"/>
-					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Sample/dependencies/include/GLAD"/>
+					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/GLAD"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -71,72 +71,72 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug"/>
+				<Option working_dir="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/media/kondrat/DATA/Programs/Graphics/task2/Space\ shooter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Asteroid.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Asteroid.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Bullet.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Bullet.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Camera.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Camera.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Enemy.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Enemy.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Mesh.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Mesh.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Model.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Model.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.cpp">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/Skybox.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Skybox.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/common.h">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/common.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/glad.c">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/glad.c">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/main.cpp">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/main.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/CMakeLists.txt">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets-none.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
-		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Sample/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake">
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Targets.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\"/>
 		</Unit>
 	</Project>

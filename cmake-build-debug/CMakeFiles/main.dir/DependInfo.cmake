@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/media/kondrat/DATA/Programs/Graphics/task2/Sample/glad.c" "/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles/main.dir/glad.c.o"
+  "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/glad.c" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/main.dir/glad.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -19,8 +19,8 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../dependencies/include/GLAD"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/media/kondrat/DATA/Programs/Graphics/task2/Sample/ShaderProgram.cpp" "/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles/main.dir/ShaderProgram.cpp.o"
-  "/media/kondrat/DATA/Programs/Graphics/task2/Sample/main.cpp" "/media/kondrat/DATA/Programs/Graphics/task2/Sample/cmake-build-debug/CMakeFiles/main.dir/main.cpp.o"
+  "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.cpp" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/main.dir/ShaderProgram.cpp.o"
+  "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/main.cpp" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/main.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
