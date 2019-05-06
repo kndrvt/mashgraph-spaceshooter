@@ -125,7 +125,7 @@ int main(int argc, char **argv) {
 
     vector<glm::vec3> Positions;
     for (int i = 0; i < 10; ++i) {
-        Positions.push_back(glm::vec3(random_range(8, 5), 0.0, -5.0));
+        Positions.push_back(glm::vec3(random_range(8, 5), 0.0, 5.0));
     }
     GL_CHECK_ERRORS
 
@@ -165,13 +165,13 @@ int main(int argc, char **argv) {
         if (glm::length(enemy.Pos - bullet.Pos) < 3.0f) {
             enemy.dead = true;
         }
-        if (enemy.Pos.z > 0.0f || enemy.dead) {
-            glm::vec2 tmp(random_range(5, 0), random_range(5, 0));
-            enemy.Pos = glm::vec3(tmp, -100.0f);
-            enemy.Front = glm::normalize(glm::vec3(tmp, 1.0f));
+        if (enemy.dead) {
+            glm::vec2 tmp(0.0f, 0.0f);
+            enemy.Pos = glm::vec3(tmp, 100.0f);
+            enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
             enemy.dead = false;
         }
-        if (enemy.Pos.z > -5.0f) {
+        if (enemy.Pos.z < 10.0f) {
             enemy.Front = glm::vec3(0.0);
         }
         enemy.movement(deltaTime);
@@ -187,7 +187,7 @@ int main(int argc, char **argv) {
         for (int i = 0; i < 10; ++i) {
             model = glm::mat4(1.0);
             model = glm::translate(model, Positions[i]);
-            model = glm::rotate(model, -180.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::rotate(model, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
             model = glm::scale(model, glm::vec3(0.1, 0.1, 0.1));
             shader_asteroid.SetUniform("model", model);
             asteroid.Draw(shader_asteroid);
@@ -243,6 +243,9 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
         GodMode = false;
         firstMouse = true;
     }
+    if ((key == GLFW_KEY_9) && (action == GLFW_PRESS)) {
+        GodMode = true;
+    }
     if (action == GLFW_PRESS)
         keys[key] = true;
     else if (action == GLFW_RELEASE)
@@ -287,6 +290,5 @@ void move() {
         if (keys[GLFW_KEY_C])
             camera.ProcessKeyboard(DOWN, deltaTime);
     }
-    if (keys[GLFW_KEY_9])
-        GodMode = true;
+
 }

@@ -16,17 +16,17 @@ enum Camera_Movement {
 
 class Camera {
 public:
-    glm::vec3 Pos = glm::vec3(0.0f, 0.0f, 3.0f);
-    glm::vec3 Front = glm::vec3(0.0f, 0.0f, -1.0f);
+    glm::vec3 Pos;
+    glm::vec3 Front;
     GLfloat Yaw;
     GLfloat Pitch;
 
     Camera(GLsizei W, GLsizei H) : WIDTH(W), HEIGHT(H) {
-        Yaw = -90.0f;
+        Yaw = 90.0f;
         Pitch = 0.0f;
         FOV = 45.0f;
         Pos = glm::vec3(0.0f, 0.0f, 3.0f);
-        Front = glm::vec3(0.0f, 0.0f, -1.0f);
+        Front = glm::vec3(0.0f, 0.0f, 1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         WorldUp = Up;
         MovementSpeed = 5.0f;
@@ -34,11 +34,11 @@ public:
     }
 
     void begin() {
-        Yaw = -90.0f;
+        Yaw = 90.0f;
         Pitch = 0.0f;
         FOV = 45.0f;
         Pos = glm::vec3(0.0f, 0.0f, 3.0f);
-        Front = glm::vec3(0.0f, 0.0f, -1.0f);
+        Front = glm::vec3(0.0f, 0.0f, 1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
     }
 
