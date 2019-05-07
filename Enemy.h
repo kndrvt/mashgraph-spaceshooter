@@ -5,11 +5,12 @@
 #include <string>
 
 class Enemy: public Model {
+    GLfloat scl = 0.5;
 public:
     bool dead;
     glm::vec3 Pos;
     glm::vec3 Front;
-    GLfloat Speed;
+    GLfloat Speed = 20.0f;
     Bullet bullet;
 
     Enemy(std::string dir): Model(dir) {
@@ -19,6 +20,7 @@ public:
         Speed = 15.0f;
         bullet.update(Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - Pos));
         bullet.Color = glm::vec3(1.0, 0.0, 0.0);
+        this->Radius *= scl;
     }
 
     void draw(ShaderProgram shader, Camera camera) {
@@ -28,7 +30,7 @@ public:
         model = glm::mat4(1.0);
         model = glm::translate(model, Pos);
         model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0, 1.0, 0.0));
-        model = glm::scale(model, glm::vec3(0.5, 0.5, 0.5));
+        model = glm::scale(model, glm::vec3(scl, scl, scl));
         shader.SetUniform("model", model);
 
         glm::mat4 view(1.0);

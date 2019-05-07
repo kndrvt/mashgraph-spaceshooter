@@ -28,8 +28,6 @@ struct Texture {
 
 class Mesh {
 public:
-    glm::vec3 Center;
-    GLfloat Radius;
     vector<Vertex> vertices;
     vector<unsigned int> indices;
     vector<Texture> textures;
@@ -39,23 +37,6 @@ public:
         this->vertices = vertices;
         this->indices = indices;
         this->textures = textures;
-
-        glm::vec3 Sum(0.0f);
-        for(int i = 0; i < vertices.size(); ++i){
-            Sum += vertices[i].Position;
-        }
-        this->Center = glm::vec3(Sum.x / vertices.size(),
-                                 Sum.y / vertices.size(),
-                                 Sum.z / vertices.size());
-
-        GLfloat MaxRad = 0.0f;
-        GLfloat CurRad;
-        for(int i = 0; i < vertices.size(); ++i){
-            if ((CurRad = glm::length(vertices[i].Position - this->Center)) > MaxRad) {
-                MaxRad = CurRad;
-            }
-        }
-        this->Radius = MaxRad;
 
         setupMesh();
     }

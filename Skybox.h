@@ -87,7 +87,7 @@ public:
         glBindVertexArray(0);
         GL_CHECK_ERRORS;
     }
-    void draw(ShaderProgram shader, Camera camera) {
+    void draw(ShaderProgram shader, Camera camera, GLfloat currentFrame) {
         shader.StartUseShader();
 
         glm::mat4 view(1.0);
@@ -98,6 +98,7 @@ public:
         proj = camera.GetPerspectiveMatrix();
         shader.SetUniform("proj", proj);
 
+        shader.SetUniform("time", currentFrame);
         this->Draw();
         shader.StopUseShader();
     }

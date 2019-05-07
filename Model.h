@@ -21,9 +21,35 @@ public:
     vector<Mesh> meshes;
     string directory;
     bool gammaCorrection;
+    glm::vec3 Center;
+    GLfloat Radius;
 
     Model(string const &path, bool gamma = false) : gammaCorrection(gamma) {
+
         loadModel(path);
+
+//        glm::vec3 Sum(0.0f);
+//        for (int i = 0; i < all_vertices.size(); ++i) {
+//            Sum += all_vertices[i].Position;
+//        }
+//        this->Center = glm::vec3(Sum.x / all_vertices.size(),
+//                                 Sum.y / all_vertices.size(),
+//                                 Sum.z / all_vertices.size());
+        this->Center = glm::vec3(0.0f);
+
+//        GLfloat MaxRad = 0.0f;
+//        GLfloat CurRad;
+        GLfloat SumRad;
+        for (int i = 0; i < all_vertices.size(); ++i) {
+//            if ((CurRad = glm::length(all_vertices[i].Position - this->Center)) > MaxRad)
+//                MaxRad = CurRad;
+            SumRad += glm::length(all_vertices[i].Position - this->Center);
+
+        }
+//        this->Radius = MaxRad;
+        this->Radius = SumRad / all_vertices.size();
+        std::cout<< Radius <<std::endl;
+        all_vertices.clear();
     }
 
     void Draw(ShaderProgram shader) {
@@ -32,6 +58,8 @@ public:
     }
 
 private:
+    vector<Vertex> all_vertices;
+
     void loadModel(string const &path) {
 
         Assimp::Importer importer;
@@ -94,6 +122,8 @@ private:
             vertex.Bitangent = vector;
             vertices.push_back(vertex);
         }
+
+        all_vertices.insert(all_vertices.end(), vertices.begin(), vertices.end());
 
         for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
             aiFace face = mesh->mFaces[i];

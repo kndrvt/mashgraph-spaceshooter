@@ -20,6 +20,7 @@ glm::vec3 Positions[] = {
 
 
 class Asteroid: public Model {
+    GLfloat scl;
 public:
 
     Asteroid(std::string dir): Model(dir) {}
@@ -40,8 +41,8 @@ public:
             model = glm::mat4(1.0);
             model = glm::translate(model, Positions[i]);
             model = glm::rotate(model, 0.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-            float tmp = 0.01 * i;
-            model = glm::scale(model, glm::vec3(tmp, tmp, tmp));
+            scl = 0.01 * i;
+            model = glm::scale(model, glm::vec3(scl, scl, scl));
             shader.SetUniform("model", model);
             this->Draw(shader);
         }

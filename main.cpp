@@ -145,17 +145,17 @@ int main(int argc, char **argv) {
 
             // skybox draw
             //
-            skybox.draw(shader_skybox, camera);
+            skybox.draw(shader_skybox, camera, currentFrame);
 
             // enemy draw
             //
-            if (glm::length(enemy.Pos - bullet.Pos) < 1.0f) {
+            if (glm::length(enemy.Pos - bullet.Pos) < enemy.Radius) {
                 enemy.dead = true;
                 bullet.update(camera.Pos, glm::normalize(glm::vec3(0.0f)));
             }
-            if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
-                Health -= 20;
-            }
+//            if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
+//                Health -= 20;
+//            }
             if (enemy.dead) {
                 glm::vec2 tmp(random_range(10, 0), random_range(10, 0));
                 tmp *= 0.01f;
