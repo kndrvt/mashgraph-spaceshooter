@@ -148,43 +148,59 @@ int main(int argc, char **argv) {
             //
             skybox.draw(shader_skybox, camera, currentFrame);
 
+
             // gamer draw
             //
             if (shoot) {
                 shoot = false;
                 gamer.shoot(camera);
             }
+            for (int i = 0; i < enemies.size(); ++i) {
+                if (glm::length(enemies[i].Pos - camera.Pos) <= enemies[i].Radius + gamer.Radius) {
+                    gamer.damage();
+                    enemies[i].death();
+                }
+                if (glm::length(enemies[i].Pos - gamer.bullet.Pos) <= enemies[i].Radius) {
+                    gamer.hit(camera);
+                    enemies[i].damage();
+                }
+            }
+            for (int j = 0; j < asteroids.size(); ++j) {
+                if (glm::length(asteroids[j].Pos - camera.Pos) <= asteroids[j].Radius + gamer.Radius) {
+                    gamer.damage();
+                    asteroids[j].destruction();
+                }
+                if (glm::length(asteroids[j].Pos - gamer.bullet.Pos) <= asteroids[j].Radius) {
+                    gamer.hit(camera);
+                    asteroids[j].destruction();
+                }
+            }
             gamer.draw(shader_gamer, shader_bullet, camera, deltaTime);
+
 
             // enemy draw
             //
             for (int i = 0; i < enemies.size(); ++i) {
-                if (glm::length(enemies[i].Pos - gamer.bullet.Pos) < enemies[i].Radius) {
-                    enemies[i].hit();
-                    gamer.bullet.update(camera.Pos, glm::normalize(glm::vec3(0.0f)));
+                for (int j = 0; j < asteroids.size(); ++j) {
+                    if (glm::length(asteroids[j].Pos - enemies[i].Pos) <= (asteroids[j].Radius + enemies[i].Radius)) {
+                        enemies[i].death();
+                        asteroids[j].destruction();
+                    }
                 }
-//            if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
-//                Health -= 20;
-//            }
-                if (enemies[i].dead || enemies[i].Pos.z < 0.0f) {
-                    enemies[i].reboot();
+                if (glm::length(enemies[i].Pos - camera.Pos) <= gamer.Radius) {
+                    if (!GodMode) gamer.damage();
                 }
-//            if (enemy.Pos.z < 10.0f) {
-//                enemy.Front = glm::vec3(0.0);
-//            }
-                if (((int) rand() % 10) == 0 && !enemies[i].dead) enemies[i].shoot();
-                enemies[i].movement(deltaTime);
+
+                if ((int)round(currentFrame) % 5 == 0) enemies[i].shoot(camera);
+//                enemies[i].movement(deltaTime);
                 enemies[i].draw(shader_enemy, shader_bullet, camera, deltaTime);
             }
 
             // asteroid draw
             //
-            for (int i = 0; i < asteroids.size(); ++i) {
-                if (asteroids[i].destroyed || asteroids[i].Pos.z < 0.0f) {
-                    asteroids[i].reboot();
-                }
-                asteroids[i].movement(deltaTime);
-                asteroids[i].draw(shader_asteroid, camera, currentFrame);
+            for (int j = 0; j < asteroids.size(); ++j) {
+//                asteroids[j].movement(deltaTime);
+                asteroids[j].draw(shader_asteroid, camera, currentFrame);
             }
 
             glfwSwapBuffers(window);

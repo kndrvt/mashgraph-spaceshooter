@@ -29,7 +29,7 @@ public:
         Front = glm::vec3(0.0f, 0.0f, 1.0f);
         Up = glm::vec3(0.0f, 1.0f, 0.0f);
         WorldUp = Up;
-        MovementSpeed = 5.0f;
+        MovementSpeed = 20.0f;
         MouseSensitivity = 0.1f;
     }
 

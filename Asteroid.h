@@ -6,28 +6,29 @@
 
 
 glm::vec3 asteroidPositions[] = {
-        glm::vec3( 0.0f,  0.0f, 105.0f),
+        glm::vec3( 0.0f,  0.0f, 125.0f),
         glm::vec3( 2.0f,  5.0f, 165.0f),
         glm::vec3(-1.5f, -2.2f, 120.5f),
-        glm::vec3(-3.8f, -2.0f, 112.3f),
+        glm::vec3(-3.8f, -2.0f, 132.3f),
         glm::vec3( 2.4f, -0.4f, 130.5f),
         glm::vec3(-1.7f,  3.0f, 117.5f),
         glm::vec3( 1.3f, -2.0f, 140.5f),
         glm::vec3( 1.5f,  2.0f, 150.5f),
-        glm::vec3( 1.5f,  0.2f, 110.5f),
+        glm::vec3( 1.5f,  0.2f, 155.5f),
         glm::vec3(-1.3f,  1.0f, 180.5f)
 };
 
 
 class Asteroid: public Model {
-    GLfloat scl = 0.1f;
+    GLfloat scl = 0.5f;
 public:
-    bool destroyed = false;
     glm::vec3 Pos = asteroidPositions[(int)rand() % 10];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
-    GLfloat Speed = 15.0f;
+    GLfloat Speed = 10.0f;
 
-    Asteroid(std::string dir): Model(dir) {}
+    Asteroid(std::string dir): Model(dir) {
+        this->Radius *= scl;
+    }
 
     void draw(ShaderProgram shader, Camera camera, GLfloat currentFrame) {
         shader.StartUseShader();
@@ -41,9 +42,9 @@ public:
         shader.SetUniform("proj", proj);
 
         glm::mat4 model(1.0);
-        model = glm::translate(model, this->Pos + this->Center);
-        model = glm::rotate(model, - 0.5f * currentFrame, glm::vec3(1.0f, 1.0f, 0.0f) + this->Center);
-        model = glm::scale(model, glm::vec3(scl, scl, scl));
+        model = glm::translate(model, this->Pos);
+        model = glm::rotate(model, - 0.5f * currentFrame, glm::vec3(1.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(scl));
         shader.SetUniform("model", model);
 
         this->Draw(shader);
@@ -51,11 +52,18 @@ public:
     }
 
     void movement(GLfloat deltaTime) {
+        if (this->Pos.z < 0.0f) {
+            this->reboot();
+        }
         Pos += Speed * deltaTime * Front;
     }
 
     void reboot() {
         this->Pos = asteroidPositions[(int)rand() % 10];
-        this->destroyed = false;
+    }
+
+    void destruction() {
+        this->reboot();
+
     }
 };

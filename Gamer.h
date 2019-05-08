@@ -14,6 +14,7 @@ public:
     Gamer(Camera camera) {
         bullet.update(camera.Pos, glm::vec3(0.0f));
         bullet.Color = glm::vec3(0.8, 0.0, 1.0);
+        bullet.Speed = 50.0f;
     }
 
     void draw(ShaderProgram shader, ShaderProgram shader_bullet, Camera camera, GLfloat deltaTime) {
@@ -27,7 +28,11 @@ public:
         bullet.update(camera.Pos, camera.Front);
     }
 
-    void hit() {
+    void hit(Camera camera) {
+        this->bullet.update(camera.Pos, glm::vec3(0.0f));
+    }
+
+    void damage() {
         this->Health -= 20;
         if (this->Health <= 0) {
             this->EndGame = true;

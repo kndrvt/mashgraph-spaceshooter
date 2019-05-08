@@ -10,7 +10,7 @@ public:
     glm::vec3 Pos;
     glm::vec3 Front;
     glm::vec3 Color;
-    GLfloat Speed = 200.0f;
+    GLfloat Speed = 20.0f;
 
     Bullet(glm::vec3 p = glm::vec3(0.0, 0.0, 0.0), glm::vec3 t = glm::vec3(0.0, 0.0, 0.0)) : Model(
             std::string("../objects/planet/planet.obj")), Pos(p), Front(t) {
