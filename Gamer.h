@@ -8,6 +8,7 @@ class Gamer {
 public:
     GLfloat Radius = 0.5f;
     GLint Health = 100;
+    GLint  Scores = 0;
     Bullet bullet;
     bool EndGame = false;
 
@@ -29,6 +30,7 @@ public:
     }
 
     void hit(Camera camera) {
+        this->Scores += 100;
         this->bullet.update(camera.Pos, glm::vec3(0.0f));
     }
 

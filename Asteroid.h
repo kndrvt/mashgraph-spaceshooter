@@ -21,10 +21,12 @@ glm::vec3 asteroidPositions[] = {
 
 class Asteroid: public Model {
     GLfloat scl = 0.5f;
+    GLfloat destructionTime;
 public:
+    bool destroyed = false;
     glm::vec3 Pos = asteroidPositions[(int)rand() % 10];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
-    GLfloat Speed = 10.0f;
+    GLfloat Speed = 5.0f;
 
     Asteroid(std::string dir): Model(dir) {
         this->Radius *= scl;
@@ -47,6 +49,9 @@ public:
         model = glm::scale(model, glm::vec3(scl));
         shader.SetUniform("model", model);
 
+        shader.SetUniform("time", currentFrame);
+        shader.SetUniform("time0", this->destructionTime);
+        shader.SetUniform("destroyed", this->destroyed);
         this->Draw(shader);
         shader.StopUseShader();
     }
@@ -58,12 +63,13 @@ public:
         Pos += Speed * deltaTime * Front;
     }
 
-    void reboot() {
-        this->Pos = asteroidPositions[(int)rand() % 10];
+    void destruction(GLfloat currentFrame) {
+        this->destructionTime = currentFrame;
+        this->destroyed = true;
     }
 
-    void destruction() {
-        this->reboot();
-
+    void reboot() {
+        this->Pos = asteroidPositions[(int)rand() % 10];
+        this->destroyed = false;
     }
 };

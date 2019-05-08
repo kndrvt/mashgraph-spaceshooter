@@ -22,7 +22,9 @@ glm::vec3 enemyPositions[] = {
 
 class Enemy: public Model {
     GLfloat scl = 0.5;
+    GLfloat deathTime;
 public:
+    bool dead = false;
     glm::vec3 Pos = enemyPositions[(int)rand() % 10];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
     GLfloat Speed = 10.0f;
@@ -35,7 +37,7 @@ public:
         this->Radius *= scl;
     }
 
-    void draw(ShaderProgram shader, ShaderProgram shader_bullet, Camera camera, GLfloat deltaTime) {
+    void draw(ShaderProgram shader, ShaderProgram shader_bullet, Camera camera, GLfloat deltaTime, GLfloat currentFrame) {
         shader.StartUseShader();
 
         glm::mat4 model(1.0);
@@ -53,6 +55,9 @@ public:
         proj = camera.GetPerspectiveMatrix();
         shader.SetUniform("proj", proj);
 
+        shader.SetUniform("time", currentFrame);
+        shader.SetUniform("time0", this->deathTime);
+        shader.SetUniform("dead", this->dead);
         this->Draw(shader);
 
         shader.StopUseShader();
@@ -74,20 +79,22 @@ public:
         bullet.update(Pos, camera.Pos - Pos);
     }
 
-    void damage() {
+    void damage(GLfloat currentFrame) {
         this->Health -= 40;
         if (this->Health <= 0) {
-            this->death();
+            this->death(currentFrame);
         }
     }
 
-    void death() {
+    void death(GLfloat currentFrame) {
         this->Health = maxHealth;
-        this->reboot();
+        this->deathTime = currentFrame;
+        this->dead = true;
     }
 
     void reboot() {
         this->Pos = enemyPositions[(int)rand() % 10];
+        this->dead = false;
     }
 
 };

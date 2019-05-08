@@ -76,19 +76,21 @@ int main(int argc, char **argv) {
     ShaderProgram shader_gamer(shaders);
     GL_CHECK_ERRORS
 
-    shaders[GL_VERTEX_SHADER] = "../shaders/enemy/vertex.glsl";
-    shaders[GL_FRAGMENT_SHADER] = "../shaders/enemy/fragment.glsl";
-    ShaderProgram shader_enemy(shaders);
+    shaders[GL_VERTEX_SHADER] = "../shaders/bullet/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/bullet/fragment.glsl";
+    ShaderProgram shader_bullet(shaders);
     GL_CHECK_ERRORS
 
     shaders[GL_VERTEX_SHADER] = "../shaders/asteroid/vertex.glsl";
+    shaders[GL_GEOMETRY_SHADER] = "../shaders/asteroid/geometry.glsl";
     shaders[GL_FRAGMENT_SHADER] = "../shaders/asteroid/fragment.glsl";
     ShaderProgram shader_asteroid(shaders);
     GL_CHECK_ERRORS
 
-    shaders[GL_VERTEX_SHADER] = "../shaders/bullet/vertex.glsl";
-    shaders[GL_FRAGMENT_SHADER] = "../shaders/bullet/fragment.glsl";
-    ShaderProgram shader_bullet(shaders);
+    shaders[GL_VERTEX_SHADER] = "../shaders/enemy/vertex.glsl";
+    shaders[GL_GEOMETRY_SHADER] = "../shaders/enemy/geometry.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/enemy/fragment.glsl";
+    ShaderProgram shader_enemy(shaders);
     GL_CHECK_ERRORS
 
     glfwSwapInterval(1); // force 60 frames per second
@@ -156,23 +158,25 @@ int main(int argc, char **argv) {
                 gamer.shoot(camera);
             }
             for (int i = 0; i < enemies.size(); ++i) {
+                if (enemies[i].dead) continue;
                 if (glm::length(enemies[i].Pos - camera.Pos) <= enemies[i].Radius + gamer.Radius) {
                     gamer.damage();
-                    enemies[i].death();
+                    enemies[i].death(currentFrame);
                 }
                 if (glm::length(enemies[i].Pos - gamer.bullet.Pos) <= enemies[i].Radius) {
                     gamer.hit(camera);
-                    enemies[i].damage();
+                    enemies[i].damage(currentFrame);
                 }
             }
             for (int j = 0; j < asteroids.size(); ++j) {
+                if (asteroids[j].destroyed) continue;
                 if (glm::length(asteroids[j].Pos - camera.Pos) <= asteroids[j].Radius + gamer.Radius) {
                     gamer.damage();
-                    asteroids[j].destruction();
+                    asteroids[j].destruction(currentFrame);
                 }
                 if (glm::length(asteroids[j].Pos - gamer.bullet.Pos) <= asteroids[j].Radius) {
                     gamer.hit(camera);
-                    asteroids[j].destruction();
+                    asteroids[j].destruction(currentFrame);
                 }
             }
             gamer.draw(shader_gamer, shader_bullet, camera, deltaTime);
@@ -181,25 +185,29 @@ int main(int argc, char **argv) {
             // enemy draw
             //
             for (int i = 0; i < enemies.size(); ++i) {
-                for (int j = 0; j < asteroids.size(); ++j) {
-                    if (glm::length(asteroids[j].Pos - enemies[i].Pos) <= (asteroids[j].Radius + enemies[i].Radius)) {
-                        enemies[i].death();
-                        asteroids[j].destruction();
+                if (!enemies[i].dead) {
+                    for (int j = 0; j < asteroids.size(); ++j) {
+                        if (asteroids[j].destroyed) continue;
+                        if (glm::length(asteroids[j].Pos - enemies[i].Pos) <=
+                            (asteroids[j].Radius + enemies[i].Radius)) {
+                            enemies[i].death(currentFrame);
+                            asteroids[j].destruction(currentFrame);
+                        }
                     }
-                }
-                if (glm::length(enemies[i].Pos - camera.Pos) <= gamer.Radius) {
-                    if (!GodMode) gamer.damage();
-                }
+                    if (glm::length(enemies[i].Pos - camera.Pos) <= gamer.Radius) {
+                        if (!GodMode) gamer.damage();
+                    }
 
-                if ((int)round(currentFrame) % 5 == 0) enemies[i].shoot(camera);
-//                enemies[i].movement(deltaTime);
-                enemies[i].draw(shader_enemy, shader_bullet, camera, deltaTime);
+                    if ((int) round(currentFrame) % 5 == 0) enemies[i].shoot(camera);
+                }
+                enemies[i].movement(deltaTime);
+                enemies[i].draw(shader_enemy, shader_bullet, camera, deltaTime, currentFrame);
             }
 
             // asteroid draw
             //
             for (int j = 0; j < asteroids.size(); ++j) {
-//                asteroids[j].movement(deltaTime);
+                asteroids[j].movement(deltaTime);
                 asteroids[j].draw(shader_asteroid, camera, currentFrame);
             }
 
