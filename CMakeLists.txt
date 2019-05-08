@@ -14,7 +14,8 @@ set(SOURCE_FILES
     Skybox.h
     Enemy.h
     Asteroid.h
-    Bullet.h Camera.h)
+    Bullet.h
+    Camera.h Gamer.h)
 
 set(ADDITIONAL_INCLUDE_DIRS
         dependencies/include/GLAD)

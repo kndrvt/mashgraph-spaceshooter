@@ -100,6 +100,9 @@
 		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Enemy.h">
 			<Option target="main"/>
 		</Unit>
+		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Gamer.h">
+			<Option target="main"/>
+		</Unit>
 		<Unit filename="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/Mesh.h">
 			<Option target="main"/>
 		</Unit>

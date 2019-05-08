@@ -6,18 +6,31 @@
 
 const GLint maxHealth = 40;
 
-GLfloat random_range(int end, int begin) {
-    if ((int) rand() % 2) return (int) rand() % end + begin;
-    else return -((int) rand() % end + begin);
-}
+glm::vec3 enemyPositions[] = {
+        glm::vec3( 0.0f,  0.0f, 105.0f),
+        glm::vec3( 5.0f,  2.0f, 165.0f),
+        glm::vec3(-2.2f, -1.5f, 120.5f),
+        glm::vec3(-2.0f, -3.8f, 112.3f),
+        glm::vec3( 0.4f, -2.4f, 130.5f),
+        glm::vec3(-3.0f,  1.7f, 117.5f),
+        glm::vec3( 2.0f, -1.3f, 140.5f),
+        glm::vec3( 2.0f,  1.5f, 150.5f),
+        glm::vec3( 0.2f,  1.5f, 110.5f),
+        glm::vec3(-1.0f,  1.3f, 180.5f)
+};
+
+//GLfloat random_range(int end, int begin) {
+//    if ((int) rand() % 2) return (int) rand() % end + begin;
+//    else return -((int) rand() % end + begin);
+//}
 
 class Enemy: public Model {
     GLfloat scl = 0.5;
 public:
     bool dead = false;
-    glm::vec3 Pos = glm::vec3(-1.0f, 1.0f, 100.0f);
+    glm::vec3 Pos = enemyPositions[(int)rand() % 10];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
-    GLfloat Speed = 20.0f;
+    GLfloat Speed = 15.0f;
     Bullet bullet;
     GLint Health = maxHealth;
 
@@ -69,10 +82,7 @@ public:
     }
 
     void reboot() {
-        glm::vec2 tmp(random_range(5, 0), random_range(5, 0));
-        tmp *= 0.01f;
-        this->Pos = glm::vec3(tmp, 100.0f);
-//      this->Front = glm::normalize(glm::vec3(tmp, -1.0f));
+        this->Pos = enemyPositions[(int)rand() % 10];
         this->dead = false;
     }
 
