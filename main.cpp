@@ -158,7 +158,11 @@ int main(int argc, char **argv) {
 
             // asteroid draw
             //
-            asteroid.draw(shader_asteroid, camera);
+            if (asteroid.destroyed || asteroid.Pos.z < 0.0f) {
+                asteroid.reboot();
+            }
+            asteroid.movement(deltaTime);
+            asteroid.draw(shader_asteroid, camera, currentFrame);
 
             // bullet draw
             //

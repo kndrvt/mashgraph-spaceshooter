@@ -15,7 +15,7 @@ class Enemy: public Model {
     GLfloat scl = 0.5;
 public:
     bool dead = false;
-    glm::vec3 Pos = glm::vec3(0.0f, 0.0f, 100.0f);
+    glm::vec3 Pos = glm::vec3(-1.0f, 1.0f, 100.0f);
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
     GLfloat Speed = 20.0f;
     Bullet bullet;
@@ -69,10 +69,10 @@ public:
     }
 
     void reboot() {
-        glm::vec2 tmp(random_range(10, 0), random_range(10, 0));
+        glm::vec2 tmp(random_range(5, 0), random_range(5, 0));
         tmp *= 0.01f;
         this->Pos = glm::vec3(tmp, 100.0f);
-//                enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
+//      this->Front = glm::normalize(glm::vec3(tmp, -1.0f));
         this->dead = false;
     }
 
