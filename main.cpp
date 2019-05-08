@@ -3,13 +3,14 @@
 #include "ShaderProgram.h"
 #include "Camera.h"
 #include "Skybox.h"
+#include "Gamer.h"
 #include "Enemy.h"
 #include "Asteroid.h"
-#include "Bullet.h"
 
 static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
 
 Camera camera(WIDTH, HEIGHT);
+
 bool keys[1024];
 bool firstMouse = true;
 bool shoot = false;
@@ -18,7 +19,6 @@ GLfloat lastX = WIDTH / 2;
 GLfloat lastY = HEIGHT / 2;
 GLfloat deltaTime = 0.0f;    // Время, прошедшее между последним и текущим кадром
 GLfloat lastFrame = 0.0f;    // Время вывода последнего кадра
-GLint Health = 100;
 
 int initGL();
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
@@ -28,6 +28,7 @@ void scrollCallback(GLFWwindow *window, double xoffset, double yoffset);
 void move();
 
 int main(int argc, char **argv) {
+
     srand(time(NULL));
     if (!glfwInit()) {
         return -1;
@@ -70,6 +71,11 @@ int main(int argc, char **argv) {
     ShaderProgram shader_skybox(shaders);
     GL_CHECK_ERRORS
 
+    shaders[GL_VERTEX_SHADER] = "../shaders/gamer/vertex.glsl";
+    shaders[GL_FRAGMENT_SHADER] = "../shaders/gamer/fragment.glsl";
+    ShaderProgram shader_gamer(shaders);
+    GL_CHECK_ERRORS
+
     shaders[GL_VERTEX_SHADER] = "../shaders/enemy/vertex.glsl";
     shaders[GL_FRAGMENT_SHADER] = "../shaders/enemy/fragment.glsl";
     ShaderProgram shader_enemy(shaders);
@@ -87,7 +93,6 @@ int main(int argc, char **argv) {
 
     glfwSwapInterval(1); // force 60 frames per second
     {
-
         //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         // Skybox
@@ -97,7 +102,7 @@ int main(int argc, char **argv) {
 
         // Gamer
         //
-        Gamer gamer;
+        Gamer gamer(camera);
 
         // Enemy
         //
@@ -115,12 +120,6 @@ int main(int argc, char **argv) {
                 Asteroid(std::string("../objects/planet/planet.obj")),
                 Asteroid(std::string("../objects/planet/planet.obj"))
         };
-        GL_CHECK_ERRORS
-
-        // Bullet
-        //
-        Bullet bullet(camera.Pos, glm::normalize(glm::vec3(0.0f)));
-        bullet.Color = glm::vec3(0.8, 0.0, 1.0);
         GL_CHECK_ERRORS
 
         glEnable(GL_DEPTH_TEST);
@@ -149,12 +148,20 @@ int main(int argc, char **argv) {
             //
             skybox.draw(shader_skybox, camera, currentFrame);
 
+            // gamer draw
+            //
+            if (shoot) {
+                shoot = false;
+                gamer.shoot(camera);
+            }
+            gamer.draw(shader_gamer, shader_bullet, camera, deltaTime);
+
             // enemy draw
             //
             for (int i = 0; i < enemies.size(); ++i) {
-                if (glm::length(enemies[i].Pos - bullet.Pos) < enemies[i].Radius) {
+                if (glm::length(enemies[i].Pos - gamer.bullet.Pos) < enemies[i].Radius) {
                     enemies[i].hit();
-                    bullet.update(camera.Pos, glm::normalize(glm::vec3(0.0f)));
+                    gamer.bullet.update(camera.Pos, glm::normalize(glm::vec3(0.0f)));
                 }
 //            if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
 //                Health -= 20;
@@ -167,7 +174,7 @@ int main(int argc, char **argv) {
 //            }
                 if (((int) rand() % 10) == 0 && !enemies[i].dead) enemies[i].shoot();
                 enemies[i].movement(deltaTime);
-                enemies[i].draw(shader_enemy, camera);
+                enemies[i].draw(shader_enemy, shader_bullet, camera, deltaTime);
             }
 
             // asteroid draw
@@ -180,20 +187,8 @@ int main(int argc, char **argv) {
                 asteroids[i].draw(shader_asteroid, camera, currentFrame);
             }
 
-            // bullet draw
-            //
-            if (shoot) {
-                bullet.update(camera.Pos, camera.Front);
-                shoot = false;
-            }
-            bullet.movement(deltaTime);
-//            enemy.bullet.movement(deltaTime);
-
-            bullet.draw(shader_bullet, camera);
-//            enemy.bullet.draw(shader_bullet, camera);
-
             glfwSwapBuffers(window);
-            if (Health < 0) break;
+            if (gamer.EndGame) break;
         }
     }
     glfwTerminate();
@@ -202,7 +197,7 @@ int main(int argc, char **argv) {
 
 int initGL() {
     int res = 0;
-    //грузим функции opengl через glad
+
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         std::cout << "Failed to initialize OpenGL context" << std::endl;
         return -1;

@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "common.h"
 #include "Model.h"
 #include "Camera.h"

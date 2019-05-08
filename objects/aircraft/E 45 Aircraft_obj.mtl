@@ -25,4 +25,4 @@ illum 2
 map_Kd textures/E-45 _col.jpg
 map_Bump textures/E-45-nor_1.jpg
 map_Ks textures/E-45 _col.jpg
-refl textures/E-45_REF 1.jpg
+refl  textures/E-45_REF 1.jpg

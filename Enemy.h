@@ -40,7 +40,7 @@ public:
         this->Radius *= scl;
     }
 
-    void draw(ShaderProgram shader, Camera camera) {
+    void draw(ShaderProgram shader, ShaderProgram shader_bullet, Camera camera, GLfloat deltaTime) {
         shader.StartUseShader();
 
         glm::mat4 model(1.0);
@@ -62,6 +62,11 @@ public:
         this->Draw(shader);
 
         shader.StopUseShader();
+
+        shader_bullet.StartUseShader();
+        this->bullet.movement(deltaTime);
+        this->bullet.draw(shader_bullet, camera);
+        shader_bullet.StopUseShader();
     }
 
     void movement(GLfloat deltaTime) {
@@ -70,7 +75,6 @@ public:
 
     void shoot() {
         bullet.update(Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - Pos));
-        bullet.Color = glm::vec3(1.0, 0.0, 0.0);
     }
 
     void hit() {

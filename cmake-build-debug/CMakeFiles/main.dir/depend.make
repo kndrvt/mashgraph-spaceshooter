@@ -17,6 +17,7 @@ CMakeFiles/main.dir/main.cpp.o: ../Asteroid.h
 CMakeFiles/main.dir/main.cpp.o: ../Bullet.h
 CMakeFiles/main.dir/main.cpp.o: ../Camera.h
 CMakeFiles/main.dir/main.cpp.o: ../Enemy.h
+CMakeFiles/main.dir/main.cpp.o: ../Gamer.h
 CMakeFiles/main.dir/main.cpp.o: ../Mesh.h
 CMakeFiles/main.dir/main.cpp.o: ../Model.h
 CMakeFiles/main.dir/main.cpp.o: ../SOIL.h
