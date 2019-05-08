@@ -3,7 +3,6 @@
 #include "Model.h"
 #include "ShaderProgram.h"
 #include "Camera.h"
-#include <string>
 
 glm::vec3 Positions[] = {
         glm::vec3( 1.0f,  2.0f,  5.0f),

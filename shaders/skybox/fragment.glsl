@@ -10,7 +10,7 @@ const float eps = 0.001;
 const int max_marching_steps = 100;
 const float max_marching_dist = 50;
 
-const float speed = 15.0;
+const float speed = 20.0;
 float offset = - speed * time;
 
 struct Object {

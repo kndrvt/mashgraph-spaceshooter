@@ -5,8 +5,6 @@
 #include "Camera.h"
 #include "SOIL.h"
 
-#include <GLFW/glfw3.h>
-
 class Skybox {
 
 public:

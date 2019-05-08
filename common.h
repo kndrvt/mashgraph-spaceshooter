@@ -1,24 +1,24 @@
-#ifndef COMMON_H
-#define COMMON_H
-
+#pragma once
 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
-
 #include <glad/glad.h>
+#include <cstdlib>
+#include <ctime>
 
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 //полезный макрос для проверки ошибок
 //в строчке, где он был записан вызывает ThrowExceptionOnGLError, которая при возникновении ошибки opengl
 //пишет в консоль номер текущей строки и название исходного файла
 //а также тип ошибки
 #define GL_CHECK_ERRORS ThrowExceptionOnGLError(__LINE__,__FILE__);
-
-
-//#define PI 3.1415926535897932384626433832795f
-
+#define pi 3.14159265358979323846f;
 
 static void ThrowExceptionOnGLError(int line, const char *file) {
 
@@ -67,6 +67,3 @@ static void ThrowExceptionOnGLError(int line, const char *file) {
     if (gl_error != GL_NO_ERROR)
         throw std::runtime_error(errMsg);
 }
-
-
-#endif

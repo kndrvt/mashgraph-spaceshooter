@@ -1,9 +1,9 @@
 #pragma once
 
+
+#include "common.h"
 #include "Model.h"
 #include "Camera.h"
-#include <glm/glm.hpp>
-#include <string>
 
 class Bullet : public Model {
     GLfloat scl = 0.01;

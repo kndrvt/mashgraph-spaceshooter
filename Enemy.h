@@ -1,23 +1,27 @@
 #pragma once
 
+#include "common.h"
 #include "Model.h"
 #include "Bullet.h"
-#include <string>
+
+const GLint maxHealth = 40;
+
+GLfloat random_range(int end, int begin) {
+    if ((int) rand() % 2) return (int) rand() % end + begin;
+    else return -((int) rand() % end + begin);
+}
 
 class Enemy: public Model {
     GLfloat scl = 0.5;
 public:
-    bool dead;
-    glm::vec3 Pos;
-    glm::vec3 Front;
+    bool dead = false;
+    glm::vec3 Pos = glm::vec3(0.0f, 0.0f, 100.0f);
+    glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
     GLfloat Speed = 20.0f;
     Bullet bullet;
+    GLint Health = maxHealth;
 
     Enemy(std::string dir): Model(dir) {
-        dead = false;
-        Pos = glm::vec3(0.0f, 0.0f, 100.0f);
-        Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
-        Speed = 15.0f;
         bullet.update(Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - Pos));
         bullet.Color = glm::vec3(1.0, 0.0, 0.0);
         this->Radius *= scl;
@@ -54,6 +58,22 @@ public:
     void shoot() {
         bullet.update(Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - Pos));
         bullet.Color = glm::vec3(1.0, 0.0, 0.0);
+    }
+
+    void hit() {
+        this->Health -= 20;
+        if (this->Health <= 0) {
+            this->dead = true;
+            this->Health = maxHealth;
+        }
+    }
+
+    void reboot() {
+        glm::vec2 tmp(random_range(10, 0), random_range(10, 0));
+        tmp *= 0.01f;
+        this->Pos = glm::vec3(tmp, 100.0f);
+//                enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
+        this->dead = false;
     }
 
 };

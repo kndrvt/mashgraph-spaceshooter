@@ -7,15 +7,6 @@
 #include "Asteroid.h"
 #include "Bullet.h"
 
-
-//External dependencies
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <cstdlib>
-#include <ctime>
-
 static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
 
 Camera camera(WIDTH, HEIGHT);
@@ -30,7 +21,6 @@ GLfloat lastFrame = 0.0f;    // Время вывода последнего к�
 GLint Health = 100;
 
 int initGL();
-GLfloat random_range(int end, int begin);
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
 void mousebuttonCallback(GLFWwindow *window, int button, int action, int mods);
 void mouseCallback(GLFWwindow *window, double xpos, double ypos);
@@ -150,25 +140,20 @@ int main(int argc, char **argv) {
             // enemy draw
             //
             if (glm::length(enemy.Pos - bullet.Pos) < enemy.Radius) {
-                enemy.dead = true;
+                enemy.hit();
                 bullet.update(camera.Pos, glm::normalize(glm::vec3(0.0f)));
             }
 //            if (glm::length(enemy.bullet.Pos - glm::vec3(0.0f)) < 1.0f) {
 //                Health -= 20;
 //            }
-            if (enemy.dead) {
-                glm::vec2 tmp(random_range(10, 0), random_range(10, 0));
-                tmp *= 0.01f;
-                enemy.Pos = glm::vec3(tmp, 100.0f);
-                enemy.Front = glm::normalize(glm::vec3(tmp, -1.0f));
-                enemy.dead = false;
+            if (enemy.dead || enemy.Pos.z < 0.0f) {
+                enemy.reboot();
             }
-            if (enemy.Pos.z < 10.0f) {
-                enemy.Front = glm::vec3(0.0);
-            }
-            enemy.movement(deltaTime);
+//            if (enemy.Pos.z < 10.0f) {
+//                enemy.Front = glm::vec3(0.0);
+//            }
             if (((int) rand() % 10) == 0 && !enemy.dead) enemy.shoot();
-
+            enemy.movement(deltaTime);
             enemy.draw(shader_enemy, camera);
 
             // asteroid draw
@@ -209,11 +194,6 @@ int initGL() {
     std::cout << "GLSL: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
 
     return 0;
-}
-
-GLfloat random_range(int end, int begin) {
-    if ((int) rand() % 2) return (int) rand() % end + begin;
-    else return -((int) rand() % end + begin);
 }
 
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode) {
