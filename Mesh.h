@@ -62,8 +62,10 @@ public:
                 number = std::to_string(normalNr++);
             else if (name == "texture_height")
                 number = std::to_string(heightNr++);
-            shader.SetUniform(name + number, (int) i);
-            glBindTexture(GL_TEXTURE_2D, textures[i].id);
+            if (name + number == "texture_diffuse1") {
+                shader.SetUniform(name + number, (int) i);
+                glBindTexture(GL_TEXTURE_2D, textures[i].id);
+            }
         }
 
         glBindVertexArray(VAO);

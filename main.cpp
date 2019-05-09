@@ -105,6 +105,7 @@ int main(int argc, char **argv) {
         // Gamer
         //
         Gamer gamer(camera);
+        GL_CHECK_ERRORS
 
         // Enemy
         //
