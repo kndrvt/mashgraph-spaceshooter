@@ -47,7 +47,7 @@ public:
     }
 
     glm::mat4 GetPerspectiveMatrix() {
-        return glm::perspective(glm::radians(FOV), (GLfloat) WIDTH / HEIGHT, 0.1f, 200.0f);
+        return glm::perspective(glm::radians(FOV), (GLfloat) WIDTH / HEIGHT, 0.1f, 150.0f);
     }
 
     void ProcessKeyboard(Camera_Movement direction, GLfloat deltaTime) {

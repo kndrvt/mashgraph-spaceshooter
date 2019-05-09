@@ -6,32 +6,59 @@
 
 const GLint maxHealth = 40;
 
-glm::vec3 enemyPositions[] = {
-        glm::vec3( 0.0f,  0.0f, 125.0f),
-        glm::vec3( 5.0f,  2.0f, 165.0f),
-        glm::vec3(-2.2f, -1.5f, 120.5f),
-        glm::vec3(-2.0f, -3.8f, 142.3f),
-        glm::vec3( 0.4f, -2.4f, 130.5f),
-        glm::vec3(-3.0f,  1.7f, 137.5f),
-        glm::vec3( 2.0f, -1.3f, 140.5f),
-        glm::vec3( 2.0f,  1.5f, 150.5f),
-        glm::vec3( 0.2f,  1.5f, 130.5f),
-        glm::vec3(-1.0f,  1.3f, 180.5f)
+vector<glm::vec3> enemyPositions = {
+        glm::vec3(-10.0f, -10.0f, 250.0f),
+        glm::vec3(-10.0f, -6.0f, 230.0f),
+        glm::vec3(-10.0f, -2.0f, 210.0f),
+        glm::vec3(-10.0f, 2.0f, 210.0f),
+        glm::vec3(-10.0f, 6.0f, 230.0f),
+        glm::vec3(-10.0f, 10.0f, 250.0f),
+        glm::vec3(-6.0f, -10.0f, 230.0f),
+        glm::vec3(-6.0f, -6.0f, 210.0f),
+        glm::vec3(-6.0f, -2.0f, 190.0f),
+        glm::vec3(-6.0f, 2.0f, 190.0f),
+        glm::vec3(-6.0f, 6.0f, 210.0f),
+        glm::vec3(-6.0f, 10.0f, 230.0f),
+        glm::vec3(-2.0f, -10.0f, 210.0f),
+        glm::vec3(-2.0f, -6.0f, 190.0f),
+        glm::vec3(-2.0f, -2.0f, 170.0f),
+        glm::vec3(-2.0f, 2.0f, 170.0f),
+        glm::vec3(-2.0f, 6.0f, 190.0f),
+        glm::vec3(-2.0f, 10.0f, 210.0f),
+        glm::vec3(2.0f, -10.0f, 210.0f),
+        glm::vec3(2.0f, -6.0f, 190.0f),
+        glm::vec3(2.0f, -2.0f, 170.0f),
+        glm::vec3(2.0f, 2.0f, 170.0f),
+        glm::vec3(2.0f, 6.0f, 190.0f),
+        glm::vec3(2.0f, 10.0f, 210.0f),
+        glm::vec3(6.0f, -10.0f, 230.0f),
+        glm::vec3(6.0f, -6.0f, 210.0f),
+        glm::vec3(6.0f, -2.0f, 190.0f),
+        glm::vec3(6.0f, 2.0f, 190.0f),
+        glm::vec3(6.0f, 6.0f, 210.0f),
+        glm::vec3(6.0f, 10.0f, 230.0f),
+        glm::vec3(10.0f, -10.0f, 250.0f),
+        glm::vec3(10.0f, -6.0f, 230.0f),
+        glm::vec3(10.0f, -2.0f, 210.0f),
+        glm::vec3(10.0f, 2.0f, 210.0f),
+        glm::vec3(10.0f, 6.0f, 230.0f),
+        glm::vec3(10.0f, 10.0f, 250.0f)
 };
 
 
 class Enemy: public Model {
-    GLfloat scl = 0.5;
+    GLfloat scl;
+    GLfloat rtt;
     GLfloat deathTime;
 public:
     bool dead = false;
-    glm::vec3 Pos = enemyPositions[(int)rand() % 10];
+    glm::vec3 Pos = enemyPositions[(int)rand() % enemyPositions.size()];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
     GLfloat Speed = 10.0f;
     Bullet bullet;
     GLint Health = maxHealth;
 
-    Enemy(std::string dir): Model(dir) {
+    Enemy(std::string dir, GLfloat s = 0.5, GLfloat r = 0.0): Model(dir), scl(s), rtt(r) {
         bullet.update(Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - Pos));
         bullet.Color = glm::vec3(1.0, 0.0, 0.0);
         this->Radius *= scl;
@@ -43,7 +70,7 @@ public:
         glm::mat4 model(1.0);
         model = glm::mat4(1.0);
         model = glm::translate(model, Pos);
-        model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0, 1.0, 0.0));
+        model = glm::rotate(model, glm::radians(rtt), glm::vec3(0.0, 1.0, 0.0));
         model = glm::scale(model, glm::vec3(scl));
         shader.SetUniform("model", model);
 
@@ -64,6 +91,8 @@ public:
 
         shader_bullet.StartUseShader();
         this->bullet.movement(deltaTime);
+        if ((glm::length(this->Pos - bullet.Pos) >= 50.0f) || (glm::length(bullet.Front) == 0))
+            bullet.update(this->Pos, glm::vec3(0.0f));
         this->bullet.draw(shader_bullet, camera);
         shader_bullet.StopUseShader();
     }
@@ -76,7 +105,7 @@ public:
     }
 
     void shoot(Camera camera) {
-        bullet.update(Pos, camera.Pos - Pos);
+        bullet.update(Pos, glm::normalize(camera.Pos - Pos));
     }
 
     void damage(GLfloat currentFrame) {
@@ -93,7 +122,7 @@ public:
     }
 
     void reboot() {
-        this->Pos = enemyPositions[(int)rand() % 10];
+        this->Pos = enemyPositions[(int)rand() % enemyPositions.size()];
         this->dead = false;
     }
 

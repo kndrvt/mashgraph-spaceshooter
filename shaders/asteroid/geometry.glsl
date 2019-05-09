@@ -14,7 +14,7 @@ uniform bool destroyed;
 
 vec4 explode(vec4 position, vec3 normal)
 {
-    float magnitude = 50.0;
+    float magnitude = 10.0;
     vec3 direction;
     if (destroyed) {
         direction = normal * (time - time0) * magnitude;

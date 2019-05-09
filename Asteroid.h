@@ -1,35 +1,50 @@
 #pragma once
 
+#include "common.h"
 #include "Model.h"
 #include "ShaderProgram.h"
 #include "Camera.h"
 
 
-glm::vec3 asteroidPositions[] = {
-        glm::vec3( 0.0f,  0.0f, 125.0f),
-        glm::vec3( 2.0f,  5.0f, 165.0f),
-        glm::vec3(-1.5f, -2.2f, 120.5f),
-        glm::vec3(-3.8f, -2.0f, 132.3f),
-        glm::vec3( 2.4f, -0.4f, 130.5f),
-        glm::vec3(-1.7f,  3.0f, 117.5f),
-        glm::vec3( 1.3f, -2.0f, 140.5f),
-        glm::vec3( 1.5f,  2.0f, 150.5f),
-        glm::vec3( 1.5f,  0.2f, 155.5f),
-        glm::vec3(-1.3f,  1.0f, 180.5f)
+vector<glm::vec3> asteroidPositions = {
+        glm::vec3(-8.0f, -8.0f, 230.0f),
+        glm::vec3(-8.0f, -4.0f, 210.0f),
+        glm::vec3(-8.0f, 0.0f, 190.0f),
+        glm::vec3(-8.0f, 4.0f, 210.0f),
+        glm::vec3(-8.0f, 8.0f, 230.0f),
+        glm::vec3(-4.0f, -8.0f, 210.0f),
+        glm::vec3(-4.0f, -4.0f, 190.0f),
+        glm::vec3(-4.0f, 0.0f, 170.0f),
+        glm::vec3(-4.0f, 4.0f, 190.0f),
+        glm::vec3(-4.0f, 8.0f, 210.0f),
+        glm::vec3(0.0f, -8.0f, 190.0f),
+        glm::vec3(0.0f, -4.0f, 170.0f),
+        glm::vec3(0.0f, 0.0f, 150.0f),
+        glm::vec3(0.0f, 4.0f, 170.0f),
+        glm::vec3(0.0f, 8.0f, 190.0f),
+        glm::vec3(4.0f, -8.0f, 210.0f),
+        glm::vec3(4.0f, -4.0f, 190.0f),
+        glm::vec3(4.0f, 0.0f, 170.0f),
+        glm::vec3(4.0f, 4.0f, 190.0f),
+        glm::vec3(4.0f, 8.0f, 210.0f),
+        glm::vec3(8.0f, -8.0f, 230.0f),
+        glm::vec3(8.0f, -4.0f, 210.0f),
+        glm::vec3(8.0f, 0.0f, 190.0f),
+        glm::vec3(8.0f, 4.0f, 210.0f),
+        glm::vec3(8.0f, 8.0f, 230.0f)
 };
 
-
 class Asteroid: public Model {
-    GLfloat scl = 0.5f;
+    GLfloat scl;
     GLfloat destructionTime;
 public:
     bool destroyed = false;
-    glm::vec3 Pos = asteroidPositions[(int)rand() % 10];
+    glm::vec3 Pos = asteroidPositions[(int)rand() % asteroidPositions.size()];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
     GLfloat Speed = 5.0f;
 
-    Asteroid(std::string dir): Model(dir) {
-        this->Radius *= scl;
+    Asteroid(std::string dir, GLfloat s = 0.5f): Model(dir), scl(s) {
+        this->Radius *= this->scl;
     }
 
     void draw(ShaderProgram shader, Camera camera, GLfloat currentFrame) {
@@ -69,7 +84,7 @@ public:
     }
 
     void reboot() {
-        this->Pos = asteroidPositions[(int)rand() % 10];
+        this->Pos = asteroidPositions[(int)rand() % asteroidPositions.size()];
         this->destroyed = false;
     }
 };

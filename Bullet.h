@@ -5,7 +5,7 @@
 #include "Camera.h"
 
 class Bullet : public Model {
-    GLfloat scl = 0.01;
+    GLfloat scl = 0.02;
 public:
     glm::vec3 Pos;
     glm::vec3 Front;

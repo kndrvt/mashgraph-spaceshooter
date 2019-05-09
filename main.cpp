@@ -95,7 +95,7 @@ int main(int argc, char **argv) {
 
     glfwSwapInterval(1); // force 60 frames per second
     {
-        //    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+//            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
         // Skybox
         //
@@ -111,16 +111,24 @@ int main(int argc, char **argv) {
         vector<Enemy> enemies = {
                 Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj")),
                 Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj")),
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"))
+                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj")),
+                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), 0.5, 180.0),
+                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), 0.5, 180.0),
+                Enemy(std::string("../objects/spaceship1/Intergalactic_Spaceship-(Wavefront).obj")),
         };
         GL_CHECK_ERRORS
 
         // Asteroid
         //
         vector<Asteroid> asteroids = {
-                Asteroid(std::string("../objects/planet/planet.obj")),
-                Asteroid(std::string("../objects/planet/planet.obj")),
-                Asteroid(std::string("../objects/planet/planet.obj"))
+                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
+                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
+                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
+                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj"))
         };
         GL_CHECK_ERRORS
 
@@ -160,7 +168,7 @@ int main(int argc, char **argv) {
             for (int i = 0; i < enemies.size(); ++i) {
                 if (enemies[i].dead) continue;
                 if (glm::length(enemies[i].Pos - camera.Pos) <= enemies[i].Radius + gamer.Radius) {
-                    gamer.damage();
+                    if (!GodMode) gamer.damage();
                     enemies[i].death(currentFrame);
                 }
                 if (glm::length(enemies[i].Pos - gamer.bullet.Pos) <= enemies[i].Radius) {
