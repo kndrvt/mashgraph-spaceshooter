@@ -12,15 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e0740ec-349d-4f08-bd6f-5ac34a6a8438" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Bullet.h" beforeDir="false" afterPath="$PROJECT_DIR$/Bullet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gamer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Gamer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/Mesh.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/asteroid/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/asteroid/fragment.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shaders/enemy/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/enemy/fragment.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/A2.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/A2.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/Textures/Albedo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/Textures/Displacement.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/Textures/Emission.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/Textures/Metalness.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid1/Textures/Normal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor.blend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor_Tex/Meteor_d.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor_Tex/Meteor_g.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor_Tex/Meteor_n.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/Meteor_Tex/Meteor_s.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/objects/asteroid4/tex.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shaders/bullet/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/bullet/fragment.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shaders/gamer/fragment.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/gamer/fragment.glsl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shaders/gamer/vertex.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shaders/gamer/vertex.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textures/aim.png" beforeDir="false" afterPath="$PROJECT_DIR$/textures/aim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/skybox.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/textures/space.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="101" column="63" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="63" />
+            <state relative-caret-position="1665">
+              <caret line="160" selection-start-line="160" selection-end-line="160" />
               <folding>
                 <element signature="e#20#39#0" expanded="true" />
               </folding>
@@ -48,67 +62,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Asteroid.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-              <folding>
-                <element signature="e#14#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Bullet.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="33" column="40" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="33" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Model.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="e#14#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gamer.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
-              <folding>
-                <element signature="e#14#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
-              <folding>
-                <element signature="e#14#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Mesh.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="72" column="73" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="73" />
+            <state relative-caret-position="270">
+              <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
               <folding>
                 <element signature="e#14#33#0" expanded="true" />
               </folding>
@@ -119,8 +76,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shaders/gamer/vertex.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+            <state relative-caret-position="105">
+              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -128,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shaders/gamer/fragment.glsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -183,7 +149,6 @@
         <option value="$PROJECT_DIR$/Asteriod.h" />
         <option value="$PROJECT_DIR$/objects/asteroid/10464_Asteroid_v1_Iterations-2.mtl" />
         <option value="$PROJECT_DIR$/objects/planet/planet.obj" />
-        <option value="$PROJECT_DIR$/shaders/bullet/fragment.glsl" />
         <option value="$PROJECT_DIR$/Skybox.h" />
         <option value="$PROJECT_DIR$/common.h" />
         <option value="$PROJECT_DIR$/Model.h" />
@@ -203,13 +168,14 @@
         <option value="$PROJECT_DIR$/objects/asteroid3/asteroidOBJ.mtl" />
         <option value="$PROJECT_DIR$/Asteroid.h" />
         <option value="$PROJECT_DIR$/shaders/enemy/fragment.glsl" />
-        <option value="$PROJECT_DIR$/shaders/asteroid/fragment.glsl" />
-        <option value="$PROJECT_DIR$/shaders/gamer/fragment.glsl" />
         <option value="$PROJECT_DIR$/Mesh.h" />
         <option value="$PROJECT_DIR$/Bullet.h" />
+        <option value="$PROJECT_DIR$/shaders/asteroid/fragment.glsl" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/shaders/gamer/fragment.glsl" />
         <option value="$PROJECT_DIR$/shaders/gamer/vertex.glsl" />
         <option value="$PROJECT_DIR$/Gamer.h" />
+        <option value="$PROJECT_DIR$/shaders/bullet/fragment.glsl" />
       </list>
     </option>
   </component>
@@ -236,6 +202,11 @@
             <path>
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
               <item name="Space shooter" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="main" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Space shooter" type="462c0819:PsiDirectoryNode" />
               <item name="shaders" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -248,13 +219,7 @@
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
               <item name="Space shooter" type="462c0819:PsiDirectoryNode" />
               <item name="shaders" type="462c0819:PsiDirectoryNode" />
-              <item name="enemy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="main" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Space shooter" type="462c0819:PsiDirectoryNode" />
-              <item name="shaders" type="462c0819:PsiDirectoryNode" />
-              <item name="gamer" type="462c0819:PsiDirectoryNode" />
+              <item name="bullet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="main" type="b2602c69:ProjectViewProjectNode" />
@@ -347,12 +312,12 @@
       <workItem from="1557379174649" duration="50000" />
       <workItem from="1557379607422" duration="962000" />
       <workItem from="1557381223806" duration="1693000" />
-      <workItem from="1557386644489" duration="12119000" />
+      <workItem from="1557386644489" duration="18451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216330000" />
+    <option name="totallyTimeSpent" value="222662000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -378,7 +343,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32921174" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32612056" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32921174" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.20556414" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32921174" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.32766616" />
@@ -583,7 +548,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Gamer.h</url>
-          <line>87</line>
+          <line>81</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -653,12 +618,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Gamer.h</url>
-          <line>52</line>
+          <line>55</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Gamer.h</url>
-          <line>53</line>
+          <line>56</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
@@ -691,13 +656,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shaders/bullet/vertex.glsl">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/bin/cmake/linux/share/cmake-3.13/Modules/FindOpenGL.cmake">
       <provider selected="true" editor-type-id="text-editor">
@@ -894,29 +852,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/asteroid/fragment.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="e#14#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="101" column="63" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="63" />
-          <folding>
-            <element signature="e#20#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -931,27 +872,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/gamer/fragment.glsl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shaders/enemy/fragment.glsl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Mesh.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="72" column="73" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="73" />
-          <folding>
-            <element signature="e#14#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -969,20 +893,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shaders/gamer/vertex.glsl">
+    <entry file="file://$PROJECT_DIR$/Mesh.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="40" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+        <state relative-caret-position="283">
+          <caret line="72" column="73" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="73" />
+          <folding>
+            <element signature="e#14#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/asteroid/fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
+          <folding>
+            <element signature="e#20#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/gamer/fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gamer.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
+        <state relative-caret-position="270">
+          <caret line="64" column="42" selection-start-line="64" selection-start-column="42" selection-end-line="64" selection-end-column="42" />
           <folding>
             <element signature="e#14#33#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/gamer/vertex.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shaders/bullet/fragment.glsl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
         </state>
       </provider>
     </entry>

@@ -6,10 +6,10 @@
 #include "SOIL.h"
 
 GLfloat vertices[] = {
-        0.5f,  0.5f, 0.0f, 1.0f, 1.0f,   // Верхний правый
-        0.5f, -0.5f, 0.0f, 1.0f, 0.0f,   // Нижний правый
-        -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,   // Нижний левый
-        -0.5f,  0.5f, 0.0f, 0.0f, 1.0f    // Верхний левый
+        0.1f,  0.1f, 0.99f, 1.0f, 1.0f,   // Верхний правый
+        0.1f, -0.1f, 0.99f, 1.0f, 0.0f,   // Нижний правый
+        -0.1f, -0.1f, 0.99f, 0.0f, 0.0f,   // Нижний левый
+        -0.1f,  0.1f, 0.99f, 0.0f, 1.0f    // Верхний левый
 };
 
 GLint indices[] = {
@@ -47,9 +47,12 @@ class Gamer {
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
         int width, height;
-        unsigned char *image = SOIL_load_image("../textures/aim.png", &width, &height, nullptr, SOIL_LOAD_RGB);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
-        glGenerateMipmap(GL_TEXTURE_2D);
+        unsigned char *image = SOIL_load_image("../textures/aim.png", &width, &height, nullptr, SOIL_LOAD_RGBA);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         SOIL_free_image_data(image);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
@@ -57,21 +60,12 @@ class Gamer {
     void Draw(ShaderProgram shader, Camera camera) {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
-        shader.SetUniform("aimTex", 0);
 
         glm::mat4 model(1.0);
         shader.SetUniform("model", model);
 
-        glm::mat4 view(1.0);
-        view = camera.GetViewMatrix();
-        shader.SetUniform("view", view);
-
-        glm::mat4 proj(1.0);
-        proj = camera.GetPerspectiveMatrix();
-        shader.SetUniform("proj", proj);
-
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 2, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
     }
 public:
