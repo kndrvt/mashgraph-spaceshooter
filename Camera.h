@@ -22,6 +22,7 @@ public:
     GLfloat Pitch;
     GLsizei WIDTH;
     GLsizei HEIGHT;
+    bool SHIP = true;
 
     Camera(GLsizei W, GLsizei H) : WIDTH(W), HEIGHT(H) {
         Yaw = 90.0f;

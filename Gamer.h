@@ -7,41 +7,41 @@
 
 GLfloat vertices[] = {
         // aim
-        0.1f,  0.1f, 0.99f, 1.0f, 1.0f,
-        0.1f, -0.1f, 0.99f, 1.0f, 0.0f,
-        -0.1f, -0.1f, 0.99f, 0.0f, 0.0f,
-        -0.1f,  0.1f, 0.99f, 0.0f, 1.0f,
+        0.1f,  0.1f, 0.1f, 1.0f, 1.0f,
+        0.1f, -0.1f, 0.1f, 1.0f, 0.0f,
+        -0.1f, -0.1f, 0.1f, 0.0f, 0.0f,
+        -0.1f,  0.1f, 0.1f, 0.0f, 1.0f,
         // health
-        -2.2f, 0.95f, 0.99f, 0.0f, 0.0f,
-        -2.2f, 0.85f, 0.99f, 0.0f, 1.0f,
-        -2.1f, 0.95f, 0.99f, 0.1f, 0.0f,
-        -2.1f, 0.85f, 0.99f, 0.1f, 1.0f,
-        -2.1f, 0.95f, 0.99f, 0.0f, 0.0f,
-        -2.1f, 0.85f, 0.99f, 0.0f, 1.0f,
-        -2.0f, 0.95f, 0.99f, 0.1f, 0.0f,
-        -2.0f, 0.85f, 0.99f, 0.1f, 1.0f,
-        -2.0f, 0.95f, 0.99f, 0.0f, 0.0f,
-        -2.0f, 0.85f, 0.99f, 0.0f, 1.0f,
-        -1.9f, 0.95f, 0.99f, 0.1f, 0.0f,
-        -1.9f, 0.85f, 0.99f, 0.1f, 1.0f,
+        -2.3f, 0.95f, 0.1f, 0.0f, 0.0f,
+        -2.3f, 0.85f, 0.1f, 0.0f, 1.0f,
+        -2.2f, 0.95f, 0.1f, 0.1f, 0.0f,
+        -2.2f, 0.85f, 0.1f, 0.1f, 1.0f,
+        -2.2f, 0.95f, 0.1f, 0.0f, 0.0f,
+        -2.2f, 0.85f, 0.1f, 0.0f, 1.0f,
+        -2.1f, 0.95f, 0.1f, 0.1f, 0.0f,
+        -2.1f, 0.85f, 0.1f, 0.1f, 1.0f,
+        -2.1f, 0.95f, 0.1f, 0.0f, 0.0f,
+        -2.1f, 0.85f, 0.1f, 0.0f, 1.0f,
+        -2.0f, 0.95f, 0.1f, 0.1f, 0.0f,
+        -2.0f, 0.85f, 0.1f, 0.1f, 1.0f,
         // scores
-        1.9f, 0.95f, 0.99f, 0.0f, 0.0f,
-        1.9f, 0.85f, 0.99f, 0.0f, 1.0f,
-        2.0f, 0.95f, 0.99f, 0.1f, 0.0f,
-        2.0f, 0.85f, 0.99f, 0.1f, 1.0f,
-        2.0f, 0.95f, 0.99f, 0.0f, 0.0f,
-        2.0f, 0.85f, 0.99f, 0.0f, 1.0f,
-        2.1f, 0.95f, 0.99f, 0.1f, 0.0f,
-        2.1f, 0.85f, 0.99f, 0.1f, 1.0f,
-        2.1f, 0.95f, 0.99f, 0.0f, 0.0f,
-        2.1f, 0.85f, 0.99f, 0.0f, 1.0f,
-        2.2f, 0.95f, 0.99f, 0.1f, 0.0f,
-        2.2f, 0.85f, 0.99f, 0.1f, 1.0f,
+        2.0f, 0.95f, 0.1f, 0.0f, 0.0f,
+        2.0f, 0.85f, 0.1f, 0.0f, 1.0f,
+        2.1f, 0.95f, 0.1f, 0.1f, 0.0f,
+        2.1f, 0.85f, 0.1f, 0.1f, 1.0f,
+        2.1f, 0.95f, 0.1f, 0.0f, 0.0f,
+        2.1f, 0.85f, 0.1f, 0.0f, 1.0f,
+        2.2f, 0.95f, 0.1f, 0.1f, 0.0f,
+        2.2f, 0.85f, 0.1f, 0.1f, 1.0f,
+        2.2f, 0.95f, 0.1f, 0.0f, 0.0f,
+        2.2f, 0.85f, 0.1f, 0.0f, 1.0f,
+        2.3f, 0.95f, 0.1f, 0.1f, 0.0f,
+        2.3f, 0.85f, 0.1f, 0.1f, 1.0f,
         // ship
-        2.0f,  2.0f, 0.99f, 1.0f, 0.0f,
-        2.0f, -2.0f, 0.99f, 1.0f, 0.7f,
-        -2.0f, -2.0f, 0.99f, 0.0f, 0.7f,
-        -2.0f,  2.0f, 0.99f, 0.0f, 0.0f
+        1.5f,  1.5f, 0.1f, 1.0f, 0.0f,
+        1.5f, -1.0f, 0.1f, 1.0f, 0.8f,
+        -1.5f, -1.0f, 0.1f, 0.0f, 0.8f,
+        -1.5f,  1.5f, 0.1f, 0.0f, 0.0f
 };
 
 GLint indices[] = {
@@ -161,6 +161,7 @@ class Gamer {
         shader.SetUniform("number", 1);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
+
         // draw health
         //
         glBindTexture(GL_TEXTURE_2D, digitsTexture);
@@ -185,12 +186,14 @@ class Gamer {
         shader.SetUniform("number", 7);
         glDrawElements(GL_TRIANGLES, 42, GL_UNSIGNED_INT, 0);
 
-//        // draw ship
-//        //
-//        glBindTexture(GL_TEXTURE_2D, shipTexture);
-//
-//        shader.SetUniform("number", 8);
-//        glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
+        // draw ship
+        //
+        if (camera.SHIP) {
+            glBindTexture(GL_TEXTURE_2D, shipTexture);
+
+            shader.SetUniform("number", 8);
+            glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
+        }
 
         glBindVertexArray(0);
     }
@@ -219,18 +222,18 @@ public:
     }
 
     void draw(ShaderProgram shader, ShaderProgram shader_bullet, Camera camera, GLfloat deltaTime) {
-        shader.StartUseShader();
-        shader.SetUniform("Health", this->Health);
-        shader.SetUniform("Scores", this->Scores);
-        this->Draw(shader, camera);
-        shader.StopUseShader();
-
         shader_bullet.StartUseShader();
         for (int i = 0; i < bullets.size(); ++i) {
             this->bullets[i].movement(deltaTime);
             this->bullets[i].draw(shader_bullet, camera);
         }
         shader_bullet.StopUseShader();
+
+        shader.StartUseShader();
+        shader.SetUniform("Health", this->Health);
+        shader.SetUniform("Scores", this->Scores);
+        this->Draw(shader, camera);
+        shader.StopUseShader();
     }
 
     void shoot(Camera camera) {

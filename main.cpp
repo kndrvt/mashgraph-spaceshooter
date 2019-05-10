@@ -266,13 +266,17 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
         GodMode = false;
         firstMouse = true;
     }
+    if ((key == GLFW_KEY_1) && (action == GLFW_PRESS)) {
+        camera.SHIP = !camera.SHIP;
+    }
     if ((key == GLFW_KEY_9) && (action == GLFW_PRESS)) {
         GodMode = true;
     }
-    if (action == GLFW_PRESS)
+    if (action == GLFW_PRESS) {
         keys[key] = true;
-    else if (action == GLFW_RELEASE)
+    } else if (action == GLFW_RELEASE) {
         keys[key] = false;
+    }
 }
 
 void mousebuttonCallback(GLFWwindow *window, int button, int action, int mods) {
