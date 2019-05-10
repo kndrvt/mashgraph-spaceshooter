@@ -45,6 +45,7 @@ public:
 
     Asteroid(std::string dir, GLfloat s = 0.5f): Model(dir), scl(s) {
         this->Radius *= this->scl;
+        if (this->Radius > 10.0f) this->Radius *= 0.1;
     }
 
     void draw(ShaderProgram shader, Camera camera, GLfloat currentFrame) {

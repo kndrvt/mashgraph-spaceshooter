@@ -7,15 +7,11 @@
 
 GLfloat vertices[] = {
         // aim
-        0.1f,  0.1f, 0.1f, 1.0f, 1.0f,
-        0.1f, -0.1f, 0.1f, 1.0f, 0.0f,
-        -0.1f, -0.1f, 0.1f, 0.0f, 0.0f,
-        -0.1f,  0.1f, 0.1f, 0.0f, 1.0f,
+        0.1f,  0.1f, 0.1f, 1.0f, 0.0f,
+        0.1f, -0.1f, 0.1f, 1.0f, 1.0f,
+        -0.1f, -0.1f, 0.1f, 0.0f, 1.0f,
+        -0.1f,  0.1f, 0.1f, 0.0f, 0.0f,
         // health
-        -2.3f, 0.95f, 0.1f, 0.0f, 0.0f,
-        -2.3f, 0.85f, 0.1f, 0.0f, 1.0f,
-        -2.2f, 0.95f, 0.1f, 0.1f, 0.0f,
-        -2.2f, 0.85f, 0.1f, 0.1f, 1.0f,
         -2.2f, 0.95f, 0.1f, 0.0f, 0.0f,
         -2.2f, 0.85f, 0.1f, 0.0f, 1.0f,
         -2.1f, 0.95f, 0.1f, 0.1f, 0.0f,
@@ -24,7 +20,15 @@ GLfloat vertices[] = {
         -2.1f, 0.85f, 0.1f, 0.0f, 1.0f,
         -2.0f, 0.95f, 0.1f, 0.1f, 0.0f,
         -2.0f, 0.85f, 0.1f, 0.1f, 1.0f,
+        -2.0f, 0.95f, 0.1f, 0.0f, 0.0f,
+        -2.0f, 0.85f, 0.1f, 0.0f, 1.0f,
+        -1.9f, 0.95f, 0.1f, 0.1f, 0.0f,
+        -1.9f, 0.85f, 0.1f, 0.1f, 1.0f,
         // scores
+        1.9f, 0.95f, 0.1f, 0.0f, 0.0f,
+        1.9f, 0.85f, 0.1f, 0.0f, 1.0f,
+        2.0f, 0.95f, 0.1f, 0.1f, 0.0f,
+        2.0f, 0.85f, 0.1f, 0.1f, 1.0f,
         2.0f, 0.95f, 0.1f, 0.0f, 0.0f,
         2.0f, 0.85f, 0.1f, 0.0f, 1.0f,
         2.1f, 0.95f, 0.1f, 0.1f, 0.0f,
@@ -33,15 +37,16 @@ GLfloat vertices[] = {
         2.1f, 0.85f, 0.1f, 0.0f, 1.0f,
         2.2f, 0.95f, 0.1f, 0.1f, 0.0f,
         2.2f, 0.85f, 0.1f, 0.1f, 1.0f,
-        2.2f, 0.95f, 0.1f, 0.0f, 0.0f,
-        2.2f, 0.85f, 0.1f, 0.0f, 1.0f,
-        2.3f, 0.95f, 0.1f, 0.1f, 0.0f,
-        2.3f, 0.85f, 0.1f, 0.1f, 1.0f,
+        // icon
+        -2.2f, 0.95f, 0.1f, 0.0f, 0.0f,
+        -2.2f, 0.85f, 0.1f, 0.0f, 1.0f,
+        -2.35f, 0.95f, 0.1f, 1.0f, 0.0f,
+        -2.35f, 0.85f, 0.1f, 1.0f, 1.0f,
         // ship
-        1.5f,  1.5f, 0.1f, 1.0f, 0.0f,
-        1.5f, -1.0f, 0.1f, 1.0f, 0.8f,
-        -1.5f, -1.0f, 0.1f, 0.0f, 0.8f,
-        -1.5f,  1.5f, 0.1f, 0.0f, 0.0f
+        2.0f,  1.0f, 0.1f, 1.0f, 0.0f,
+        2.0f, -1.0f, 0.1f, 1.0f, 1.0f,
+        -2.0f, -1.0f, 0.1f, 0.0f, 1.0f,
+        -2.0f,  1.0f, 0.1f, 0.0f, 0.0f
 };
 
 GLint indices[] = {
@@ -62,9 +67,13 @@ GLint indices[] = {
         21, 22, 23,
         24, 25, 26,
         25, 26, 27,
-        // ship
+        // icon
         28, 29, 30,
-        29, 30, 31
+        29, 30, 31,
+        // ship
+        32, 33, 34,
+        33, 34, 35
+
 };
 
 const int MAX_BULLET = 10;
@@ -72,6 +81,7 @@ const int MAX_BULLET = 10;
 class Gamer {
     unsigned int aimTexture;
     unsigned int digitsTexture;
+    unsigned int heartTexture;
     unsigned int shipTexture;
     unsigned int VAO;
     unsigned int VBO;
@@ -120,6 +130,19 @@ class Gamer {
         glGenTextures(1, &digitsTexture);
         glBindTexture(GL_TEXTURE_2D, digitsTexture);
         image = SOIL_load_image("../textures/digits.png", &width, &height, nullptr, SOIL_LOAD_RGBA);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        SOIL_free_image_data(image);
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+        // heart texture
+        //
+        glGenTextures(1, &heartTexture);
+        glBindTexture(GL_TEXTURE_2D, heartTexture);
+        image = SOIL_load_image("../textures/heart.png", &width, &height, nullptr, SOIL_LOAD_RGBA);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -186,13 +209,20 @@ class Gamer {
         shader.SetUniform("number", 7);
         glDrawElements(GL_TRIANGLES, 42, GL_UNSIGNED_INT, 0);
 
+        // draw heart icon
+        //
+        glBindTexture(GL_TEXTURE_2D, heartTexture);
+
+        shader.SetUniform("number", 8);
+        glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
+
         // draw ship
         //
         if (camera.SHIP) {
             glBindTexture(GL_TEXTURE_2D, shipTexture);
 
-            shader.SetUniform("number", 8);
-            glDrawElements(GL_TRIANGLES, 48, GL_UNSIGNED_INT, 0);
+            shader.SetUniform("number", 9);
+            glDrawElements(GL_TRIANGLES, 54, GL_UNSIGNED_INT, 0);
         }
 
         glBindVertexArray(0);
@@ -202,7 +232,6 @@ public:
     GLfloat Radius = 1.0f;
     GLint Health = 100;
     GLint  Scores = 0;
-    // TODO переделать класс с учетом
     vector<Bullet> bullets;
     bool EndGame = false;
 

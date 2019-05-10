@@ -12,7 +12,7 @@ uniform int number;
 void main()
 {
     mat4 res = model;
-    if ((2 <= number) && (number <= 7)) {
+    if ((2 <= number) && (number <= 8)) {
         res = model_digits * model;
     }
     gl_Position = res * vec4(aPos, 1.0);

@@ -35,6 +35,6 @@ void main()
 	} else {
 		color = texture(tex, TexCoords);
 	}
-	if ((number <= 7) && (color.w == 1.0)) color.w = 0.7;
+	if ((number == 1) && (color.w == 1.0)) color.w = 0.7;
 	FragColor = color;
 }

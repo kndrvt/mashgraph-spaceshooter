@@ -28,14 +28,14 @@ public:
 
         loadModel(path);
 
-        glm::vec3 Sum(0.0f);
-        for (int i = 0; i < all_vertices.size(); ++i) {
-            Sum += all_vertices[i].Position;
-        }
-        this->Center = glm::vec3(Sum.x / all_vertices.size(),
-                                 Sum.y / all_vertices.size(),
-                                 Sum.z / all_vertices.size());
-//        this->Center = glm::vec3(0.0f);
+//        glm::vec3 Sum(0.0f);
+//        for (int i = 0; i < all_vertices.size(); ++i) {
+//            Sum += all_vertices[i].Position;
+//        }
+//        this->Center = glm::vec3(Sum.x / all_vertices.size(),
+//                                 Sum.y / all_vertices.size(),
+//                                 Sum.z / all_vertices.size());
+        this->Center = glm::vec3(0.0f);
 
 //        GLfloat MaxRad = 0.0f;
 //        GLfloat CurRad;

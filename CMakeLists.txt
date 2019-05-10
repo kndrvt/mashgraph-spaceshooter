@@ -23,7 +23,7 @@ set(ADDITIONAL_INCLUDE_DIRS
 set(ADDITIONAL_LIBRARY_DIRS
         dependencies/lib)
 set(ADDITIONAL_RUNTIME_LIBRARY_DIRS
-        dependencies/bin)   
+        dependencies/bin)
 
 set (CMAKE_CXX_FLAGS_DEBUG  "${CMAKE_CXX_FLAGS_DEBUG}")
 

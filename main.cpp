@@ -6,9 +6,9 @@
 #include "Gamer.h"
 #include "Enemy.h"
 #include "Asteroid.h"
-//#include "irrKlang/include/irrKlang.h"
+//#include <irrKlang.h>
 
-static const GLsizei WIDTH = 800, HEIGHT = 600; //размеры окна
+static const GLsizei WIDTH = 1280, HEIGHT = 720; //размеры окна
 
 Camera camera(WIDTH, HEIGHT);
 
@@ -120,12 +120,12 @@ int main(int argc, char **argv) {
         // Enemy
         //
         vector<Enemy> enemies = {
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj")),
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj")),
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj")),
-                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), 0.5, 180.0),
-                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), 0.5, 180.0),
-                Enemy(std::string("../objects/spaceship1/Intergalactic_Spaceship-(Wavefront).obj")),
+                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
+                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
+                Enemy(std::string("../objects/spaceship1/Intergalactic_Spaceship-(Wavefront).obj"), THIRD),
         };
         GL_CHECK_ERRORS
 
@@ -149,13 +149,15 @@ int main(int argc, char **argv) {
 
         GL_CHECK_ERRORS
 
-        //цикл обработки сообщений и отрисовки сцены каждый кадр
+        // игровой цикл
+        //
         while (!glfwWindowShouldClose(window)) {
             GL_CHECK_ERRORS
             glfwPollEvents();
             GL_CHECK_ERRORS
 
-            //очищаем экран каждый кадр
+            // очищаем экран каждый кадр
+            //
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             GL_CHECK_ERRORS

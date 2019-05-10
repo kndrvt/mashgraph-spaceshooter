@@ -4,7 +4,13 @@
 #include "Model.h"
 #include "Bullet.h"
 
-const GLint maxHealth = 20;
+const GLint maxHealth = 30;
+
+enum ENEMY_TYPES {
+    FIRST,
+    SECOND,
+    THIRD
+};
 
 vector<glm::vec3> enemyPositions = {
         glm::vec3(-10.0f, -10.0f, 250.0f),
@@ -50,15 +56,17 @@ class Enemy: public Model {
     GLfloat scl;
     GLfloat rtt;
     GLfloat deathTime;
+    bool hurt = false;
 public:
+    ENEMY_TYPES type;
     bool dead = false;
     glm::vec3 Pos = enemyPositions[(int)rand() % enemyPositions.size()];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
-    GLfloat Speed = 10.0f;
+    GLfloat Speed = 8.0f;
     Bullet bullet;
     GLint Health = maxHealth;
 
-    Enemy(std::string dir, GLfloat s = 0.5, GLfloat r = 0.0): Model(dir), scl(s), rtt(r) {
+    Enemy(std::string dir, ENEMY_TYPES t, GLfloat s = 0.5, GLfloat r = 0.0): Model(dir), type(t), scl(s), rtt(r) {
         bullet.update(Pos, glm::normalize(glm::vec3(0.0f, 0.0f, 0.0f) - Pos));
         bullet.Color = glm::vec3(1.0, 0.0, 0.0);
         this->Radius *= scl;
@@ -85,6 +93,10 @@ public:
         shader.SetUniform("time", currentFrame);
         shader.SetUniform("time0", this->deathTime);
         shader.SetUniform("dead", this->dead);
+        shader.SetUniform("hurt", this->hurt);
+        if (hurt) {
+            this->hurt = false;
+        }
         this->Draw(shader);
 
         shader.StopUseShader();
@@ -109,10 +121,17 @@ public:
     }
 
     void damage(GLfloat currentFrame) {
-        this->Health -= 20;
+        if (this->type == FIRST) {
+            this->Health -= 30;
+        } else if (this->type == SECOND) {
+            this->Health -= 15;
+        } else if (this->type == THIRD) {
+            this->Health -= 10;
+        }
         if (this->Health <= 0) {
             this->death(currentFrame);
         }
+        this->hurt = true;
     }
 
     void death(GLfloat currentFrame) {
