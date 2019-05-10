@@ -15,12 +15,13 @@ set(SOURCE_FILES
     Enemy.h
     Asteroid.h
     Bullet.h
-    Camera.h Gamer.h)
+    Camera.h
+    Gamer.h)
 
 set(ADDITIONAL_INCLUDE_DIRS
         dependencies/include/GLAD)
 set(ADDITIONAL_LIBRARY_DIRS
-        dependencies/lib)   
+        dependencies/lib)
 set(ADDITIONAL_RUNTIME_LIBRARY_DIRS
         dependencies/bin)   
 
@@ -49,7 +50,7 @@ if(WIN32)
   add_custom_command(TARGET main POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory "${PROJECT_SOURCE_DIR}/dependencies/bin" $<TARGET_FILE_DIR:main>)
   #set(CMAKE_MSVCIDE_RUN_PATH ${ADDITIONAL_RUNTIME_LIBRARY_DIRS})
   target_compile_options(main PRIVATE)
-  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw3dll)
+  target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw3dll SOIL assimp)
 else()
   target_compile_options(main PRIVATE -Wnarrowing)
   target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw rt dl SOIL assimp)

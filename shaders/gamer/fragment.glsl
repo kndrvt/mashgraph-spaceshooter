@@ -6,14 +6,35 @@ out vec4 FragColor;
 
 uniform int Health;
 uniform int Scores;
-uniform sampler2D texAim;
-//uniform sampler2D texHealth;
-//uniform sampler2D texScores;
-//uniform sampler2D texShip;
+uniform int number;
+uniform sampler2D tex;
+
+vec2 dig(int n, int par) {
+	int d;
+	int m;
+	vec2 tmp = TexCoords;
+	if (number == n) {
+		m = 100;
+	} else if (number == n + 1) {
+		m = 10;
+	} else if (number == n + 2) {
+		m = 1;
+	}
+	d = (par / m) % 10;
+	tmp.x += d * 0.1;
+	return tmp;
+}
 
 void main()
 {
-	vec4 color = texture(texAim, TexCoords);
-	if (color.w == 1.0) color.w = 0.5;
+	vec4 color = vec4(0.0, 0.0, 0.0, 1.0);
+	if ((2 <= number) && (number <= 4)) {
+		color = texture(tex, dig(2, Health));
+	} else if ((5 <= number) && (number <= 7)) {
+		color = texture(tex, dig(5, Scores));
+	} else {
+		color = texture(tex, TexCoords);
+	}
+	if ((number <= 7) && (color.w == 1.0)) color.w = 0.7;
 	FragColor = color;
 }

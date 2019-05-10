@@ -20,6 +20,8 @@ public:
     glm::vec3 Front;
     GLfloat Yaw;
     GLfloat Pitch;
+    GLsizei WIDTH;
+    GLsizei HEIGHT;
 
     Camera(GLsizei W, GLsizei H) : WIDTH(W), HEIGHT(H) {
         Yaw = 90.0f;
@@ -103,8 +105,6 @@ private:
     glm::vec3 Right;
     GLfloat MovementSpeed;
     GLfloat MouseSensitivity;
-    GLsizei WIDTH;
-    GLsizei HEIGHT;
 
     void update() {
         glm::vec3 front;

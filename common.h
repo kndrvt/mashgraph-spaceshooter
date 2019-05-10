@@ -18,7 +18,7 @@
 //пишет в консоль номер текущей строки и название исходного файла
 //а также тип ошибки
 #define GL_CHECK_ERRORS ThrowExceptionOnGLError(__LINE__,__FILE__);
-#define pi 3.14159265358979323846f;
+#define pi 3.14159265358979323846f
 
 static void ThrowExceptionOnGLError(int line, const char *file) {
 

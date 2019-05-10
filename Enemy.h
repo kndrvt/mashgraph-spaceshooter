@@ -4,7 +4,7 @@
 #include "Model.h"
 #include "Bullet.h"
 
-const GLint maxHealth = 40;
+const GLint maxHealth = 20;
 
 vector<glm::vec3> enemyPositions = {
         glm::vec3(-10.0f, -10.0f, 250.0f),
@@ -91,7 +91,7 @@ public:
 
         shader_bullet.StartUseShader();
         this->bullet.movement(deltaTime);
-        if ((glm::length(this->Pos - bullet.Pos) >= 50.0f) || (glm::length(bullet.Front) == 0))
+        if ((glm::length(this->Pos - bullet.Pos) >= 30.0f) || (glm::length(bullet.Front) == 0))
             bullet.update(this->Pos, glm::vec3(0.0f));
         this->bullet.draw(shader_bullet, camera);
         shader_bullet.StopUseShader();
@@ -109,7 +109,7 @@ public:
     }
 
     void damage(GLfloat currentFrame) {
-        this->Health -= 40;
+        this->Health -= 20;
         if (this->Health <= 0) {
             this->death(currentFrame);
         }
@@ -124,6 +124,10 @@ public:
     void reboot() {
         this->Pos = enemyPositions[(int)rand() % enemyPositions.size()];
         this->dead = false;
+    }
+
+    void hit() {
+        this->bullet.update(this->Pos, glm::vec3(0.0f));
     }
 
 };
