@@ -36,6 +36,7 @@
 				<Compiler>
 					<Add option="-DGLFW_DLL"/>
 					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/GLAD"/>
+					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/irrKlang"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -61,6 +62,7 @@
 				<Compiler>
 					<Add option="-DGLFW_DLL"/>
 					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/GLAD"/>
+					<Add directory="/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/dependencies/include/irrKlang"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>

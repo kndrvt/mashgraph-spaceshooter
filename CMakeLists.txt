@@ -3,6 +3,8 @@ project(main)
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_CXX_FLAGS '-I"dependences/include" -L"dependences/bin" "dependences/bin/libIrrKlang.so" -pthread')
+
 set(SOURCE_FILES
     common.h
     glad.c
@@ -19,7 +21,8 @@ set(SOURCE_FILES
     Gamer.h)
 
 set(ADDITIONAL_INCLUDE_DIRS
-        dependencies/include/GLAD)
+        dependencies/include/GLAD
+        dependencies/include/irrKlang)
 set(ADDITIONAL_LIBRARY_DIRS
         dependencies/lib)
 set(ADDITIONAL_RUNTIME_LIBRARY_DIRS

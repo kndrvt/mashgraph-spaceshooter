@@ -102,7 +102,7 @@ int main(int argc, char **argv) {
 //    if (!engine) {
 //        return 0;
 //    }
-//    engine->play2D("audio/background.mp3", true);
+//    engine->play2D("audio/background1.mp3", true);
 
     {
 //            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -283,6 +283,7 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 
 void mousebuttonCallback(GLFWwindow *window, int button, int action, int mods) {
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) shoot = true;
+    if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) shoot = true;
 }
 
 void mouseCallback(GLFWwindow *window, double xpos, double ypos) {

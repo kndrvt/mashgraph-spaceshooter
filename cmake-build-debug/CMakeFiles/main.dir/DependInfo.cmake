@@ -17,6 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../dependencies/include/GLAD"
+  "../dependencies/include/irrKlang"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/ShaderProgram.cpp" "/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/main.dir/ShaderProgram.cpp.o"
@@ -32,6 +33,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../dependencies/include/GLAD"
+  "../dependencies/include/irrKlang"
   )
 
 # Targets to which this target links.
