@@ -5,6 +5,9 @@
 
 #### **Библиотеки**   
 
+###### **SOIL**
+-  sudo apt-get install libsoil-dev  
+
 ###### **GLM**
 - git clone https://github.com/g-truc/glm.git
 - cd glm
