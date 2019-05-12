@@ -3,7 +3,7 @@
 #include "common.h"
 #include "Camera.h"
 #include "Bullet.h"
-#include "SOIL.h"
+#include <SOIL/SOIL.h>
 
 GLfloat vertices[] = {
         // aim

@@ -3,7 +3,7 @@
 #include "common.h"
 #include "ShaderProgram.h"
 #include "Camera.h"
-#include "dependencies/include/SOIL.h"
+#include "SOIL/SOIL.h"
 
 class Skybox {
 
