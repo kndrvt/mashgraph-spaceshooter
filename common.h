@@ -13,10 +13,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-//полезный макрос для проверки ошибок
-//в строчке, где он был записан вызывает ThrowExceptionOnGLError, которая при возникновении ошибки opengl
-//пишет в консоль номер текущей строки и название исходного файла
-//а также тип ошибки
 #define GL_CHECK_ERRORS ThrowExceptionOnGLError(__LINE__,__FILE__);
 #define pi 3.14159265358979323846f
 

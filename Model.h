@@ -1,15 +1,7 @@
 #pragma once
 
-#include "common.h"
 #include "Mesh.h"
-#include "ShaderProgram.h"
 #include "stb_image.h"
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
 
 using namespace std;
 

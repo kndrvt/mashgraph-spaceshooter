@@ -3,15 +3,12 @@
 in vec3 skybox_coords;
 out vec4 color;
 uniform samplerCube skybox;
-uniform float time;
+uniform float offset;
 
-const int ocount = 16;
+const int ocount = 34;
 const float eps = 0.001;
 const int max_marching_steps = 100;
 const float max_marching_dist = 50;
-
-const float speed = 15.0;
-float offset = - speed * time;
 
 struct Object {
     vec3 center;
@@ -19,29 +16,47 @@ struct Object {
 };
 
 Object scene_objects[ocount] = Object[ocount](
-Object(vec3(1.0, 1.0, -21.0), 0.01),
-Object(vec3(1.0, 0.0, -25.0), 0.01),
-Object(vec3(1.0, -1.0, -27.0), 0.01),
-Object(vec3(0.0, 1.0, -24.0), 0.01),
-Object(vec3(0.0, -1.0, -38.0), 0.01),
-Object(vec3(-1.0, 1.0, -33.0), 0.01),
-Object(vec3(-1.0, 0.0, -36.0), 0.01),
-Object(vec3(-1.0, -1.0, -32.0), 0.01),
-Object(vec3(2.0, 2.0, -11.0), 0.01),
-Object(vec3(2.0, 0.0, -15.0), 0.01),
-Object(vec3(2.0, -2.0, -17.0), 0.01),
-Object(vec3(0.0, 2.0, -14.0), 0.01),
-Object(vec3(0.0, -2.0, -8.0), 0.01),
-Object(vec3(-2.0, 2.0, -3.0), 0.01),
-Object(vec3(-2.0, 0.0, -6.0), 0.01),
-Object(vec3(-2.0, -2.0, -2.0), 0.01)
+Object(vec3(-3.0, -1.0, 44.0), 0.01),
+Object(vec3(-3.0, -0.5, 40.0), 0.01),
+Object(vec3(-3.0, 0.0, 33.0), 0.01),
+Object(vec3(-3.0, 0.5, 28.0), 0.01),
+Object(vec3(-3.0, 1.0, 62.0), 0.01),
+Object(vec3(-2.0, -1.0, 47.0), 0.01),
+Object(vec3(-2.0, -0.5, 22.0), 0.01),
+Object(vec3(-2.0, 0.0, 21.0), 0.01),
+Object(vec3(-2.0, 0.5, 65.0), 0.01),
+Object(vec3(-2.0, 1.0, 65.0), 0.01),
+Object(vec3(-1.0, -1.0, 36.0), 0.01),
+Object(vec3(-1.0, -0.5, 40.0), 0.01),
+Object(vec3(-1.0, 0.0, 45.0), 0.01),
+Object(vec3(-1.0, 0.5, 32.0), 0.01),
+Object(vec3(-1.0, 1.0, 59.0), 0.01),
+Object(vec3(0.0, -1.0, 36.0), 0.01),
+Object(vec3(0.0, -0.5, 38.0), 0.01),
+Object(vec3(0.0, 0.5, 47.0), 0.01),
+Object(vec3(0.0, 1.0, 65.0), 0.01),
+Object(vec3(1.0, -1.0, 48.0), 0.01),
+Object(vec3(1.0, -0.5, 64.0), 0.01),
+Object(vec3(1.0, 0.0, 43.0), 0.01),
+Object(vec3(1.0, 0.5, 33.0), 0.01),
+Object(vec3(1.0, 1.0, 56.0), 0.01),
+Object(vec3(2.0, -1.0, 24.0), 0.01),
+Object(vec3(2.0, -0.5, 50.0), 0.01),
+Object(vec3(2.0, 0.0, 41.0), 0.01),
+Object(vec3(2.0, 0.5, 59.0), 0.01),
+Object(vec3(2.0, 1.0, 27.0), 0.01),
+Object(vec3(3.0, -1.0, 40.0), 0.01),
+Object(vec3(3.0, -0.5, 40.0), 0.01),
+Object(vec3(3.0, 0.0, 34.0), 0.01),
+Object(vec3(3.0, 0.5, 27.0), 0.01),
+Object(vec3(3.0, 1.0, 50.0), 0.01)
 );
 
 float sdScene(vec3 point) {
     float min_dist = max_marching_dist;
     float dist;
     for (int i = 0; i < ocount; ++i) {
-        dist = length(scene_objects[i].center + vec3(0.0, 0.0, int(offset) % 50 + offset - int(offset)) - point) - scene_objects[i].radius;
+        dist = length(scene_objects[i].center + vec3(0.0, 0.0, -offset) - point) - scene_objects[i].radius;
         if (min_dist > dist) {
             min_dist = dist;
         }

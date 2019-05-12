@@ -24,7 +24,7 @@ GLfloat vertices[] = {
         -2.0f, 0.85f, 0.1f, 0.0f, 1.0f,
         -1.9f, 0.95f, 0.1f, 0.1f, 0.0f,
         -1.9f, 0.85f, 0.1f, 0.1f, 1.0f,
-        // scores
+        // Score
         1.9f, 0.95f, 0.1f, 0.0f, 0.0f,
         1.9f, 0.85f, 0.1f, 0.0f, 1.0f,
         2.0f, 0.95f, 0.1f, 0.1f, 0.0f,
@@ -38,10 +38,10 @@ GLfloat vertices[] = {
         2.2f, 0.95f, 0.1f, 0.1f, 0.0f,
         2.2f, 0.85f, 0.1f, 0.1f, 1.0f,
         // icon
-        -2.2f, 0.95f, 0.1f, 0.0f, 0.0f,
-        -2.2f, 0.85f, 0.1f, 0.0f, 1.0f,
-        -2.35f, 0.95f, 0.1f, 1.0f, 0.0f,
-        -2.35f, 0.85f, 0.1f, 1.0f, 1.0f,
+        -2.2f, 0.95f, 0.1f, 1.0f, 0.0f,
+        -2.2f, 0.85f, 0.1f, 1.0f, 1.0f,
+        -2.35f, 0.95f, 0.1f, 0.0f, 0.0f,
+        -2.35f, 0.85f, 0.1f, 0.0f, 1.0f,
         // ship
         2.0f,  1.0f, 0.1f, 1.0f, 0.0f,
         2.0f, -1.0f, 0.1f, 1.0f, 1.0f,
@@ -60,7 +60,7 @@ GLint indices[] = {
         9, 10, 11,
         12, 13, 14,
         13, 14, 15,
-        // scores
+        // Score
         16, 17, 18,
         17, 18, 19,
         20, 21, 22,
@@ -198,7 +198,7 @@ class Gamer {
         shader.SetUniform("number", 4);
         glDrawElements(GL_TRIANGLES, 24, GL_UNSIGNED_INT, 0);
 
-        // draw scores
+        // draw Score
         //
         shader.SetUniform("number", 5);
         glDrawElements(GL_TRIANGLES, 30, GL_UNSIGNED_INT, 0);
@@ -231,7 +231,7 @@ class Gamer {
 public:
     GLfloat Radius = 1.0f;
     GLint Health = 100;
-    GLint  Scores = 0;
+    GLint  Score = 0;
     vector<Bullet> bullets;
     bool EndGame = false;
 
@@ -260,7 +260,7 @@ public:
 
         shader.StartUseShader();
         shader.SetUniform("Health", this->Health);
-        shader.SetUniform("Scores", this->Scores);
+        shader.SetUniform("Score", this->Score);
         this->Draw(shader, camera);
         shader.StopUseShader();
     }
@@ -271,7 +271,7 @@ public:
     }
 
     void hit(Camera camera, int num) {
-        this->Scores += 10;
+        this->Score += 10;
         this->bullets[num].update(camera.Pos, glm::vec3(0.0f));
     }
 

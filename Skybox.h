@@ -3,7 +3,7 @@
 #include "common.h"
 #include "ShaderProgram.h"
 #include "Camera.h"
-#include "SOIL.h"
+#include "dependencies/include/SOIL.h"
 
 class Skybox {
 
@@ -85,7 +85,7 @@ public:
         glBindVertexArray(0);
         GL_CHECK_ERRORS;
     }
-    void draw(ShaderProgram shader, Camera camera, GLfloat currentFrame) {
+    void draw(ShaderProgram shader, Camera camera, GLfloat deltaTime) {
         shader.StartUseShader();
 
         glm::mat4 view(1.0);
@@ -96,7 +96,9 @@ public:
         proj = camera.GetPerspectiveMatrix();
         shader.SetUniform("proj", proj);
 
-        shader.SetUniform("time", currentFrame);
+        this->offset += 5.0f * deltaTime;
+        if (this->offset > 50.0f) this->offset = 0.0f;
+        shader.SetUniform("offset", this->offset);
         this->Draw();
         shader.StopUseShader();
     }
@@ -106,6 +108,7 @@ private:
     GLuint skyboxVBO;
     GLuint skyboxEBO;
     unsigned int cubemapTexture;
+    GLfloat offset = 0.0f;
 
     unsigned int loadCubemap(std::vector<std::string> faces) {
         unsigned int textureID;

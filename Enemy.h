@@ -60,6 +60,7 @@ class Enemy: public Model {
 public:
     ENEMY_TYPES type;
     bool dead = false;
+    bool SHOOT = false;
     glm::vec3 Pos = enemyPositions[(int)rand() % enemyPositions.size()];
     glm::vec3 Front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));
     GLfloat Speed = 8.0f;
@@ -103,8 +104,10 @@ public:
 
         shader_bullet.StartUseShader();
         this->bullet.movement(deltaTime);
-        if ((glm::length(this->Pos - bullet.Pos) >= 30.0f) || (glm::length(bullet.Front) == 0))
+        if ((glm::length(this->Pos - bullet.Pos) >= 30.0f) || (glm::length(bullet.Front) == 0)) {
             bullet.update(this->Pos, glm::vec3(0.0f));
+            this->SHOOT = false;
+        }
         this->bullet.draw(shader_bullet, camera);
         shader_bullet.StopUseShader();
     }
@@ -118,9 +121,10 @@ public:
 
     void shoot(Camera camera) {
         bullet.update(Pos, glm::normalize(camera.Pos - Pos));
+        this->SHOOT = true;
     }
 
-    void damage(GLfloat currentFrame) {
+    bool damage(GLfloat currentFrame) {
         if (this->type == FIRST) {
             this->Health -= 30;
         } else if (this->type == SECOND) {
@@ -128,10 +132,12 @@ public:
         } else if (this->type == THIRD) {
             this->Health -= 10;
         }
+        this->hurt = true;
         if (this->Health <= 0) {
             this->death(currentFrame);
+            return true;
         }
-        this->hurt = true;
+        return false;
     }
 
     void death(GLfloat currentFrame) {
@@ -147,6 +153,7 @@ public:
 
     void hit() {
         this->bullet.update(this->Pos, glm::vec3(0.0f));
+        this->SHOOT = false;
     }
 
 };

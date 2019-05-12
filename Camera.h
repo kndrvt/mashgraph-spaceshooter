@@ -1,7 +1,6 @@
 #pragma  once
 
 #include "common.h"
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -16,25 +15,15 @@ enum Camera_Movement {
 
 class Camera {
 public:
-    glm::vec3 Pos;
-    glm::vec3 Front;
-    GLfloat Yaw;
-    GLfloat Pitch;
+    glm::vec3 Pos =  glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 Front = glm::vec3(0.0f, 0.0f, 1.0f);
+    GLfloat Yaw = 90.0f;
+    GLfloat Pitch = 0.0f;
     GLsizei WIDTH;
     GLsizei HEIGHT;
     bool SHIP = true;
 
-    Camera(GLsizei W, GLsizei H) : WIDTH(W), HEIGHT(H) {
-        Yaw = 90.0f;
-        Pitch = 0.0f;
-        FOV = 45.0f;
-        Pos = glm::vec3(0.0f, 0.0f, 3.0f);
-        Front = glm::vec3(0.0f, 0.0f, 1.0f);
-        Up = glm::vec3(0.0f, 1.0f, 0.0f);
-        WorldUp = Up;
-        MovementSpeed = 20.0f;
-        MouseSensitivity = 0.1f;
-    }
+    Camera(GLsizei W, GLsizei H) : WIDTH(W), HEIGHT(H) {}
 
     void begin() {
         Yaw = 90.0f;
@@ -100,12 +89,12 @@ public:
     }
 
 private:
-    GLfloat FOV;
-    glm::vec3 Up;
-    glm::vec3 WorldUp;
+    GLfloat FOV = 45.0f;
+    glm::vec3 Up = glm::vec3(0.0f, 1.0f, 0.0f);
+    glm::vec3 WorldUp = glm::vec3(0.0f, 1.0f, 0.0f);
     glm::vec3 Right;
-    GLfloat MovementSpeed;
-    GLfloat MouseSensitivity;
+    GLfloat MovementSpeed = 20.0f;
+    GLfloat MouseSensitivity = 0.1f;
 
     void update() {
         glm::vec3 front;

@@ -1,12 +1,10 @@
-//internal includes
 #include "common.h"
-#include "ShaderProgram.h"
 #include "Camera.h"
 #include "Skybox.h"
 #include "Gamer.h"
 #include "Enemy.h"
 #include "Asteroid.h"
-//#include <irrKlang.h>
+#include <irrKlang.h>
 
 static const GLsizei WIDTH = 1280, HEIGHT = 720; //размеры окна
 
@@ -40,6 +38,7 @@ int main(int argc, char **argv) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
 
     GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Space shooter", nullptr, nullptr);
     if (window == nullptr) {
@@ -96,150 +95,159 @@ int main(int argc, char **argv) {
 
     glfwSwapInterval(1); // force 60 frames per second
 
-//    // music
-//    //
-//    irrklang::ISoundEngine* engine = irrklang::createIrrKlangDevice();
-//    if (!engine) {
-//        return 0;
-//    }
-//    engine->play2D("audio/background1.mp3", true);
+//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-    {
-//            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    // Skybox
+    //
+    Skybox skybox(std::string("../textures/skybox/lightblue/"));
+    GL_CHECK_ERRORS
 
-        // Skybox
-        //
-        Skybox skybox(std::string("../textures/skybox/lightblue/"));
-        GL_CHECK_ERRORS
+    // Gamer
+    //
+    Gamer gamer(camera);
+    GL_CHECK_ERRORS
 
-        // Gamer
-        //
-        Gamer gamer(camera);
-        GL_CHECK_ERRORS
+    // Enemy
+    //
+    vector<Enemy> enemies = {
+            Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+            Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+            Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+            Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
+            Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
+            Enemy(std::string("../objects/spaceship1/Intergalactic_Spaceship-(Wavefront).obj"), THIRD),
+    };
+    GL_CHECK_ERRORS
 
-        // Enemy
-        //
-        vector<Enemy> enemies = {
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
-                Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
-                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
-                Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
-                Enemy(std::string("../objects/spaceship1/Intergalactic_Spaceship-(Wavefront).obj"), THIRD),
-        };
-        GL_CHECK_ERRORS
+    // Asteroid
+    //
+    vector<Asteroid> asteroids = {
+            Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+            Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+            Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+            Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
+            Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
+            Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
+            Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
+            Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj"))
+    };
+    GL_CHECK_ERRORS
 
-        // Asteroid
-        //
-        vector<Asteroid> asteroids = {
-                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
-                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
-                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
-                Asteroid(std::string("../objects/asteroid2/OBJ.obj")),
-                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
-                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
-                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj")),
-                Asteroid(std::string("../objects/asteroid3/asteroidOBJ.obj"))
-        };
-        GL_CHECK_ERRORS
+    glEnable(GL_MULTISAMPLE);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    GL_CHECK_ERRORS
 
-        glEnable(GL_DEPTH_TEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-        GL_CHECK_ERRORS
-
-        // игровой цикл
-        //
-        while (!glfwWindowShouldClose(window)) {
-            GL_CHECK_ERRORS
-            glfwPollEvents();
-            GL_CHECK_ERRORS
-
-            // очищаем экран каждый кадр
-            //
-            glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            GL_CHECK_ERRORS
-
-            GLfloat currentFrame = glfwGetTime();
-            deltaTime = currentFrame - lastFrame;
-            lastFrame = currentFrame;
-            move();
-
-            // skybox draw
-            //
-            skybox.draw(shader_skybox, camera, currentFrame);
-
-            // enemy draw
-            //
-            for (int i = 0; i < enemies.size(); ++i) {
-                if (!enemies[i].dead) {
-                    for (int j = 0; j < asteroids.size(); ++j) {
-                        if (asteroids[j].destroyed) continue;
-                        if (glm::length(asteroids[j].Pos - enemies[i].Pos) <=
-                            (asteroids[j].Radius + enemies[i].Radius)) {
-                            enemies[i].death(currentFrame);
-                            asteroids[j].destruction(currentFrame);
-                        }
-                    }
-                    if (glm::length(enemies[i].bullet.Pos - camera.Pos) <= gamer.Radius) {
-                        if (!GodMode) gamer.damage();
-                        enemies[i].hit();
-                    }
-
-                    if ((int) round(currentFrame) % 5 == 0) enemies[i].shoot(camera);
-                }
-                enemies[i].movement(deltaTime);
-                enemies[i].draw(shader_enemy, shader_bullet, camera, deltaTime, currentFrame);
-            }
-
-            // asteroid draw
-            //
-            for (int j = 0; j < asteroids.size(); ++j) {
-                asteroids[j].movement(deltaTime);
-                asteroids[j].draw(shader_asteroid, camera, currentFrame);
-            }
-
-            // gamer draw
-            //
-            if (shoot) {
-                shoot = false;
-                gamer.shoot(camera);
-            }
-            for (int i = 0; i < enemies.size(); ++i) {
-                if (enemies[i].dead) continue;
-                if (glm::length(enemies[i].Pos - camera.Pos) <= enemies[i].Radius + gamer.Radius) {
-                    if (!GodMode) gamer.damage();
-                    enemies[i].death(currentFrame);
-                }
-                for (int k = 0; k < gamer.bullets.size(); ++k) {
-                    if (glm::length(enemies[i].Pos - gamer.bullets[k].Pos) <= enemies[i].Radius) {
-                        gamer.hit(camera, k);
-                        enemies[i].damage(currentFrame);
-                    }
-                }
-            }
-            for (int j = 0; j < asteroids.size(); ++j) {
-                if (asteroids[j].destroyed) continue;
-                if (glm::length(asteroids[j].Pos - camera.Pos) <= asteroids[j].Radius + gamer.Radius) {
-                    if (!GodMode) gamer.damage();
-                    asteroids[j].destruction(currentFrame);
-                }
-                for (int k = 0; k < gamer.bullets.size(); ++k) {
-                    if (glm::length(asteroids[j].Pos - gamer.bullets[k].Pos) <= asteroids[j].Radius) {
-                        gamer.hit(camera, k);
-                        asteroids[j].destruction(currentFrame);
-                    }
-                }
-            }
-            gamer.draw(shader_gamer, shader_bullet, camera, deltaTime);
-
-            glfwSwapBuffers(window);
-            if (gamer.EndGame) break;
-        }
+    // music
+    //
+    irrklang::ISoundEngine* engine = irrklang::createIrrKlangDevice();
+    if (!engine) {
+        return 0;
     }
-//    engine->drop();
+    engine->play2D("../audio/background.wav", true);
+    engine->setSoundVolume(0.8f);
+    GL_CHECK_ERRORS
+
+    // игровой цикл
+    //
+    while (!glfwWindowShouldClose(window)) {
+        GL_CHECK_ERRORS
+        glfwPollEvents();
+        GL_CHECK_ERRORS
+
+        // очищаем экран каждый кадр
+        //
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        GL_CHECK_ERRORS
+
+        GLfloat currentFrame = glfwGetTime();
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+        move();
+
+        // skybox draw
+        //
+        skybox.draw(shader_skybox, camera, deltaTime);
+
+        // enemy draw
+        //
+        for (int i = 0; i < enemies.size(); ++i) {
+            if (!enemies[i].dead) {
+                for (int j = 0; j < asteroids.size(); ++j) {
+                    if (asteroids[j].destroyed) continue;
+                    if (glm::length(asteroids[j].Pos - enemies[i].Pos) <=
+                        (asteroids[j].Radius + enemies[i].Radius)) {
+                        enemies[i].death(currentFrame);
+                        asteroids[j].destruction(currentFrame);
+                            engine->play2D("../audio/boom.wav", false);
+                    }
+                }
+                if (glm::length(enemies[i].bullet.Pos - camera.Pos) <= gamer.Radius) {
+                    if (!GodMode) gamer.damage();
+                    enemies[i].hit();
+                }
+                if (((int)currentFrame % 5 == i % 5) && (!enemies[i].SHOOT)) {
+                    enemies[i].shoot(camera);
+                    engine->play2D("../audio/shoot.wav", false);
+                }
+            }
+            enemies[i].movement(deltaTime);
+            enemies[i].draw(shader_enemy, shader_bullet, camera, deltaTime, currentFrame);
+        }
+
+        // asteroid draw
+        //
+        for (int j = 0; j < asteroids.size(); ++j) {
+            asteroids[j].movement(deltaTime);
+            asteroids[j].draw(shader_asteroid, camera, currentFrame);
+        }
+
+        // gamer draw
+        //
+        if (shoot) {
+            shoot = false;
+            gamer.shoot(camera);
+            engine->play2D("../audio/shoot.wav", false);
+        }
+        for (int i = 0; i < enemies.size(); ++i) {
+            if (enemies[i].dead) continue;
+            if (glm::length(enemies[i].Pos - camera.Pos) <= enemies[i].Radius + gamer.Radius) {
+                if (!GodMode) gamer.damage();
+                enemies[i].death(currentFrame);
+                    engine->play2D("../audio/boom.wav", false);
+            }
+            for (int k = 0; k < gamer.bullets.size(); ++k) {
+                if (glm::length(enemies[i].Pos - gamer.bullets[k].Pos) <= enemies[i].Radius) {
+                    gamer.hit(camera, k);
+                    if (enemies[i].damage(currentFrame)) {
+                        engine->play2D("../audio/boom.wav", false);
+                    }
+                }
+            }
+        }
+        for (int j = 0; j < asteroids.size(); ++j) {
+            if (asteroids[j].destroyed) continue;
+            if (glm::length(asteroids[j].Pos - camera.Pos) <= asteroids[j].Radius + gamer.Radius) {
+                if (!GodMode) gamer.damage();
+                asteroids[j].destruction(currentFrame);
+                    engine->play2D("../audio/boom.wav", false);
+            }
+            for (int k = 0; k < gamer.bullets.size(); ++k) {
+                if (glm::length(asteroids[j].Pos - gamer.bullets[k].Pos) <= asteroids[j].Radius) {
+                    gamer.hit(camera, k);
+                    asteroids[j].destruction(currentFrame);
+                        engine->play2D("../audio/boom.wav", false);
+                }
+            }
+        }
+        gamer.draw(shader_gamer, shader_bullet, camera, deltaTime);
+
+        glfwSwapBuffers(window);
+        if (gamer.EndGame) break;
+    }
+    engine->drop();
     glfwTerminate();
     return 0;
 }

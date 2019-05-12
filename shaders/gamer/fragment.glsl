@@ -5,7 +5,7 @@ in vec2 TexCoords;
 out vec4 FragColor;
 
 uniform int Health;
-uniform int Scores;
+uniform int Score;
 uniform int number;
 uniform sampler2D tex;
 
@@ -31,7 +31,7 @@ void main()
 	if ((2 <= number) && (number <= 4)) {
 		color = texture(tex, dig(2, Health));
 	} else if ((5 <= number) && (number <= 7)) {
-		color = texture(tex, dig(5, Scores));
+		color = texture(tex, dig(5, Score));
 	} else {
 		color = texture(tex, TexCoords);
 	}

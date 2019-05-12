@@ -2,7 +2,6 @@
 
 #include "common.h"
 #include "Model.h"
-#include "ShaderProgram.h"
 #include "Camera.h"
 
 

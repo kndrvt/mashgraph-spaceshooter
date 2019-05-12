@@ -1,3 +1,0 @@
-/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/main.dir
-/media/kondrat/DATA/Programs/Graphics/task2/Space shooter/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -3,8 +3,6 @@ project(main)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_CXX_FLAGS '-I"dependences/include" -L"dependences/bin" "dependences/bin/libIrrKlang.so" -pthread')
-
 set(SOURCE_FILES
     common.h
     glad.c
@@ -21,12 +19,16 @@ set(SOURCE_FILES
     Gamer.h)
 
 set(ADDITIONAL_INCLUDE_DIRS
-        dependencies/include/GLAD
-        dependencies/include/irrKlang)
+        dependencies/include/
+        dependencies/include/GLAD)
 set(ADDITIONAL_LIBRARY_DIRS
         dependencies/lib)
 set(ADDITIONAL_RUNTIME_LIBRARY_DIRS
-        dependencies/bin)
+        dependencies/bin/)
+
+set(IRRKLANG_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/include/irrKlang")
+set(IRRKLANG_LIBRARIES "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/lib/irrKlang.lib")
+include_directories(${IRRKLANG_INCLUDE_DIR})
 
 set (CMAKE_CXX_FLAGS_DEBUG  "${CMAKE_CXX_FLAGS_DEBUG}")
 
@@ -57,5 +59,6 @@ if(WIN32)
 else()
   target_compile_options(main PRIVATE -Wnarrowing)
   target_link_libraries(main LINK_PUBLIC ${OPENGL_gl_LIBRARY} glfw rt dl SOIL assimp)
+  target_link_libraries(main LINK_PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/bin/libIrrKlang.so")
 endif()
 
