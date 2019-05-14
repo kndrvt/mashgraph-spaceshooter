@@ -110,9 +110,9 @@ int main(int argc, char **argv) {
     // Enemy
     //
     vector<Enemy> enemies = {
-            Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
-            Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
-            Enemy(std::string("../objects/aircraft/E 45 Aircraft_obj.obj"), FIRST),
+            Enemy(std::string("../objects/aircraft/E-45-Aircraft_obj.obj"), FIRST),
+            Enemy(std::string("../objects/aircraft/E-45-Aircraft_obj.obj"), FIRST),
+            Enemy(std::string("../objects/aircraft/E-45-Aircraft_obj.obj"), FIRST),
             Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
             Enemy(std::string("../objects/spaceship2/City Patrol Vehicle/City Patrol Vehicle.obj"), SECOND, 0.5, 180.0),
             Enemy(std::string("../objects/spaceship1/Intergalactic_Spaceship-(Wavefront).obj"), THIRD),
